@@ -926,7 +926,6 @@ const orderPrice = document.getElementById("order-price");
 const orderId = orderForm.querySelector('input[name="order_id"]');
 const placeOrderBtn = document.getElementById("place-order-btn");
 const wishStatus = document.getElementById("wish-status");
-const wishPreview = document.getElementById("wish-preview");
 
 	  
 	// 🔁 Live sync while typing
@@ -1012,7 +1011,9 @@ function selectJar(jarName, price) {
 <script>
 const form = document.querySelector("form[name='star-jar-orders']");
 
-form.addEventListener("submit", function () {
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
 
   const name = form.querySelector('[name="name"]').value;
   const phone = form.querySelector('[name="phone"]').value;
@@ -1080,8 +1081,8 @@ We’ll notify you once it’s shipped 💛
 
 
 <script>
-const canvas = document.getElementById("particle-canvas");
-const ctx = canvas.getContext("2d");
+const particleCanvas = document.getElementById("particle-canvas");
+const particleCtx = particleCanvas.getContext("2d");
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -1169,9 +1170,9 @@ window.onload = () => {
 };
 </script>
 <script>
-const canvas = document.getElementById("starCanvas");
-const ctx = canvas.getContext("2d");
-
+// star canvas
+const starCanvas = document.getElementById("starCanvas");
+const starCtx = starCanvas.getContext("2d");
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -1251,6 +1252,7 @@ function handleProductClick(btn) {
 
 </body>
 </html>
+
 
 
 
