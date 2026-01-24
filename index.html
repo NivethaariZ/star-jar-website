@@ -1245,30 +1245,13 @@ function handleProductClick(btn) {
   selectJar("Deluxe Star Jar", "1299");
 }
 </script>
-<script>
-function openGallery(images) {
-  const modal = document.getElementById("gallery-modal");
-  const img = document.getElementById("gallery-image");
 
-  img.src = images[0]; // show first image
-  modal.classList.remove("hidden");
-
-  let index = 0;
-  modal.onclick = () => {
-    index = (index + 1) % images.length;
-    img.src = images[index];
-  };
-}
-
-function closeGallery() {
-  document.getElementById("gallery-modal").classList.add("hidden");
-}
-</script>
 
 
 
 </body>
 </html>
+
 
 
 
