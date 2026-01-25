@@ -934,7 +934,7 @@ const wishPreview = document.getElementById("wishPreview");
 
 	  
 	// 🔁 Live sync while typing
-const jarBody = document.getElementById("jarBody");
+
 
 wishInput.addEventListener("input", () => {
   const value = wishInput.value.trim();
@@ -1086,54 +1086,59 @@ We’ll notify you once it’s shipped 💛
 
 
 <script>
-const particleCanvas = document.getElementById("particle-canvas");
-const particleCtx = particleCanvas.getContext("2d");
+  const particleCanvas = document.getElementById("particle-canvas");
+  const particleCtx    = particleCanvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-function explodeStars(x, y) {
-  const stars = [];
-  const COUNT = 28;
-
-  for (let i = 0; i < COUNT; i++) {
-    const angle = (Math.PI * 2 * i) / COUNT;
-    stars.push({
-      x,
-      y,
-      vx: Math.cos(angle) * (2 + Math.random() * 2),
-      vy: Math.sin(angle) * (2 + Math.random() * 2),
-      life: 60 + Math.random() * 20
-    });
+  function resizeParticleCanvas() {
+    particleCanvas.width  = window.innerWidth;
+    particleCanvas.height = window.innerHeight;
   }
+  resizeParticleCanvas();
+  window.addEventListener("resize", resizeParticleCanvas);
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function explodeStars(x, y) {
+    const stars = [];
+    const COUNT = 28;
 
-    stars.forEach(s => {
-      s.x += s.vx;
-      s.y += s.vy;
-      s.life--;
-
-      ctx.globalAlpha = Math.max(s.life / 80, 0);
-      ctx.fillStyle = "#fde68a";
-      ctx.font = "16px serif";
-      ctx.fillText("✦", s.x, s.y);
-    });
-
-    if (stars.some(s => s.life > 0)) {
-      requestAnimationFrame(animate);
-    } else {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < COUNT; i++) {
+      const angle = (Math.PI * 2 * i) / COUNT;
+      stars.push({
+        x,
+        y,
+        vx: Math.cos(angle) * (2 + Math.random() * 2),
+        vy: Math.sin(angle) * (2 + Math.random() * 2),
+        life: 60 + Math.random() * 20
+      });
     }
+
+    function animate() {
+      particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+      stars.forEach(s => {
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life--;
+
+        particleCtx.globalAlpha = Math.max(s.life / 80, 0);
+        particleCtx.fillStyle   = "#fde68a";
+        particleCtx.font        = "16px serif";
+        particleCtx.fillText("✦", s.x, s.y);
+      });
+
+      if (stars.some(s => s.life > 0)) {
+        requestAnimationFrame(animate);
+      } else {
+        particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+      }
+    }
+
+    animate();
   }
 
-  animate();
-}
+  // Example: explode when the jar lid is clicked
+  document.querySelector('.jar-lid').addEventListener('click', e => {
+    const rect = e.target.getBoundingClientRect();
+    explodeStars(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  });
 </script>
 <script>
 const menuBtn = document.getElementById("menuBtn");
@@ -1257,6 +1262,7 @@ function handleProductClick(btn) {
 
 </body>
 </html>
+
 
 
 
