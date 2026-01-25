@@ -381,7 +381,7 @@ Inside .fortune-card add:
   <!-- IMAGE -->
   <div
     class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-    onclick="openGallery(['images/mini-jar-1.webp','images/mini-jar-2.webp','images/mini-jar-3.webp'],event)">
+    onclick="openGallery(['images/minijar1.webp','images/minijar2.webp','images/minijar3.webp'],event)">
 
 
     <img
@@ -390,14 +390,21 @@ Inside .fortune-card add:
       class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
     >
 
-   <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-      <span class="text-amber-200 uppercase tracking-widest text-sm">
-        View Jar
-      </span>
-    </div>
+   <div
+  class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition">
+
+  <div
+    class="absolute inset-0 flex items-center justify-center"
+    onclick="openGallery(['images/classicjar.webp','images/classicjar1.webp','images/classicjar2.webp'],event)"
+  >
+    <span class="text-amber-200 uppercase tracking-widest text-sm cursor-pointer">
+      View Jar
+    </span>
   </div>
+
 </div>
 
+  </div>
   <!-- 🔼 IMAGE + OVERLAY END -->
 
   <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
@@ -444,13 +451,13 @@ Inside .fortune-card add:
   <div
     class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
     onclick="openGallery([
-      'images/classic-jar-1.webp',
-      'images/classic-jar-2.webp',
-      'images/classic-jar-3.webp'
+      'images/classicjar.webp',
+      'images/classicjar1.webp',
+      'images/classicjar2.webp'
     ])"
   >
     <img
-      src="images/classic-jar.webp"
+      src="images/classicjar.webp"
       alt="Classic Star Jar"
       class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
     >
@@ -460,7 +467,6 @@ Inside .fortune-card add:
       </span>
     </div>
   </div>
-
 
   <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
     Bestseller
@@ -506,7 +512,7 @@ Inside .fortune-card add:
   <!-- IMAGE -->
   <div
     class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-    onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','giftbox.webp'],event)"
+    onclick="openGallery(['images/classicjar.webp','images/classicjar2.webp','giftbox.webp'],event)"
   >
   
     <img
@@ -522,6 +528,7 @@ Inside .fortune-card add:
         </span>
       </div>
     </div>
+  </div>
 
   <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
     Premium
@@ -1204,5 +1211,6 @@ jar.addEventListener("click", e => {
 
 </body>
 </html>
+
 
 
