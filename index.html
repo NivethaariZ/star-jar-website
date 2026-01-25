@@ -339,24 +339,45 @@ Inside .fortune-card add:
 
   <div class="fortune-box">
 
-    <h2>Pick a Card ✨</h2>
+    
+
+    <h2>Pick a Card ✨</h2><br><br>
+	
 
     <div class="fortune-cards">
 
-      <div class="fortune-card" onclick="revealCard(this)">🃏</div>
-      <div class="fortune-card" onclick="revealCard(this)">🃏</div>
-      <div class="fortune-card" onclick="revealCard(this)">🃏</div>
+      <div class="fortune-card" onclick="revealCard(this)">
+        <div class="card-inner">
+          <div class="card-face card-front">✦</div>
+          <div class="card-face card-back"></div>
+        </div>
+      </div>
+
+      <div class="fortune-card" onclick="revealCard(this)">
+        <div class="card-inner">
+          <div class="card-face card-front">✦</div>
+          <div class="card-face card-back"></div>
+        </div>
+      </div>
+
+      <div class="fortune-card" onclick="revealCard(this)">
+        <div class="card-inner">
+          <div class="card-face card-front">✦</div>
+          <div class="card-face card-back"></div>
+        </div>
+      </div>
 
     </div>
 
-    <p id="fortuneText"></p>
+   <div id="fortunePopup" class="fortune-popup hidden" onclick="closePopup()">
 
-    <button onclick="closeFortune()">Close</button>
+  <span class="fortune-close"
+        onclick="event.stopPropagation(); closePopup()">✕</span>
 
-  </div>
+  <p id="fortuneText"></p>
 
 </div>
-
+  </div>
 </div>
   </header>
   
@@ -785,6 +806,7 @@ const jarBody = document.getElementById("jarBody");
 
 const jar = document.getElementById("jar-container");
 const fortuneModal = document.getElementById("fortuneModal");
+const fortunePopup = document.getElementById("fortunePopup");
 const fortuneText = document.getElementById("fortuneText");
 
 let jarOpened = false;
@@ -794,6 +816,11 @@ const fortunes = [
   "Love will surprise you 💛",
   "Success is near 🌟",
   "Your wish will come true 🌙"
+"Your wish is already on its way ✨",
+"A beautiful surprise is coming 🌙",
+"Love surrounds you quietly 💛",
+"Your stars are aligning 🌟",
+"Magic follows your courage 🔮"
 ];
 
 jar.addEventListener("click", () => {
@@ -803,15 +830,41 @@ jar.addEventListener("click", () => {
   jar.classList.add("open");
   fortuneModal.classList.remove("hidden");
 });
+function revealCard(card){
 
-function closeFortune() {
-  fortuneModal.classList.add("hidden");
-}
+  document.querySelectorAll(".fortune-card").forEach(c=>{
+    c.classList.remove("flipped");
+  });
 
-function revealCard(card) {
+  card.classList.add("flipped");
+
   fortuneText.innerText =
-    fortunes[Math.floor(Math.random() * fortunes.length)];
+    fortunes[Math.floor(Math.random()*fortunes.length)];
+
+  fortunePopup.classList.remove("hidden");
 }
+
+/* CLOSE ONLY POPUP */
+function closePopup() {
+
+  // hide popup
+  document.getElementById("fortunePopup").classList.add("hidden");
+
+  // hide modal
+  fortuneModal.classList.add("hidden");
+
+  // reset cards
+  document.querySelectorAll(".fortune-card").forEach(card=>{
+    card.classList.remove("flipped");
+  });
+
+  // close jar visually
+  jar.classList.remove("open");
+
+  // allow jar to open again
+  jarOpened = false;
+}
+
 
 /* ================= IMAGE GALLERY ================= */
 
@@ -1207,6 +1260,7 @@ jar.addEventListener("click", e => {
 
 </body>
 </html>
+
 
 
 
