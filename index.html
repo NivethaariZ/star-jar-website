@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STAR & JAR – Fortune Star Jars</title>
-  <meta name="description" content="Handmade Fortune Star Jars filled with wishes, affirmations & love. Perfect gifts. Order online in India.">
+  <title>Fortune Star Jars – Handmade Wish Jars | STAR & JAR India</title>
+  <meta name="description" content="Handmade Fortune Star Jars with folded paper stars and custom wishes. Magical aesthetic gifts. Order online across India – STAR & JAR.">
   <meta name="keywords" content="fortune star jar, paper star jar, wishing jar, handmade gift India, aesthetic jar gift">
-  <link rel="canonical" href="http://fortunejar.netlify.app">
+  <meta property="og:title" content="Fortune Star Jars – STAR & JAR">
+  <meta property="og:title" content="Fortune Star Jars – STAR & JAR">
+  <meta property="og:description" content="Handmade wish jars filled with folded stars and love. Order online in India.">
+  <meta property="og:image" content="https://fortunejar.netlify.app/images/jar-body.webp">
+  <meta property="og:url" content="https://fortunejar.netlify.app/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://fortunejar.netlify.app/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <style>
     body { font-family: 'Quicksand', sans-serif; background: #0c0c1e; color: #e2e8f0; padding-top: 80px; }
     h1, h2, .serif { font-family: 'Cinzel', serif; }
@@ -239,33 +247,35 @@
   
   </style>
   
-  <script type="application/ld+json">
+ <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Fortune Star Jar",
-  "image": [
-    "https://fortunejar.netlify.app/images/classic-jar-1.webp"
-  ],
-  "description": "Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic, meaningful gift.",
-  "brand": {
-    "@type": "Brand",
-    "name": "STAR & JAR"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://fortunejar.netlify.app/#shop-collection",
-    "priceCurrency": "INR",
-    "price": "899",
-    "availability": "https://schema.org/InStock"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "126"
-  }
+"@context":"https://schema.org",
+"@type":"Product",
+"name":"Classic Star Jar",
+"image":[
+"https://fortunejar.netlify.app/images/jar-body.webp"
+],
+"description":"Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic meaningful gift.",
+"sku":"SJ-CLASSIC",
+"brand":{
+"@type":"Brand",
+"name":"STAR & JAR"
+},
+"offers":{
+"@type":"Offer",
+"url":"https://fortunejar.netlify.app/#shop-collection",
+"priceCurrency":"INR",
+"price":"899",
+"availability":"https://schema.org/InStock"
+},
+"aggregateRating":{
+"@type":"AggregateRating",
+"ratingValue":"4.9",
+"reviewCount":"126"
+}
 }
 </script>
+
 
 </head>
 <body>
@@ -449,7 +459,7 @@
   <!-- IMAGE -->
   <div
     class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-    onclick="openGallery(['images/classicjar.webp','images/classicjar1.webp','images/classicjar2.webp'])"
+    onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','images/classic-jar-3.webp'])"
   >
     <img
       src="images/classic-jar.webp"
@@ -558,7 +568,12 @@
   Select
 </button>
 
-
+<div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <button onclick="closeGallery()" class="absolute top-6 right-6 text-white text-3xl font-bold">&times;</button>
+  <button onclick="prevImage()" class="absolute left-4 text-white text-4xl select-none">‹</button>
+  <img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl" alt="Star Jar Preview">
+  <button onclick="nextImage()" class="absolute right-4 text-white text-4xl select-none">›</button>
+</div>
 
 </div>
   </div>
@@ -776,76 +791,79 @@
 
 <script>
 const jarBody = document.getElementById("jarBody");
-const modal = document.getElementById("jarModal");
-const closeBtn = document.getElementById("closeModal");
+/* ================= JAR + FORTUNE ================= */
+
+const jar = document.getElementById("jar-container");
+const fortuneModal = document.getElementById("fortuneModal");
 const fortuneText = document.getElementById("fortuneText");
 
+let jarOpened = false;
 
 const fortunes = [
-  "The universe is quietly guiding you.",
-  "A wish you whispered is being heard.",
-  "Something beautiful is unfolding.",
-  "Your patience will soon be rewarded.",
-  "Magic begins when you trust yourself."
+  "Great blessings are coming ✨",
+  "Love will surprise you 💛",
+  "Success is near 🌟",
+  "Your wish will come true 🌙"
 ];
 
-let cardPicked = false;
+jar.addEventListener("click", () => {
+  if (jarOpened) return;
 
-document.querySelectorAll(".fortune-card").forEach(card => {
-  card.addEventListener("click", () => {
-
-    if (cardPicked) return;
-    cardPicked = true;
-
-    const fortune =
-      fortunes[Math.floor(Math.random() * fortunes.length)];
-
-    card.classList.add("flipped");
-    card.querySelector(".card-back").innerText = fortune;
-
-    // lock others
-    document.querySelectorAll(".fortune-card").forEach(c => {
-      c.style.pointerEvents = "none";
-      c.style.opacity = c === card ? "1" : "0.4";
-    });
-  });
+  jarOpened = true;
+  jar.classList.add("open");
+  fortuneModal.classList.remove("hidden");
 });
-</script>
+
+function closeFortune() {
+  fortuneModal.classList.add("hidden");
+}
+
+function revealCard(card) {
+  fortuneText.innerText =
+    fortunes[Math.floor(Math.random() * fortunes.length)];
+}
 
 <script>
-  let images = [];
-  let currentIndex = 0;
+let galleryImages = [];
+let currentGalleryIndex = 0;
 
-  function openGallery(imgArray) {
-    images = imgArray;
-    currentIndex = 0;
-    showImage();
-    const modal = document.getElementById("imageModal");
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-    document.body.style.overflow = "hidden";
-  }
+function openGallery(imgArray) {
+  galleryImages = imgArray;
+  currentGalleryIndex = 0;
+  showGalleryImage();
+  const modal = document.getElementById("imageModal");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+}
 
-  function showImage() {
-    document.getElementById("modalImg").src = images[currentIndex];
-  }
+function showGalleryImage() {
+  document.getElementById("modalImg").src = galleryImages[currentGalleryIndex];
+}
 
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage();
-  }
+function nextImage() {
+  currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+  showGalleryImage();
+}
 
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage();
-  }
+function prevImage() {
+  currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+  showGalleryImage();
+}
 
-  function closeGallery() {
-    const modal = document.getElementById("imageModal");
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-    document.body.style.overflow = "";
-  }
+function closeGallery() {
+  const modal = document.getElementById("imageModal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
+}
+
+// Optional: click outside the image to close
+document.getElementById("imageModal").addEventListener("click", e => {
+  if (e.target.id === "imageModal") closeGallery();
+});
+</script>
+<script>
 
   // Close when clicking background
   document.getElementById("imageModal").addEventListener("click", e => {
@@ -876,48 +894,11 @@ document.querySelectorAll(".fortune-card").forEach(card => {
 </script>
 
 
-<!-- IMAGE GALLERY MODAL -->
-<div
-  id="imageModal"
-  class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50"
->
 
-  <!-- Close button -->
-  <button
-    onclick="closeGallery()"
-    class="absolute top-6 right-6 text-white text-3xl font-bold"
-  >
-    &times;
-  </button>
-
-  <!-- Left arrow -->
-  <button
-    onclick="prevImage()"
-    class="absolute left-4 text-white text-4xl select-none"
-  >
-    ‹
-  </button>
-
-  <!-- Image -->
-  <img
-    id="modalImg"
-    class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl touch-pan-y"
-    alt="Star Jar Preview"
-  >
-
-  <!-- Right arrow -->
-  <button
-    onclick="nextImage()"
-    class="absolute right-4 text-white text-4xl select-none"
-  >
-    ›
-  </button>
-
-</div>
 
 <script>
   // Elements
-  const wishInput = document.getElementById("custom-wish-input");
+const wishInput = document.getElementById("custom-wish-input");
 const saveWishBtn = document.getElementById("save-wish-btn");
 const orderForm = document.querySelector('form[name="star-jar-orders"]');
 const orderWishTextarea = orderForm.querySelector('textarea[name="wish"]');
@@ -1247,6 +1228,7 @@ function handleProductClick(btn) {
 
 </body>
 </html>
+
 
 
 
