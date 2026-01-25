@@ -245,7 +245,7 @@
   "@type": "Product",
   "name": "Fortune Star Jar",
   "image": [
-    "https://fortunejar.netlify.app/images/jar-body.webp"
+    "https://fortunejar.netlify.app/images/classic-jar-1.webp"
   ],
   "description": "Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic, meaningful gift.",
   "brand": {
@@ -254,7 +254,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://nrdigistore.netlify.app/#shop-collection",
+    "url": "https://fortunejar.netlify.app/#shop-collection",
     "priceCurrency": "INR",
     "price": "899",
     "availability": "https://schema.org/InStock"
@@ -333,6 +333,10 @@
 	<canvas id="starCanvas"></canvas>
 
       <div class="glow"></div>
+		<div
+  id="wishPreview"
+  class="absolute inset-0 flex items-center justify-center text-amber-200 text-sm text-center px-4 opacity-0 transition"
+></div>
       <img src="images/jar-lid.webp" class="jar-lid" alt="Jar Lid">
 	  <div class="inner-star">⭐</div>
   <img src="images/jar-body.webp" class="jar-body" id="jarBody" alt="Jar Body">
@@ -926,6 +930,7 @@ const orderPrice = document.getElementById("order-price");
 const orderId = orderForm.querySelector('input[name="order_id"]');
 const placeOrderBtn = document.getElementById("place-order-btn");
 const wishStatus = document.getElementById("wish-status");
+const wishPreview = document.getElementById("wishPreview");
 
 	  
 	// 🔁 Live sync while typing
@@ -1252,6 +1257,7 @@ function handleProductClick(btn) {
 
 </body>
 </html>
+
 
 
 
