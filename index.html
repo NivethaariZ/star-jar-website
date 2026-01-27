@@ -713,7 +713,7 @@ position:relative;
       <!-- SECTION 2: Jar Selection & Wish -->
       <div>
         <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Star Jar</p>
-        <select name="jar_type" id="jar-type" class="input">
+        <select name="jar_type" id="jar-type" class="input" required>
   <option value="">Select Product</option>
   <option value="Mini Star Jar">Mini Star Jar – ₹499</option>
   <option value="Classic Star Jar">Classic Star Jar – ₹899</option>
@@ -1031,15 +1031,16 @@ saveWishBtn.addEventListener("click", () => {
  
 
 <script>
-form.addEventListener("submit", function (e) {
+orderForm.addEventListener("submit", function (e) {
+
 
   e.preventDefault();
 
-  const name = form.querySelector('[name="name"]').value;
-  const phone = form.querySelector('[name="phone"]').value;
+  const name = orderform.querySelector('[name="name"]').value;
+  const phone = orderform.querySelector('[name="phone"]').value;
   const jar = orderProduct.value;
   const price = orderPrice.value;
-  const wish = form.querySelector('[name="wish"]').value;
+  const wish = orderform.querySelector('[name="wish"]').value;
 
   if (!jar) {
     alert("Please select a jar first ✨");
@@ -1047,7 +1048,7 @@ form.addEventListener("submit", function (e) {
   }
 
   const orderId = "SJ" + Date.now();
-  form.querySelector('[name="order_id"]').value = orderId;
+  orderform.querySelector('[name="order_id"]').value = orderId;
 
   // ADMIN MESSAGE
   const adminMsg = `
@@ -1297,6 +1298,7 @@ jar.addEventListener("click", e => {
 
 </body>
 </html>
+
 
 
 
