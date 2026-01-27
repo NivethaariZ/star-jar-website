@@ -1031,71 +1031,76 @@ saveWishBtn.addEventListener("click", () => {
  
 
 <script>
-const form = document.querySelector("form[name='star-jar-orders']");
+form.addEventListener("submit", function (e) {
 
-form.addEventListener("submit", function () {
+  e.preventDefault();
 
   const name = form.querySelector('[name="name"]').value;
   const phone = form.querySelector('[name="phone"]').value;
-  const jar = document.getElementById("order-product").value;
-  const price = document.getElementById("order-price").value;
+  const jar = orderProduct.value;
+  const price = orderPrice.value;
   const wish = form.querySelector('[name="wish"]').value;
 
   if (!jar) {
     alert("Please select a jar first ✨");
-    return false;
+    return;
   }
 
-  // Generate Order ID
   const orderId = "SJ" + Date.now();
   form.querySelector('[name="order_id"]').value = orderId;
 
-  const message = `
-✨ *New Star Jar Order* ✨
+  // ADMIN MESSAGE
+  const adminMsg = `
+✨ New Star Jar Order ✨
 
-🧾 Order ID: ${orderId}
-👤 Name: ${name}
-📱 Phone: ${phone}
-📦 Jar: ${jar}
-💰 Price: ₹${price}
+🧾 ${orderId}
+👤 ${name}
+📱 ${phone}
+📦 ${jar}
+💰 ₹${price}
 
 🌠 Wish:
 ${wish}
-  `;
+`;
 
-  const whatsappURL =
+  const adminURL =
     "https://wa.me/919148768388?text=" +
-    encodeURIComponent(message);
+    encodeURIComponent(adminMsg);
 
-  // Open WhatsApp AFTER Netlify submits
+  window.open(adminURL, "_blank");
+
+  // CUSTOMER CONFIRMATION (opens after 2 sec)
   setTimeout(() => {
-    window.open(whatsappURL, "_blank");
-  }, 600);
+
+    const customerMsg = `
+✨ STAR & JAR ✨
+
+Hi ${name} 💛
+
+Your order is confirmed!
+
+🧾 ${orderId}
+📦 ${jar}
+💰 ₹${price}
+
+🚚 Delivery: 3–5 days
+📸 Instagram: https://instagram.com/starandjar
+📞 Support: +91 9148768388
+
+Thank you 🌟
+`;
+
+    const clean = phone.replace(/\D/g,"");
+
+    const customerURL =
+      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
+
+    window.open(customerURL,"_blank");
+
+  },2000);
+
 });
-</script>
 
-<script>
-function sendCustomerConfirmation(phone, orderId, jar, price) {
-  const msg = `
-✨ *Your Star Jar Order is Confirmed!* ✨
-
-🧾 Order ID: ${orderId}
-📦 Jar: ${jar}
-💰 Price: ₹${price}
-
-🌠 Your wish is safe with us.
-We’ll notify you once it’s shipped 💛
-
-– STAR & JAR
-  `;
-
-  const cleanPhone = phone.replace(/\D/g, "");
-  const url = `https://wa.me/91${cleanPhone}?text=${encodeURIComponent(msg)}`;
-
-  setTimeout(() => {
-    window.open(url, "_blank");
-  }, 1200);
-}
 </script>
 
 
@@ -1292,6 +1297,7 @@ jar.addEventListener("click", e => {
 
 </body>
 </html>
+
 
 
 
