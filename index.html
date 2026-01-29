@@ -14,7 +14,6 @@
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://fortunejar.netlify.app/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -57,7 +56,7 @@
 }
 
 
-.inner-star { position: absolute; bottom: 95px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; color: #fde68a; text-shadow: 0 0 8px rgba(255,215,120,0.8), 0 0 16px rgba(255,215,120,0.6), 0 0 24px rgba(255,215,120,0.4); animation: starPulse 3s ease-in-out infinite; z-index: 2; }
+.inner-star { position: absolute; bottom: 105px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; color: #fde68a; text-shadow: 0 0 8px rgba(255,215,120,0.8), 0 0 16px rgba(255,215,120,0.6), 0 0 24px rgba(255,215,120,0.4); animation: starPulse 3s ease-in-out infinite; z-index: 2; }
     @keyframes starPulse { 0%,100%{opacity:0.6;transform:translateX(-50%) scale(0.95);}50%{opacity:1;transform:translateX(-50%) scale(1.05);} }
 
  #jar-container.open .jar-lid {
@@ -86,8 +85,8 @@
     #submit-wish:hover { background:white; }
 
     /* Mobile */
-    @media (max-width:768px){ #jar-container{width:150px;height:230px;} h1{font-size:2rem;} p{font-size:0.9rem;} .inner-star{bottom:75px; font-size:1.4rem;} .stars{bottom:70px;font-size:1.4rem;letter-spacing:8px;} }
-    @media (max-width:480px){ #jar-container{width:120px;height:200px;} h1{font-size:1.8rem;} p{font-size:0.85rem;} .inner-star{bottom:60px; font-size:1.2rem;} .stars{bottom:55px;font-size:1.2rem;letter-spacing:6px;} }
+    @media (max-width:768px){ #jar-container{width:150px;height:230px;} h1{font-size:2rem;} p{font-size:0.9rem;} .inner-star{bottom:105px; font-size:1.4rem;} .stars{bottom:70px;font-size:1.4rem;letter-spacing:8px;} }
+    @media (max-width:480px){ #jar-container{width:120px;height:200px;} h1{font-size:1.8rem;} p{font-size:0.85rem;} .inner-star{bottom:105px; font-size:1.2rem;} .stars{bottom:55px;font-size:1.2rem;letter-spacing:6px;} }
 	
 	#reviews div:hover {
 	transform: translateY(-4px);
@@ -133,17 +132,17 @@
 
 .hidden { display:none; }
 
-.fortune-box {
-position:relative;
- background:#0c0c1e;
-  border:2px solid #fde68a;
-  border-radius:20px;
-  padding:80px 100px;
-  width:600px;      /* 🔥 CHANGE WIDTH HERE */
-  max-width:90%;
-  text-align:center;
-  box-shadow:0 0 25px rgba(253,230,138,.35);
+.fortune-box{
+background:#0c0c1e;
+border:2px solid #fde68a;
+border-radius:20px;
+padding:40px 20px;
+width:420px;
+max-width:92%;
+text-align:center;
+box-shadow:0 0 25px rgba(253,230,138,.35);
 }
+
 @media(max-width:600px){
   .fortune-box{
     width:300px;
@@ -154,10 +153,12 @@ position:relative;
 /* ===== CLASSIC FORTUNE CARDS ===== */
 
 .fortune-cards{
-  display:flex;
-  justify-content:center;
-  gap:18px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
 }
+
 
 /* SIZE CONTROL — change here */
 :root{
@@ -170,6 +171,7 @@ position:relative;
   height:var(--card-h);
   perspective:900px;
   cursor:pointer;
+  pointer-events:auto;
 }
 
 .card-inner{
@@ -210,7 +212,9 @@ position:relative;
     0 6px 15px rgba(0,0,0,.5),
     inset 0 0 10px rgba(255,255,255,.4);
   font-size:32px;
+  transition:opacity .3s ease;
 }
+
 
 /* BACK */
 
@@ -229,22 +233,6 @@ position:relative;
   transform:translateY(-6px);
 }
 
-.fortune-orb{
-  margin-top:25px;
-  padding:18px 22px;
-  border-radius:999px;
-  background:radial-gradient(circle,#fde68a,#fbbf24);
-  color:#0c0c1e;
-  font-size:14px;
-  font-weight:500;
-  box-shadow:
-    0 0 25px rgba(253,230,138,.7),
-    inset 0 0 10px rgba(255,255,255,.6);
-  animation:floatUp .8s ease;
-  max-width:260px;
-  margin-left:auto;
-  margin-right:auto;
-}
 
 @keyframes floatUp{
   from{opacity:0;transform:translateY(15px)}
@@ -285,6 +273,196 @@ position:relative;
 }
 
 
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:600px){
+:root{
+--card-w:70px;
+--card-h:100px;
+}
+
+.card-face{
+font-size:12px;
+}
+
+.fortune-popup p{
+font-size:16px;
+}
+}
+
+
+@media(max-width:768px){
+
+header{
+padding-top:110px;
+}
+
+.hero-text h1{
+font-size:2rem;
+}
+
+.hero-text p{
+font-size:.95rem;
+}
+
+/* Jar smaller */
+#jar-container{
+width:150px;
+height:200px;
+margin-bottom:40px;
+}
+
+.jar-lid{
+width:90px;
+}
+
+.inner-star{
+font-size:1.2rem;
+bottom:95px;
+}
+
+}
+
+/* Small phones */
+
+@media(max-width:480px){
+
+.hero-text h1{
+font-size:1.7rem;
+}
+
+section{
+padding:3rem 1rem;
+}
+
+#jar-container{
+width:130px;
+height:180px;
+}
+
+}
+
+
+@media(max-width:600px){
+
+#order-form{
+padding-top:3rem;
+}
+
+#order-form .rounded-3xl{
+padding:20px;
+}
+
+.input{
+padding:.8rem;
+font-size:.9rem;
+}
+
+#place-order-btn{
+padding:14px;
+font-size:.85rem;
+}
+
+}
+
+@media(max-width:768px){
+.jar-lid{
+width:80px;
+}
+}
+
+html,body{
+  height:100%;
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+
+#mobileMenu{
+  position:fixed;
+  top:0;
+  left:0;
+
+  width:260px;
+  height:100vh;              /* FULL SCREEN HEIGHT */
+
+  background:linear-gradient(180deg,#0c0c1e,#050510);
+
+  z-index:999;
+  transform:translateX(-100%);
+  transition:.35s cubic-bezier(.4,0,.2,1);
+
+  padding-top:90px;
+
+  box-shadow:10px 0 40px rgba(0,0,0,.6);
+
+  overflow-y:auto;          /* scroll if links exceed height */
+}
+
+
+#mobileMenu.open{
+  transform:translateX(0);
+}
+
+
+/* Overlay */
+
+#mobileOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:50;
+}
+
+
+/* Links */
+
+#mobileMenu a{
+color:#e2e8f0;
+padding:10px 0;
+display:block;
+}
+
+#mobileMenu a:hover{
+color:#fde68a;
+}
+
+/* Desktop hides */
+
+@media(min-width:768px){
+#mobileMenu,#mobileOverlay{display:none!important;}
+}
+
+
+
+.bar{
+  height:2px;
+  background:#fde68a;
+  transition:.3s;
+}
+
+#menuBtn.open .bar:nth-child(1){
+  transform:rotate(45deg) translateY(10px);
+}
+
+#menuBtn.open .bar:nth-child(2){
+  opacity:0;
+}
+
+#menuBtn.open .bar:nth-child(3){
+  transform:rotate(-45deg) translateY(-10px);
+}
+
+body.sidebar-open{
+overflow:hidden;
+}
+
+nav{
+padding-top:env(safe-area-inset-top);
+}
+
+
+
+
 
   
   </style>
@@ -295,7 +473,7 @@ position:relative;
 "@type":"Product",
 "name":"Classic Star Jar",
 "image":[
-"https://fortunejar.netlify.app/images/jar-body.webp"
+"https://fortunejar.netlify.app/images/classic-jar.webp"
 ],
 "description":"Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic meaningful gift.",
 "sku":"SJ-CLASSIC",
@@ -320,7 +498,8 @@ position:relative;
 
 </head>
 <body>
-<!-- NAVBAR -->
+<canvas id="particle-canvas"></canvas>
+
 <!-- NAVBAR -->
 <nav class="fixed top-0 left-0 w-full z-50 bg-[#0c0c1e]/80 backdrop-blur-md border-b border-white/10">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -339,23 +518,32 @@ position:relative;
         Order ✨
       </a>
     </div>
+	
+	<!-- Mobile Button -->
+<button id="menuBtn"
+class="md:hidden w-4 h-4 flex flex-col justify-between relative z-[999]">
+<span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
 
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-amber-200 text-2xl">
-      ☰
-    </button>
-  </div>
 
-  <!-- Mobile Menu -->
-  <div
-    id="mobileMenu"
-    class="hidden md:hidden flex-col gap-4 px-6 pb-6 text-sm tracking-widest uppercase text-stone-300 bg-[#0c0c1e]"
-  >
-    <a href="#shop-collection" class="hover:text-amber-200">Shop</a>
-    <a href="#place-wish" class="hover:text-amber-200">Place a Wish</a>
-    <a href="#reviews" class="hover:text-amber-200">Reviews</a>
-    <a href="#order-form" class="text-amber-200 font-semibold">Order ✨</a>
-  </div>
+<!-- Mobile Sidebar -->
+<div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+
+<div id="mobileMenu"
+class="fixed top-0 left-0 h-full w-64 bg-[#0c0c1e] z-50
+flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300">
+
+  <a href="#shop-collection" >Shop</a>
+  <a href="#place-wish">Place a Wish</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#order-form" class="text-amber-200 font-semibold">Order ✨</a>
+
+</div>
+
+
+
 </nav>
 
 
@@ -423,7 +611,7 @@ position:relative;
 
     </div>
 
-   <div id="fortunePopup" class="fortune-popup hidden" onclick="closePopup()">
+   <div id="fortune" class="fortune-popup hidden" onclick="closePopup()">
 
   <span class="fortune-close"
         onclick="event.stopPropagation(); closePopup()">✕</span>
@@ -432,7 +620,11 @@ position:relative;
 
 </div>
   </div>
+  
 </div>
+<p class="text-stone-400 max-w-2xl mx-auto mb-16">
+      Click the Jar
+    </p>
   </header>
   
   <!-- Shop Collection -->
@@ -448,7 +640,8 @@ position:relative;
     </p>
 
     <!-- Cards -->
-    <div class="grid gap-8 md:grid-cols-3">
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+
 
       <!-- Card 1 -->
 <div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md hover:border-amber-200/40 transition">
@@ -713,7 +906,7 @@ position:relative;
       <!-- SECTION 2: Jar Selection & Wish -->
       <div>
         <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Star Jar</p>
-        <select name="jar_type" id="jar-type" class="input" required>
+        <select name="jar_type" id="jar-type" class="input">
   <option value="">Select Product</option>
   <option value="Mini Star Jar">Mini Star Jar – ₹499</option>
   <option value="Classic Star Jar">Classic Star Jar – ₹899</option>
@@ -860,40 +1053,54 @@ const jarBody = document.getElementById("jarBody");
 
 const jar = document.getElementById("jar-container");
 const fortuneModal = document.getElementById("fortuneModal");
-const fortunePopup = document.getElementById("fortunePopup");
+const fortunePopup = document.getElementById("fortune");
+const jarDropdown = document.getElementById("jar-type");
+const orderProductInput = document.getElementById("order-product");
+const orderPriceInput = document.getElementById("order-price");
+
 let jarOpened = false;
 
+// Fortune messages
+const fortunes = [
+  "Your wish is already on its way ✨",
+  "A beautiful surprise is coming 🌙",
+  "Love surrounds you quietly 💛",
+  "Your stars are aligning 🌟",
+  "Magic follows your courage 🔮"
+];
+
+// 1️⃣ Click jar → open jar + modal
 jar.addEventListener("click", () => {
-  if(jarOpened) return;
+  if (jarOpened) return;
   jarOpened = true;
   jar.classList.add("open");
   fortuneModal.classList.remove("hidden");
 });
 
-function revealCard(card){
-  document.querySelectorAll(".fortune-card").forEach(c=>c.classList.remove("flipped"));
+// 2️⃣ Pick a card → reveal popup
+function revealCard(card) {
+  document.querySelectorAll(".fortune-card").forEach(c => c.classList.remove("flipped"));
   card.classList.add("flipped");
 
-  const fortunes = [
-    "Your wish is already on its way ✨",
-    "A beautiful surprise is coming 🌙",
-    "Love surrounds you quietly 💛",
-    "Your stars are aligning 🌟",
-    "Magic follows your courage 🔮"
-  ];
-
-  fortunePopup.querySelector("p").innerText = fortunes[Math.floor(Math.random()*fortunes.length)];
+  // Show random fortune
+  fortunePopup.querySelector("p").innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
   fortunePopup.classList.remove("hidden");
 }
 
-function closePopup(){
+// 3️⃣ Close popup → reset jar for next use
+function closePopup() {
+
   fortunePopup.classList.add("hidden");
   fortuneModal.classList.add("hidden");
 
-  jar.classList.remove("open"); // reset jar
   jarOpened = false;
 
-  document.querySelectorAll(".fortune-card").forEach(card=>card.classList.remove("flipped"));
+  jar.classList.remove("open");
+
+  document.querySelectorAll(".fortune-card").forEach(c=>{
+    c.classList.remove("flipped");
+  });
+
 }
 
 
@@ -943,28 +1150,40 @@ document.getElementById("imageModal").addEventListener("click", e => {
 
 /* ================= PRODUCT SELECT ================= */
 
+
+// Function to select jar (click on card button)
 function selectJar(jarName, price) {
 
-  // Hidden fields (used for WhatsApp & backend)
   document.getElementById("order-product").value = jarName;
   document.getElementById("order-price").value = price;
+  document.getElementById("jar-type").value = jarName;
 
-  // Select correct dropdown option
-  const jarSelect = document.getElementById("jar-type");
-  if (jarSelect) {
-    jarSelect.value = jarName;
-  }
-
-  // Scroll to order form
-  document
-    .getElementById("order-form")
-    .scrollIntoView({ behavior: "smooth" });
+  document.getElementById("order-form").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
-</script>
+
+// Sync dropdown change to hidden input automatically
+if (jarDropdown) {
+  jarDropdown.addEventListener("change", () => {
+    orderProductInput.value = jarDropdown.value;
+
+    // Optional: set price automatically based on selection
+    let priceMap = {
+      "Mini Star Jar": "499",
+      "Classic Star Jar": "899",
+      "Deluxe Star Jar": "1299"
+    };
+
+    orderPriceInput.value = priceMap[jarDropdown.value] || "";
+  });
+}
 
 
 
-<script>
+
+
   // Elements
   const wishInput = document.getElementById("custom-wish-input");
 const saveWishBtn = document.getElementById("save-wish-btn");
@@ -993,15 +1212,10 @@ wishInput.addEventListener("input", () => {
 
 
 
-const savedWish = localStorage.getItem("starJarWish");
-if (savedWish) {
-  wishInput.value = savedWish;
-  orderWishTextarea.value = savedWish;
-  wishPreview.innerText = savedWish.slice(0, 40);
-  wishPreview.classList.remove("opacity-0");
-}
+
 
 saveWishBtn.addEventListener("click", () => {
+
   const wish = wishInput.value.trim();
 
   if (!wish) {
@@ -1011,36 +1225,33 @@ saveWishBtn.addEventListener("click", () => {
     return;
   }
 
-  // lock input
-  wishInput.blur();
   saveWishBtn.innerText = "Wish Saved ✓";
 
   wishStatus.innerText = "✨ Wish saved successfully";
   wishStatus.classList.remove("hidden", "text-red-400");
   wishStatus.classList.add("text-amber-200");
 
-  // scroll to form
-  document
-    .getElementById("order-form")
-    .scrollIntoView({ behavior: "smooth" });
+  // ✅ SCROLL TO FORM (CONTACT SECTION)
+  document.querySelector("section#order-form").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 
   setTimeout(() => wishStatus.classList.add("hidden"), 2000);
+
 });
-</script>
 
- 
 
-<script>
+
 orderForm.addEventListener("submit", function (e) {
-
 
   e.preventDefault();
 
-  const name = orderform.querySelector('[name="name"]').value;
-  const phone = orderform.querySelector('[name="phone"]').value;
+  const name = orderForm.querySelector('[name="name"]').value;
+  const phone = orderForm.querySelector('[name="phone"]').value;
   const jar = orderProduct.value;
   const price = orderPrice.value;
-  const wish = orderform.querySelector('[name="wish"]').value;
+  const wish = orderForm.querySelector('[name="wish"]').value;
 
   if (!jar) {
     alert("Please select a jar first ✨");
@@ -1048,7 +1259,7 @@ orderForm.addEventListener("submit", function (e) {
   }
 
   const orderId = "SJ" + Date.now();
-  orderform.querySelector('[name="order_id"]').value = orderId;
+  orderForm.querySelector('[name="order_id"]').value = orderId;
 
   // ADMIN MESSAGE
   const adminMsg = `
@@ -1102,20 +1313,23 @@ Thank you 🌟
 
 });
 
-</script>
 
 
 
-<script>
 const canvas = document.getElementById("particle-canvas");
-const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+if(canvas){
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+
 
 function explodeStars(x, y) {
   const stars = [];
@@ -1155,100 +1369,49 @@ function explodeStars(x, y) {
 
   animate();
 }
-</script>
-<script>
+
+
+
+
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("menuOverlay");
 
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-});
-
-// Auto-close on link tap
-mobileMenu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.add("hidden");
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const id = "SJ" + Date.now();
-  document.querySelector('input[name="order_id"]').value = id;
-});
-</script>
-<script>
-window.onload = () => {
-  // Clear stored data
-  localStorage.removeItem("selectedJar");
-  localStorage.removeItem("selectedPrice");
-  localStorage.removeItem("savedWish");
-
-  // Reset hidden fields
-  const product = document.getElementById("order-product");
-  const price = document.getElementById("order-price");
-  if (product) product.value = "";
-  if (price) price.value = "";
-
-  // Reset form
-  const form = document.querySelector("form[name='star-jar-orders']");
-  if (form) form.reset();
-};
-</script>
-<script>
-const starCanvas = document.getElementById("starCanvas");
-const starCtx = starCanvas.getContext("2d");
-
-function resizeStarCanvas() {
-  starCanvas.width = window.innerWidth;
-  starCanvas.height = window.innerHeight;
+function openMenu(){
+  mobileMenu.style.transform = "translateX(0)";
+  overlay.classList.remove("hidden");
+  document.body.classList.add("sidebar-open");
+  menuBtn.classList.add("open");
 }
 
-resizeStarCanvas();
-window.addEventListener("resize", resizeStarCanvas);
-
-function burstStars(x, y) {
-  const stars = [];
-  const count = 26;
-
-  for (let i = 0; i < count; i++) {
-    const angle = (Math.PI * 2 * i) / count;
-    stars.push({
-      x,
-      y,
-      vx: Math.cos(angle) * (2 + Math.random() * 2),
-      vy: Math.sin(angle) * (2 + Math.random() * 2),
-      life: 60
-    });
-  }
-
-  function animate() {
-    starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-
-    stars.forEach(s => {
-      s.x += s.vx;
-      s.y += s.vy;
-      s.life--;
-
-      starCtx.globalAlpha = s.life / 60;
-      starCtx.font = "16px serif";
-      starCtx.fillStyle = "#fde68a";
-      starCtx.fillText("✦", s.x, s.y);
-    });
-
-    if (stars.some(s => s.life > 0)) {
-      requestAnimationFrame(animate);
-    } else {
-      starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-    }
-  }
-
-  animate();
+function closeMenu(){
+  mobileMenu.style.transform = "translateX(-100%)";
+  overlay.classList.add("hidden");
+  document.body.classList.remove("sidebar-open");
+  menuBtn.classList.remove("open");
 }
 
-</script>
+menuBtn.addEventListener("click",()=>{
+  if(mobileMenu.style.transform==="translateX(0px)"){
+    closeMenu();
+  }else{
+    openMenu();
+  }
+});
 
-<script>
+// click outside
+mobileMenu.addEventListener("click", closeMenu);
+
+
+// close on link tap
+mobileMenu.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",closeMenu);
+});
+
+
+
+
+
 document.querySelectorAll("[data-status]").forEach(card => {
   const status = card.dataset.status;
   const btn = card.querySelector(".product-btn");
@@ -1275,35 +1438,44 @@ function handleProductClick(btn) {
   // Only runs for available products
   selectJar("Deluxe Star Jar", "1299");
 }
-</script>
-<script>
-const jar = document.getElementById("jar-container");
 
-let jarOpened = false;
 
-jar.addEventListener("click", e => {
-  e.preventDefault();
 
-  if (jarOpened) return;   // prevent re-trigger
 
-  jarOpened = true;
+window.addEventListener("load", () => {
 
-  jar.classList.add("open");
+  const form = document.querySelector("form[name='star-jar-orders']");
+  if (form) form.reset();
 
-  openFortuneModal();
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.value = "";
+  });
+
+  localStorage.removeItem("starJarWish");
+
+
+  document.getElementById("order-product").value = "";
+  document.getElementById("order-price").value = "";
+
+  jarOpened = false;
+  jar.classList.remove("open");
+
+  fortuneModal.classList.add("hidden");
+  fortunePopup.classList.add("hidden");
+
 });
+</script>
 
+
+<script>
+let busy = false;
+
+function lockUI(ms=600){
+  busy = true;
+  setTimeout(()=>busy=false, ms);
+}
 </script>
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
