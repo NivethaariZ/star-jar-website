@@ -1403,15 +1403,17 @@ Your order is confirmed!
 
 Thank you 🌟
 `;
+	  
+  const clean = phone.replace(/\D/g,"");
 
-    const clean = phone.replace(/\D/g,"");
+  const customerURL =
+    "https://wa.me/91" + clean +
+    "?text=" + encodeURIComponent(customerMsg);
 
-    const customerURL =
-      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
-
-    window.open(customerURL,"_blank");
-
-  },2000);
+  // Show confirmation popup instead of auto open
+  if(confirm("Order placed successfully ✨\nClick OK to confirm on WhatsApp")){
+      window.open(customerURL, "_blank");
+  }
 
 });
 
@@ -1602,6 +1604,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
