@@ -1353,6 +1353,7 @@ orderForm.addEventListener("submit", function (e) {
   const jar = orderProduct.value;
   const price = orderPrice.value;
   const wish = orderForm.querySelector('[name="wish"]').value;
+  const email = orderForm.querySelector('[name="email"]').value;
 
   if (!jar) {
     alert("Please select a jar first ✨");
@@ -1379,6 +1380,27 @@ ${wish}
   const adminURL =
     "https://wa.me/919148768388?text=" +
     encodeURIComponent(adminMsg);
+	
+	// SAVE TO GOOGLE SHEET
+fetch("https://script.google.com/macros/s/AKfycbwQlYI5aueZReoFRmINhn1iKM9-aWGxoxf09PABGtUw_JzSxk3QtnkziesuOx8XgUE/exec", {
+  method: "POST",
+   headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    order_id: orderId,
+    name: name,
+    phone: phone,
+    email: email,
+    jar: jar,
+    price: price,
+    wish: wish
+  })
+})
+.then(res => res.text())
+.then(data => console.log("Saved to Sheet"))
+.catch(err => console.error("Error:", err));
+
 
   window.open(adminURL, "_blank");
 
