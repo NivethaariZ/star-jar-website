@@ -1501,18 +1501,19 @@ const mobileMenu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("menuOverlay");
 
 function openMenu(){
-  mobileMenu.style.transform = "translateX(0)";
+  mobileMenu.classList.add("open");
   overlay.classList.remove("hidden");
   document.body.classList.add("sidebar-open");
   menuBtn.classList.add("open");
 }
 
 function closeMenu(){
-  mobileMenu.style.transform = "translateX(-100%)";
+  mobileMenu.classList.remove("open");
   overlay.classList.add("hidden");
   document.body.classList.remove("sidebar-open");
   menuBtn.classList.remove("open");
 }
+
 
 menuBtn.addEventListener("click",()=>{
   if(mobileMenu.style.transform==="translateX(0px)"){
@@ -1580,7 +1581,7 @@ window.addEventListener("load", () => {
   document.getElementById("order-product").value = "";
   document.getElementById("order-price").value = "";
 
-  jarOpened = false;
+  let jarOpened = false;
   jar.classList.remove("open");
 
   fortuneModal.classList.add("hidden");
@@ -1599,7 +1600,7 @@ function lockUI(ms=600){
 }
 </script>
 <script>
-const sections = document.querySelectorAll("section, header");
+const sections = document.querySelectorAll("section[id], header[id]");
 const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
@@ -1607,17 +1608,21 @@ window.addEventListener("scroll", () => {
 
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 150;
-    if (pageYOffset >= sectionTop) current = section.id;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
   });
 
-  navLinks.forEach(a => {
-    a.classList.remove("text-amber-200");
-    if (a.getAttribute("href") === "#" + current) {
-      a.classList.add("text-amber-200");
+  navLinks.forEach(link => {
+    link.classList.remove("text-amber-200");
+
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("text-amber-200");
     }
   });
 });
 </script>
+
 
 
 
