@@ -1410,22 +1410,11 @@ Thank you for your wish ✨
   fetch("https://script.google.com/macros/s/AKfycbzXg5gEQADrfpqQxSZdQZZC1KSIFeF0vdIQRqjoJIMPnibssx5fNk4zep5Odg37VEEi/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      order_id: orderId,
-      name,
-      phone,
-      email,
-      jar,
-      price,
-      wish
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.result !== "success") {
-        alert("Order save failed. Please try again.");
-        return;
-      }
+   body: JSON.stringify({ test: "ok" })
+})
+.then(r => r.text())
+.then(console.log)
+.catch(console.error);
 
       // ✅ Open WhatsApp ONLY after save
       window.open(adminURL, "_blank");
@@ -1633,6 +1622,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
