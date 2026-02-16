@@ -1390,7 +1390,7 @@ Send screenshot after payment 🌟
   // ✅ SAVE TO GOOGLE SHEET
   fetch("https://script.google.com/macros/s/AKfycbyRUrtet3fp6s8IlrQjneQpgoISn9GUQANPcpDb_gqt9DhpH4uNUDRqLBJFQqt4Qsin/exec", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "no-cors",
     body: JSON.stringify({
       order_id: orderId,
       name,
@@ -1611,6 +1611,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
