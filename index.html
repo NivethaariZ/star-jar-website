@@ -1388,36 +1388,25 @@ Send screenshot after payment 🌟
     "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
   // ✅ SAVE TO GOOGLE SHEET
-  fetch("https://script.google.com/macros/s/AKfycbyRUrtet3fp6s8IlrQjneQpgoISn9GUQANPcpDb_gqt9DhpH4uNUDRqLBJFQqt4Qsin/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      order_id: orderId,
-      name,
-      phone,
-      email,
-      jar,
-      price,
-      wish
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.result !== "success") {
-      alert("Order save failed");
-      return;
-    }
+  // Create hidden form to send to Google Apps Script
+const formData = new FormData();
+formData.append("order_id", orderId);
+formData.append("name", name);
+formData.append("phone", phone);
+formData.append("email", email);
+formData.append("jar", jar);
+formData.append("price", price);
+formData.append("wish", wish);
 
-    // ✅ OPEN WHATSAPP AFTER SAVE
-    window.open(adminURL, "_blank");
-    setTimeout(() => window.open(customerURL, "_blank"), 1200);
-  })
-  .catch(err => {
-    alert("Connection error. Please try again.");
-    console.error(err);
-  });
+fetch("https://script.google.com/macros/s/AKfycby5XgQh0yZs1p0Wi6u3B5XrXM1B6PhncLE8T2lpuY4ixgF1gEM62nYYFuIaCMbIAulh/exec", {
+  method: "POST",
+  body: formData,
+  mode: "no-cors"
+}).finally(() => {
+  // Always continue to WhatsApp
+  window.open(adminURL, "_blank");
+  setTimeout(() => window.open(customerURL, "_blank"), 1200);
 });
-
 
 
 
@@ -1611,6 +1600,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
