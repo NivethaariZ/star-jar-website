@@ -1384,11 +1384,9 @@ ${wish}
     encodeURIComponent(adminMsg);
 	
 	// SAVE TO GOOGLE SHEET
-fetch("https://script.google.com/macros/s/AKfycbwHQqtrMlWAWcXPx_U6NMkRtlrwxF8qibST5DH1rqV3VjqdqzIg6HiMsEUOmOOO9eM/exec", {
+fetch("https://script.google.com/macros/s/AKfycbxpAhXcwChvStcmyBMVLpozS75VDaHIjM7U2DFynwvQwkyK5pRQRlcbYs2i-hMbzGdv/exec", {
   method: "POST",
-   headers: {
-    "Content-Type": "application/json"
-  },
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     order_id: orderId,
     name: name,
@@ -1399,9 +1397,27 @@ fetch("https://script.google.com/macros/s/AKfycbwHQqtrMlWAWcXPx_U6NMkRtlrwxF8qib
     wish: wish
   })
 })
-.then(res => res.text())
-.then(data => console.log("Saved to Sheet"))
-.catch(err => console.error("Error:", err));
+.then(res => res.json())
+.then(data => {
+
+  if (data.result !== "success") {
+    alert("Order save failed. Please try again.");
+    return;
+  }
+
+  // ✅ OPEN ADMIN WHATSAPP ONLY AFTER SAVE
+  window.open(adminURL, "_blank");
+
+  // ✅ OPEN CUSTOMER MESSAGE AFTER 1.5s
+  setTimeout(() => {
+    window.open(customerURL, "_blank");
+  }, 1500);
+
+})
+.catch(err => {
+  alert("Connection error. Please try again.");
+  console.error(err);
+});
 
 
   window.open(adminURL, "_blank");
@@ -1409,23 +1425,26 @@ fetch("https://script.google.com/macros/s/AKfycbwHQqtrMlWAWcXPx_U6NMkRtlrwxF8qib
   // CUSTOMER CONFIRMATION (opens after 2 sec)
   setTimeout(() => {
 
-    const customerMsg = `
+const customerMsg = `
 ✨ STAR & JAR ✨
 
 Hi ${name} 💛
 
-Your order is confirmed!
+Your order is reserved!
 
 🧾 ${orderId}
 📦 ${jar}
 💰 ₹${price}
 
-🚚 Delivery: 3–5 days
-📸 Instagram: https://instagram.com/starandjar
-📞 Support: +91 9148768388
+💳 Please pay using UPI:
+UPI ID: yourupi@bank
 
-Thank you 🌟
+After payment, send screenshot here to confirm 🌟
+
+🚚 Delivery: 3–5 days
+Thank you for your wish ✨
 `;
+
 
     const clean = phone.replace(/\D/g,"");
 
@@ -1630,7 +1649,6 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
-
 
 
 
