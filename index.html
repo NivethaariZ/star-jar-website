@@ -1347,7 +1347,6 @@ saveWishBtn.addEventListener("click", () => {
 
 
 orderForm.addEventListener("submit", function (e) {
-
   e.preventDefault();
 
   const name = orderForm.querySelector('[name="name"]').value;
@@ -1380,52 +1379,10 @@ ${wish}
 `;
 
   const adminURL =
-    "https://wa.me/919148768388?text=" +
-    encodeURIComponent(adminMsg);
-	
-	// SAVE TO GOOGLE SHEET
-fetch("https://script.google.com/macros/s/AKfycbxnQVUdmcSFxthnns6mKFysxyEGXCAy0IwqcVSetQF_ptxGXeiqAD5MRfQyE_1vyDs5/exec", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    order_id: orderId,
-    name: name,
-    phone: phone,
-    email: email,
-    jar: jar,
-    price: price,
-    wish: wish
-  })
-})
-.then(res => res.json())
-.then(data => {
+    "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
-  if (data.result !== "success") {
-    alert("Order save failed. Please try again.");
-    return;
-  }
-
-  // ✅ OPEN ADMIN WHATSAPP ONLY AFTER SAVE
-  window.open(adminURL, "_blank");
-
-  // ✅ OPEN CUSTOMER MESSAGE AFTER 1.5s
-  setTimeout(() => {
-    window.open(customerURL, "_blank");
-  }, 1500);
-
-})
-.catch(err => {
-  alert("Connection error. Please try again.");
-  console.error(err);
-});
-
-
-  window.open(adminURL, "_blank");
-
-  // CUSTOMER CONFIRMATION (opens after 2 sec)
-  setTimeout(() => {
-
-const customerMsg = `
+  // CUSTOMER MESSAGE
+  const customerMsg = `
 ✨ STAR & JAR ✨
 
 Hi ${name} 💛
@@ -1445,17 +1402,44 @@ After payment, send screenshot here to confirm 🌟
 Thank you for your wish ✨
 `;
 
+  const clean = phone.replace(/\D/g, "");
+  const customerURL =
+    "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
-    const clean = phone.replace(/\D/g,"");
+  // SAVE TO GOOGLE SHEET FIRST
+  fetch("https://script.google.com/macros/s/AKfycbxnQVUdmcSFxthnns6mKFysxyEGXCAy0IwqcVSetQF_ptxGXeiqAD5MRfQyE_1vyDs5/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      order_id: orderId,
+      name,
+      phone,
+      email,
+      jar,
+      price,
+      wish
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.result !== "success") {
+        alert("Order save failed. Please try again.");
+        return;
+      }
 
-    const customerURL =
-      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
+      // ✅ Open WhatsApp ONLY after save
+      window.open(adminURL, "_blank");
 
-    window.open(customerURL,"_blank");
-
-  },2000);
-
+      setTimeout(() => {
+        window.open(customerURL, "_blank");
+      }, 1200);
+    })
+    .catch(err => {
+      alert("Connection error. Please try again.");
+      console.error(err);
+    });
 });
+
 
 
 
@@ -1649,6 +1633,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
