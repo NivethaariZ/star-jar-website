@@ -1338,7 +1338,7 @@ saveWishBtn.addEventListener("click", () => {
 
 
 
-orderForm.addEventListener("submit", function (e) {
+orderForm.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const name = orderForm.querySelector('[name="name"]').value;
@@ -1354,26 +1354,47 @@ orderForm.addEventListener("submit", function (e) {
   }
 
   const orderId = "SJ" + Date.now();
-  orderForm.querySelector('[name="order_id"]').value = orderId;
 
-  const adminMsg = `
-✨ New Star Jar Order ✨
+  // 🔹 SAVE TO GOOGLE SHEET
+  const url =
+    "https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec"
+    + `?order_id=${orderId}`
+    + `&name=${encodeURIComponent(name)}`
+    + `&phone=${encodeURIComponent(phone)}`
+    + `&email=${encodeURIComponent(email)}`
+    + `&jar=${encodeURIComponent(jar)}`
+    + `&price=${encodeURIComponent(price)}`
+    + `&wish=${encodeURIComponent(wish)}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.result !== "success") {
+      alert("Order save failed");
+      return;
+    }
+
+    // 🔹 ADMIN WHATSAPP MESSAGE
+    const adminMsg =
+`✨ New Star Jar Order
 🧾 ${orderId}
 👤 ${name}
 📱 ${phone}
 📦 ${jar}
 💰 ₹${price}
-🌠 Wish:
-${wish}
-`;
+🌠 ${wish}`;
 
-  const adminURL =
-    "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
+    const adminURL =
+      "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
-  const clean = phone.replace(/\D/g, "");
-  const customerMsg = `
-✨ STAR & JAR ✨
+    // 🔹 CUSTOMER WHATSAPP MESSAGE
+    const clean = phone.replace(/\D/g, "");
+
+    const customerMsg =
+`✨ STAR & JAR
 Hi ${name} 💛
+
 Your order is reserved!
 
 🧾 ${orderId}
@@ -1381,32 +1402,25 @@ Your order is reserved!
 💰 ₹${price}
 
 💳 Pay via UPI: yourupi@bank
-Send screenshot after payment 🌟
-`;
+Send screenshot after payment 🌟`;
 
-  const customerURL =
-    "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
+    const customerURL =
+      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
-  // ✅ SAVE TO GOOGLE SHEET
-  // Create hidden form to send to Google Apps Script
-const formData = new FormData();
-formData.append("order_id", orderId);
-formData.append("name", name);
-formData.append("phone", phone);
-formData.append("email", email);
-formData.append("jar", jar);
-formData.append("price", price);
-formData.append("wish", wish);
+    // 🔹 OPEN WHATSAPP
+    window.open(adminURL, "_blank");
+    setTimeout(() => window.open(customerURL, "_blank"), 1200);
 
-fetch("https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec", {
-  method: "POST",
-  body: formData,
-  mode: "no-cors"
-}).finally(() => {
-  // Always continue to WhatsApp
-  window.open(adminURL, "_blank");
-  setTimeout(() => window.open(customerURL, "_blank"), 1200);
+    alert("Order placed! WhatsApp opened ✨");
+
+    orderForm.reset();
+
+  } catch (err) {
+    alert("Connection error. Please try again.");
+    console.error(err);
+  }
 });
+
 
 
 
@@ -1600,6 +1614,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
