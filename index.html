@@ -880,15 +880,12 @@ flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300"
 	id="orderForm">
 
       <!-- Hidden Fields -->
-      <input type="hidden" name="form-name" value="star-jar-orders">
-      <input type="hidden" name="status" value="Paid">
+     
       <input type="hidden" name="order_id" value="">
       <input type="hidden" id="order-product" name="order_product">
       <input type="hidden" id="order-price" name="order_price">
 
-      <p class="hidden">
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
+      
 
       <!-- SECTION 1: User Details -->
       <div>
@@ -1285,7 +1282,7 @@ if (jarDropdown) {
   // Elements
   const wishInput = document.getElementById("custom-wish-input");
 const saveWishBtn = document.getElementById("save-wish-btn");
-const orderForm = document.querySelector('form[name="star-jar-orders"]');
+const orderForm = document.getElementById("orderForm");
 const orderWishTextarea = orderForm.querySelector('textarea[name="wish"]');
 const jarSelect = orderForm.querySelector('select[name="jar_type"]');
 const orderProduct = document.getElementById("order-product");
@@ -1614,6 +1611,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
