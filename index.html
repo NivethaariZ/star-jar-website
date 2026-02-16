@@ -1367,7 +1367,7 @@ orderForm.addEventListener("submit", async function (e) {
     + `&wish=${encodeURIComponent(wish)}`;
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { method: "POST" });
     const data = await res.json();
 
     if (data.result !== "success") {
@@ -1614,6 +1614,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
