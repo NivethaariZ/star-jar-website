@@ -877,10 +877,7 @@ flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300"
     </div>
 
     <form
-	id="orderForm"
-      name="star-jar-orders"
-      netlify-honeypot="bot-field"
-      class="grid gap-6">
+	id="orderForm">
 
       <!-- Hidden Fields -->
       <input type="hidden" name="form-name" value="star-jar-orders">
@@ -1362,16 +1359,13 @@ orderForm.addEventListener("submit", function (e) {
   const orderId = "SJ" + Date.now();
   orderForm.querySelector('[name="order_id"]').value = orderId;
 
-  // ADMIN MESSAGE
   const adminMsg = `
 ✨ New Star Jar Order ✨
-
 🧾 ${orderId}
 👤 ${name}
 📱 ${phone}
 📦 ${jar}
 💰 ₹${price}
-
 🌠 Wish:
 ${wish}
 `;
@@ -1379,52 +1373,52 @@ ${wish}
   const adminURL =
     "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
-  // CUSTOMER MESSAGE
+  const clean = phone.replace(/\D/g, "");
   const customerMsg = `
 ✨ STAR & JAR ✨
-
 Hi ${name} 💛
-
 Your order is reserved!
 
 🧾 ${orderId}
 📦 ${jar}
 💰 ₹${price}
 
-💳 Please pay using UPI:
-UPI ID: yourupi@bank
-
-After payment, send screenshot here to confirm 🌟
-
-🚚 Delivery: 3–5 days
-Thank you for your wish ✨
+💳 Pay via UPI: yourupi@bank
+Send screenshot after payment 🌟
 `;
 
-  const clean = phone.replace(/\D/g, "");
   const customerURL =
     "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
-  // SAVE TO GOOGLE SHEET FIRST
+  // ✅ SAVE TO GOOGLE SHEET
   fetch("https://script.google.com/macros/s/AKfycbzXg5gEQADrfpqQxSZdQZZC1KSIFeF0vdIQRqjoJIMPnibssx5fNk4zep5Odg37VEEi/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-   body: JSON.stringify({ test: "ok" })
-})
-.then(r => r.text())
-.then(console.log)
-.catch(console.error);
-
-      // ✅ Open WhatsApp ONLY after save
-      window.open(adminURL, "_blank");
-
-      setTimeout(() => {
-        window.open(customerURL, "_blank");
-      }, 1200);
+    body: JSON.stringify({
+      order_id: orderId,
+      name,
+      phone,
+      email,
+      jar,
+      price,
+      wish
     })
-    .catch(err => {
-      alert("Connection error. Please try again.");
-      console.error(err);
-    });
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.result !== "success") {
+      alert("Order save failed");
+      return;
+    }
+
+    // ✅ OPEN WHATSAPP AFTER SAVE
+    window.open(adminURL, "_blank");
+    setTimeout(() => window.open(customerURL, "_blank"), 1200);
+  })
+  .catch(err => {
+    alert("Connection error. Please try again.");
+    console.error(err);
+  });
 });
 
 
@@ -1620,6 +1614,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
