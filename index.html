@@ -902,10 +902,17 @@ flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300"
           <input name="phone" placeholder="WhatsApp Number *" required pattern="[0-9]{10}" title="Enter 10 digit number" class="input">
         </div>
         <input name="email" type="email" placeholder="Email (optional)" class="input mt-4">
+		  <!-- ⭐ ADD ADDRESS HERE -->
+  <textarea
+    name="address"
+    rows="3"
+    placeholder="Enter your full delivery address"
+    required
+    class="input mt-4"></textarea>
       </div>
 
       <!-- SECTION 2: Jar Selection & Wish -->
-      <div>
+      <div><br>
         <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Star Jar</p>
         <select name="jar_type" id="jar-type" class="input">
   <option value="">Select Product</option>
@@ -1350,31 +1357,45 @@ orderForm.addEventListener("submit", async function (e) {
 
   const name = orderForm.querySelector('[name="name"]').value;
   const phone = orderForm.querySelector('[name="phone"]').value;
-  const jar = orderProduct.value;
-  const price = orderPrice.value;
-  const wish = orderForm.querySelector('[name="wish"]').value;
   const email = orderForm.querySelector('[name="email"]').value;
+  const address = orderForm.querySelector('[name="address"]').value;
+  const jar = orderForm.querySelector('[name="jar_type"]').value;
+  const wish = orderForm.querySelector('[name="wish"]').value;
 
   if (!jar) {
     alert("Please select a jar first ✨");
     return;
   }
 
+  const priceMap = {
+    "Mini Star Jar": "499",
+    "Classic Star Jar": "899",
+    "Deluxe Star Jar": "1299"
+  };
+
+  const price = priceMap[jar] || "";
   const orderId = "SJ" + Date.now();
 
-  // 🔹 SAVE TO GOOGLE SHEET
   const url =
-    "https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec"
-    + `?order_id=${orderId}`
-    + `&name=${encodeURIComponent(name)}`
-    + `&phone=${encodeURIComponent(phone)}`
-    + `&email=${encodeURIComponent(email)}`
-    + `&jar=${encodeURIComponent(jar)}`
-    + `&price=${encodeURIComponent(price)}`
-    + `&wish=${encodeURIComponent(wish)}`;
+    "https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec";
+
+  const formData = new URLSearchParams({
+    order_id: orderId,
+    name,
+    phone,
+    email,
+    address,
+    jar,
+    price,
+    wish
+  });
 
   try {
-    const res = await fetch(url, { method: "POST" });
+    const res = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
     const data = await res.json();
 
     if (data.result !== "success") {
@@ -1382,71 +1403,58 @@ orderForm.addEventListener("submit", async function (e) {
       return;
     }
 
-
-
-// 🔹 ADMIN WHATSAPP MESSAGE
-const adminMsg =
-`✨ NEW STAR & JAR ORDER
+    // 📩 ADMIN WHATSAPP
+    const adminMsg =
+`NEW STAR & JAR ORDER
 
 Order ID: ${orderId}
 Customer: ${name}
 Phone: ${phone}
+Address: ${address}
 Product: ${jar}
 Amount: ₹${price}
 
-Customer Wish:
+Wish:
 ${wish}`;
 
-const adminURL =
-  "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
+    const adminURL =
+      "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
+    // 📩 CUSTOMER WHATSAPP
+    const clean = phone.replace(/\D/g, "");
 
-
-
-// 🔹 CUSTOMER WHATSAPP MESSAGE
-const clean = phone.replace(/\D/g, "");
-
-const customerMsg =
-`🌟 STAR & JAR – Order Received
+    const customerMsg =
+`STAR & JAR – Order Received
 
 Hi ${name},
 
-Thank you for your order 💛
+Thank you for your order.
 
-Order Details:
-• Order ID: ${orderId}
-• Product: ${jar}
-• Amount: ₹${price}
+Order ID: ${orderId}
+Product: ${jar}
+Amount: ₹${price}
 
-Your order request has been received successfully.
-Please wait for our confirmation message once your order is verified.
+Please wait while we confirm your order.
+You will receive a confirmation message shortly.`;
 
-We’ll begin preparing your Star Jar as soon as confirmation is complete ✨
+    const customerURL =
+      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
-Thank you for choosing STAR & JAR.`;
+    // 🚀 Open WhatsApp
+    window.open(adminURL, "_blank");
 
+    setTimeout(() => {
+      window.open(customerURL, "_blank");
+    }, 1200);
 
-const customerURL =
-  "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
+    alert("Order placed successfully!");
 
+    orderForm.reset();
 
-// 🔹 OPEN WHATSAPP (ADMIN → CUSTOMER)
-window.open(adminURL, "_blank");
-
-setTimeout(() => {
-  window.open(customerURL, "_blank");
-}, 1200);
-
-
-// 🔹 SUCCESS ALERT
-alert("Order placed successfully! WhatsApp opened for payment confirmation.");
-
-orderForm.reset();
-
-	  } catch (err) {
-  alert("Connection error. Please try again.");
-  console.error(err);
-}
+  } catch (err) {
+    alert("Connection error. Please try again.");
+    console.error(err);
+  }
 });
 
 
@@ -1643,6 +1651,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
