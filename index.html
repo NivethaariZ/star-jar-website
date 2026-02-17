@@ -1382,23 +1382,9 @@ orderForm.addEventListener("submit", async function (e) {
       return;
     }
 
-    // 🔹 ADMIN WHATSAPP MESSAGE
-    const adminMsg =
-`✨ New Star Jar Order
-🧾 ${orderId}
-👤 ${name}
-📱 ${phone}
-📦 ${jar}
-💰 ₹${price}
-🌠 ${wish}`;
 
-    const adminURL =
-      "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
-    // 🔹 CUSTOMER WHATSAPP MESSAGE
-    const clean = phone.replace(/\D/g, "");
-
-    // 🔹 ADMIN WHATSAPP MESSAGE
+// 🔹 ADMIN WHATSAPP MESSAGE
 const adminMsg =
 `✨ NEW STAR & JAR ORDER
 
@@ -1415,17 +1401,19 @@ const adminURL =
   "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
 
+
+
 // 🔹 CUSTOMER WHATSAPP MESSAGE
 const clean = phone.replace(/\D/g, "");
 
 const customerMsg =
-🌟 STAR & JAR – Order Received
+`🌟 STAR & JAR – Order Received
 
 Hi ${name},
 
 Thank you for your order 💛
 
-**Order Details**
+Order Details:
 • Order ID: ${orderId}
 • Product: ${jar}
 • Amount: ₹${price}
@@ -1433,9 +1421,10 @@ Thank you for your order 💛
 Your order request has been received successfully.
 Please wait for our confirmation message once your order is verified.
 
-We’ll begin preparing your Star Jar as soon as the confirmation is complete ✨
+We’ll begin preparing your Star Jar as soon as confirmation is complete ✨
 
-Thank you for choosing STAR & JAR.
+Thank you for choosing STAR & JAR.`;
+
 
 const customerURL =
   "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
@@ -1453,6 +1442,12 @@ setTimeout(() => {
 alert("Order placed successfully! WhatsApp opened for payment confirmation.");
 
 orderForm.reset();
+
+	  } catch (err) {
+  alert("Connection error. Please try again.");
+  console.error(err);
+}
+});
 
 
 
@@ -1648,6 +1643,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
