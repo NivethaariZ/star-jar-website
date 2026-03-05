@@ -1136,537 +1136,364 @@ class="hover:text-amber-200">Home</a>
 
 
 <script>
-const jarBody = document.getElementById("jarBody");
-/* ================= JAR + FORTUNE ================= */
 
-const jar = document.getElementById("jar-container");
-const fortuneModal = document.getElementById("fortuneModal");
-const fortunePopup = document.getElementById("fortune");
-const jarDropdown = document.getElementById("jar-type");
-const orderProductInput = document.getElementById("order-product");
-const orderPriceInput = document.getElementById("order-price");
-
-
-
-// Fortune messages
-const fortunes = [
-  "Your wish is already on its way ✨",
-  "A beautiful surprise is coming 🌙",
-  "Love surrounds you quietly 💛",
-  "Your stars are aligning 🌟",
-  "Magic follows your courage 🔮"
-];
-
-// 1️⃣ Click jar → open jar + modal
-//jar.addEventListener("click", () => {
- // if (jarOpened) return;
- // jarOpened = true;
- // jar.classList.add("open");
- // fortuneModal.classList.remove("hidden");
-//});
-const todayKey = "fortuneShown_" + new Date().toDateString();
-
-jar.addEventListener("click", () => {
-
-  jar.classList.add("open");
-
-  fortuneModal.classList.remove("hidden");
-
-  // already opened today
-  if (localStorage.getItem(todayKey)) {
-
-    fortunePopup.classList.remove("hidden");
-    document.getElementById("fortuneText").innerText =
-      "✨ You've already opened your fortune today. Come back tomorrow!";
-
-    return;
-  }
-
-  // first time today
-  localStorage.setItem(todayKey, "yes");
-});
-
-
-
-// 2️⃣ Pick a card → reveal popup
-function revealCard(card) {
-  document.querySelectorAll(".fortune-card").forEach(c => c.classList.remove("flipped"));
-  card.classList.add("flipped");
-
-  // Show random fortune
-  fortunePopup.querySelector("p").innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
-  fortunePopup.classList.remove("hidden");
-}
-
-// 3️⃣ Close popup → reset jar for next use
-function closePopup() {
-
-  fortunePopup.classList.add("hidden");
-  fortuneModal.classList.add("hidden");
-
-  
-
-  document.querySelectorAll(".fortune-card").forEach(c=>{
-    c.classList.remove("flipped");
-  });
-
-}
-
-
-
-/* ================= IMAGE GALLERY ================= */
-
-
-let galleryImages = [];
-let currentGalleryIndex = 0;
-
-function openGallery(imgArray) {
-  galleryImages = imgArray;
-  currentGalleryIndex = 0;
-  showGalleryImage();
-  const modal = document.getElementById("imageModal");
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-  document.body.style.overflow = "hidden";
-}
-
-function showGalleryImage() {
-  document.getElementById("modalImg").src = galleryImages[currentGalleryIndex];
-}
-
-function nextImage() {
-  currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
-  showGalleryImage();
-}
-
-function prevImage() {
-  currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-  showGalleryImage();
-}
-
-function closeGallery() {
-  const modal = document.getElementById("imageModal");
-  modal.classList.add("hidden");
-  modal.classList.remove("flex");
-  document.body.style.overflow = "";
-}
-
-// Optional: click outside the image to close
-document.getElementById("imageModal").addEventListener("click", e => {
-  if (e.target.id === "imageModal") closeGallery();
-});
-
-
-/* ================= PRODUCT SELECT ================= */
-
-
-// Function to select jar (click on card button)
-function selectJar(jarName, price) {
-
-  document.getElementById("order-product").value = jarName;
-  document.getElementById("order-price").value = price;
-  document.getElementById("jar-type").value = jarName;
-
-  document.getElementById("order-form").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-}
-
-// Sync dropdown change to hidden input automatically
-if (jarDropdown) {
-  jarDropdown.addEventListener("change", () => {
-    orderProductInput.value = jarDropdown.value;
-
-    // Optional: set price automatically based on selection
-    let priceMap = {
-      "Mini Star Jar": "499",
-      "Classic Star Jar": "899",
-      "Deluxe Star Jar": "1299"
-    };
-
-    orderPriceInput.value = priceMap[jarDropdown.value] || "";
-  });
-}
-
-
-
-
-
-  // Elements
-  const wishInput = document.getElementById("custom-wish-input");
-const saveWishBtn = document.getElementById("save-wish-btn");
 const orderForm = document.getElementById("orderForm");
-const orderWishTextarea = orderForm.querySelector('textarea[name="wish"]');
-const jarSelect = orderForm.querySelector('select[name="jar_type"]');
 const orderProduct = document.getElementById("order-product");
 const orderPrice = document.getElementById("order-price");
-const orderId = orderForm.querySelector('input[name="order_id"]');
-const placeOrderBtn = document.getElementById("place-order-btn");
-const wishStatus = document.getElementById("wish-status");
-
-	  
-	// 🔁 Live sync while typing
 
 
-wishInput.addEventListener("input", () => {
-  const value = wishInput.value.trim();
+// ⭐ PRODUCT SELECT
+function selectJar(name,price){
 
-  orderWishTextarea.value = value;
+orderProduct.value = name;
+orderPrice.value = price;
 
+document.getElementById("jar-type").value = name;
 
-  localStorage.setItem("starJarWish", value);
+document.getElementById("order-form").scrollIntoView({
+behavior:"smooth"
 });
 
-
-
-
-
-
-saveWishBtn.addEventListener("click", () => {
-
-  const wish = wishInput.value.trim();
-
-  if (!wish) {
-    wishStatus.innerText = "⚠️ Please write a wish first";
-    wishStatus.classList.remove("hidden");
-    wishStatus.classList.add("text-red-400");
-    return;
-  }
-
-  saveWishBtn.innerText = "Wish Saved ✓";
-
-  wishStatus.innerText = "✨ Wish saved successfully";
-  wishStatus.classList.remove("hidden", "text-red-400");
-  wishStatus.classList.add("text-amber-200");
-
-  // ✅ SCROLL TO FORM (CONTACT SECTION)
-  document.querySelector("section#order-form").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-  setTimeout(() => wishStatus.classList.add("hidden"), 2000);
-
-});
-
-
-
-
-
-
-
-const canvas = document.getElementById("particle-canvas");
-
-if(canvas){
-  const ctx = canvas.getContext("2d");
-
-  function resizeCanvas(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-}
-
-
-function explodeStars(x, y) {
-  const stars = [];
-  const COUNT = 28;
-
-  for (let i = 0; i < COUNT; i++) {
-    const angle = (Math.PI * 2 * i) / COUNT;
-    stars.push({
-      x,
-      y,
-      vx: Math.cos(angle) * (2 + Math.random() * 2),
-      vy: Math.sin(angle) * (2 + Math.random() * 2),
-      life: 60 + Math.random() * 20
-    });
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    stars.forEach(s => {
-      s.x += s.vx;
-      s.y += s.vy;
-      s.life--;
-
-      ctx.globalAlpha = Math.max(s.life / 80, 0);
-      ctx.fillStyle = "#fde68a";
-      ctx.font = "16px serif";
-      ctx.fillText("✦", s.x, s.y);
-    });
-
-    if (stars.some(s => s.life > 0)) {
-      requestAnimationFrame(animate);
-    } else {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-  }
-
-  animate();
 }
 
 
 
+// ⭐ SAVE WISH
+document.getElementById("save-wish-btn").addEventListener("click",()=>{
 
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const overlay = document.getElementById("menuOverlay");
+const wish = document.getElementById("custom-wish-input").value;
 
-// OPEN / CLOSE BUTTON
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("open");
-  menuBtn.classList.toggle("open");
-  overlay.classList.toggle("hidden");
-  document.body.classList.toggle("sidebar-open");
-});
+if(!wish){
+alert("Write your wish first ✨");
+return;
+}
 
-// CLOSE WHEN CLICKING OVERLAY
-overlay.addEventListener("click", () => {
-  mobileMenu.classList.remove("open");
-  menuBtn.classList.remove("open");
-  overlay.classList.add("hidden");
-  document.body.classList.remove("sidebar-open");
-});
+document.querySelector('[name="wish"]').value = wish;
 
-// CLOSE WHEN CLICKING MENU LINKS
-document.querySelectorAll("#mobileMenu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    menuBtn.classList.remove("open");
-    overlay.classList.add("hidden");
-    document.body.classList.remove("sidebar-open");
-  });
+document.getElementById("wish-status").classList.remove("hidden");
+
+setTimeout(()=>{
+document.getElementById("wish-status").classList.add("hidden");
+},2000);
+
 });
 
 
 
+// ⭐ JAR CLICK OPEN
+const jar = document.getElementById("jar-container");
 
+jar.addEventListener("click",()=>{
 
+jar.classList.add("open");
 
-document.querySelectorAll("[data-status]").forEach(card => {
-  const status = card.dataset.status;
-  const btn = card.querySelector(".product-btn");
+setTimeout(()=>{
+document.getElementById("fortuneModal").classList.remove("hidden");
+},800);
 
-  if (!btn) return;
-
-  if (status === "soldout") {
-    btn.innerText = "Sold Out";
-    btn.disabled = true;
-    btn.classList.add("bg-gray-500", "cursor-not-allowed", "opacity-60");
-  }
-
-  if (status === "coming soon") {
-    btn.innerText = "Coming Soon";
-    btn.disabled = true;
-    btn.classList.add("bg-amber-200/40", "cursor-not-allowed");
-  }
 });
 
-function handleProductClick(btn) {
-  const card = btn.closest("[data-status]");
-  if (card.dataset.status !== "available") return;
 
-  // Only runs for available products
-  selectJar("Deluxe Star Jar", "1299");
+
+// ⭐ FORTUNE MESSAGES
+const fortunes = [
+
+"Your wish will travel farther than the stars ✨",
+
+"Someone you love is thinking about you tonight 💫",
+
+"A beautiful surprise is waiting in your future 🌙",
+
+"The stars are aligning for something magical ✨",
+
+"A small wish today will become a big reality tomorrow 🌠",
+
+"Your kindness will return to you multiplied 💛"
+
+];
+
+
+
+
+// ⭐ REVEAL CARD
+function revealCard(card){
+
+if(document.querySelector(".fortune-card.flipped")) return;
+
+const fortune = fortunes[Math.floor(Math.random()*fortunes.length)];
+
+card.classList.add("flipped");
+
+card.querySelector(".card-back").innerText = fortune;
+
+setTimeout(()=>{
+
+document.getElementById("fortuneText").innerText = fortune;
+
+document.getElementById("fortune").classList.remove("hidden");
+
+},600);
+
 }
 
 
 
+// ⭐ CLOSE POPUP
+function closePopup(){
 
-window.addEventListener("load", () => {
+document.getElementById("fortune").classList.add("hidden");
 
-  const form = document.querySelector("form[name='star-jar-orders']");
-  if (form) form.reset();
+document.getElementById("fortuneModal").classList.add("hidden");
 
-  document.querySelectorAll("input, textarea, select").forEach(el => {
-    el.value = "";
-  });
+document.querySelectorAll(".fortune-card").forEach(c=>{
 
-  localStorage.removeItem("starJarWish");
-
-
-  document.getElementById("order-product").value = "";
-  document.getElementById("order-price").value = "";
-
-  let jarOpened = false;
-  jar.classList.remove("open");
-
-  fortuneModal.classList.add("hidden");
-  fortunePopup.classList.add("hidden");
+c.classList.remove("flipped");
 
 });
-</script>
 
-
-<script>
-let busy = false;
-
-function lockUI(ms=600){
-  busy = true;
-  setTimeout(()=>busy=false, ms);
 }
-</script>
-<script>
-const sections = document.querySelectorAll("section[id], header[id]");
-const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
-  let current = "";
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 150;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
 
-  navLinks.forEach(link => {
-    link.classList.remove("text-amber-200");
+// ⭐ IMAGE GALLERY
+let galleryImages = [];
+let currentImage = 0;
 
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("text-amber-200");
-    }
-  });
+function openGallery(images){
+
+galleryImages = images;
+currentImage = 0;
+
+document.getElementById("modalImg").src = galleryImages[0];
+
+document.getElementById("imageModal").classList.remove("hidden");
+
+document.getElementById("imageModal").classList.add("flex");
+
+}
+
+function closeGallery(){
+
+document.getElementById("imageModal").classList.add("hidden");
+
+}
+
+function nextImage(){
+
+currentImage = (currentImage+1)%galleryImages.length;
+
+document.getElementById("modalImg").src = galleryImages[currentImage];
+
+}
+
+function prevImage(){
+
+currentImage = (currentImage-1+galleryImages.length)%galleryImages.length;
+
+document.getElementById("modalImg").src = galleryImages[currentImage];
+
+}
+
+
+
+// ⭐ AUTO PRODUCT PRICE FROM DROPDOWN
+document.getElementById("jar-type").addEventListener("change",function(){
+
+const value = this.value;
+
+if(value=="Mini Star Jar"){
+
+orderProduct.value = value;
+orderPrice.value = 499;
+
+}
+
+if(value=="Classic Star Jar"){
+
+orderProduct.value = value;
+orderPrice.value = 899;
+
+}
+
+if(value=="Deluxe Star Jar"){
+
+orderProduct.value = value;
+orderPrice.value = 1299;
+
+}
+
 });
-</script>
 
-	<script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw04B4rAXcZq11Xgt6kBKHUPtm8af4kO4ewpA7cqDEbY4f4AMbIR4PxDpEx5CV9-yRR5A/exec";
 
-const form = document.getElementById("orderForm");
-const statusText = document.getElementById("form-status");
-
-form.addEventListener("submit", async function(e){
+// ⭐ ORDER SUBMIT
+orderForm.addEventListener("submit",async function(e){
 
 e.preventDefault();
 
-statusText.classList.remove("hidden");
-statusText.innerHTML = "Processing order...";
+const name = orderForm.querySelector('[name="name"]').value;
+const phone = orderForm.querySelector('[name="phone"]').value;
+const email = orderForm.querySelector('[name="email"]').value;
+const wish = orderForm.querySelector('[name="wish"]').value;
+const address = orderForm.querySelector('[name="address"]').value;
 
-const formData = new FormData(form);
+const jar = orderProduct.value;
+const price = orderPrice.value;
 
-/* AUTO ORDER ID */
+if(!jar){
 
+alert("Please select a jar first ✨");
+
+return;
+
+}
+
+
+// ⭐ ORDER ID
 const orderId = "SJ" + Date.now();
 
-formData.set("order_id", orderId);
+
+// ⭐ GOOGLE SHEETS URL
+const url =
+"https://script.google.com/macros/s/AKfycbw04B4rAXcZq11Xgt6kBKHUPtm8af4kO4ewpA7cqDEbY4f4AMbIR4PxDpEx5CV9-yRR5A/exec"
++ `?order_id=${orderId}`
++ `&name=${encodeURIComponent(name)}`
++ `&phone=${encodeURIComponent(phone)}`
++ `&email=${encodeURIComponent(email)}`
++ `&address=${encodeURIComponent(address)}`
++ `&order_product=${encodeURIComponent(jar)}`
++ `&order_price=${encodeURIComponent(price)}`
++ `&wish=${encodeURIComponent(wish)}`;
 
 
-/* SEND TO GOOGLE SHEET */
 
 try{
 
-const res = await fetch(SCRIPT_URL,{
-method:"POST",
-body:formData
-});
+const res = await fetch(url,{method:"POST"});
 
 const data = await res.json();
 
 if(data.result !== "success"){
-statusText.innerHTML="Order failed. Try again.";
+
+alert("Order save failed");
+
 return;
+
 }
 
 
-/* WHATSAPP MESSAGE */
 
-const name = formData.get("name");
-const phone = formData.get("phone");
-const product = formData.get("jar_type");
-const price = document.getElementById("order-price").value;
-const wish = formData.get("wish");
-
-const message =
-`STAR & JAR ✨
-
-Hello ${name}
-
-Your order is received.
+// ⭐ ADMIN WHATSAPP
+const adminMsg =
+`✨ NEW STAR & JAR ORDER
 
 Order ID: ${orderId}
-Product: ${product}
-Price: ₹${price}
 
-Your Wish:
-${wish}
+Customer: ${name}
 
-We will confirm your order shortly.`;
+Phone: ${phone}
 
-const waURL =
-"https://wa.me/91"+phone+"?text="+encodeURIComponent(message);
+Product: ${jar}
 
-window.open(waURL,"_blank");
+Amount: ₹${price}
 
-statusText.innerHTML="Order placed successfully ✨";
-form.reset();
+Address:
+${address}
 
-}
+Wish:
+${wish}`;
 
-catch(err){
+const adminURL =
+"https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
-statusText.innerHTML="Network error";
-console.error(err);
 
-}
 
-});
 
-</script>
-	<script>
+// ⭐ CUSTOMER WHATSAPP
+const clean = phone.replace(/\D/g,"");
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwUyDS8xWNXG0yS0GzXuJ0O9kX_oXKRymGs3IAhOLp-MVo6wnAtwK0X_Sanepz_pSWG7g/exec";
+const customerMsg =
+`🌟 STAR & JAR – Order Received
 
-document
-.getElementById("orderForm")
-.addEventListener("submit", async function(e){
+Hi ${name},
 
-e.preventDefault();
+Thank you for your order 💛
 
-const form = e.target;
+Order Details
 
-/* Auto Order ID */
+Order ID: ${orderId}
 
-const orderId = "SJ" + Date.now();
-form.order_id.value = orderId;
+Product: ${jar}
 
-const formData = new FormData(form);
+Amount: ₹${price}
 
-try{
+We received your order request.
 
-const res = await fetch(SCRIPT_URL,{
-method:"POST",
-body:formData
-});
+Our team will confirm your order soon.
 
-const data = await res.json();
+Thank you for choosing STAR & JAR ✨`;
 
-if(data.result === "success"){
+const customerURL =
+"https://wa.me/91"+clean+"?text="+encodeURIComponent(customerMsg);
+
+
+
+
+// ⭐ OPEN WHATSAPP
+window.open(adminURL,"_blank");
+
+setTimeout(()=>{
+
+window.open(customerURL,"_blank");
+
+},1200);
+
+
 
 alert("Order placed successfully ✨");
 
-form.reset();
-
-}else{
-
-alert("Error saving order");
-
-}
+orderForm.reset();
 
 }catch(err){
 
-alert("Network error");
+alert("Connection error");
+
 console.error(err);
 
 }
 
 });
+
+
+
+// ⭐ MOBILE MENU
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("menuOverlay");
+
+menuBtn.onclick = ()=>{
+
+menuBtn.classList.toggle("open");
+
+mobileMenu.classList.toggle("open");
+
+overlay.classList.toggle("hidden");
+
+document.body.classList.toggle("sidebar-open");
+
+}
+
+overlay.onclick = ()=>{
+
+menuBtn.classList.remove("open");
+
+mobileMenu.classList.remove("open");
+
+overlay.classList.add("hidden");
+
+document.body.classList.remove("sidebar-open");
+
+}
 
 </script>
 
@@ -1675,6 +1502,7 @@ console.error(err);
 
 </body>
 </html>
+
 
 
 
