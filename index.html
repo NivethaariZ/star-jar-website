@@ -1520,40 +1520,35 @@ function explodeStars(x, y) {
 
 
 
+
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("menuOverlay");
 
-function openMenu(){
-  mobileMenu.classList.add("open");
-  overlay.classList.remove("hidden");
-  document.body.classList.add("sidebar-open");
-  menuBtn.classList.add("open");
-}
-
-function closeMenu(){
-  mobileMenu.classList.remove("open");
-  overlay.classList.add("hidden");
-  document.body.classList.remove("sidebar-open");
-  menuBtn.classList.remove("open");
-}
-
-
-menuBtn.addEventListener("click",()=>{
-  if(mobileMenu.style.transform==="translateX(0px)"){
-    closeMenu();
-  }else{
-    openMenu();
-  }
+// OPEN / CLOSE BUTTON
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+  menuBtn.classList.toggle("open");
+  overlay.classList.toggle("hidden");
+  document.body.classList.toggle("sidebar-open");
 });
 
-// click outside
-mobileMenu.addEventListener("click", closeMenu);
+// CLOSE WHEN CLICKING OVERLAY
+overlay.addEventListener("click", () => {
+  mobileMenu.classList.remove("open");
+  menuBtn.classList.remove("open");
+  overlay.classList.add("hidden");
+  document.body.classList.remove("sidebar-open");
+});
 
-
-// close on link tap
-mobileMenu.querySelectorAll("a").forEach(link=>{
-  link.addEventListener("click",closeMenu);
+// CLOSE WHEN CLICKING MENU LINKS
+document.querySelectorAll("#mobileMenu a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("open");
+    menuBtn.classList.remove("open");
+    overlay.classList.add("hidden");
+    document.body.classList.remove("sidebar-open");
+  });
 });
 
 
@@ -1652,6 +1647,7 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
 
