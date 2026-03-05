@@ -1231,8 +1231,10 @@ setTimeout(()=>{
 document.getElementById("fortuneText").innerText = fortune;
 
 document.getElementById("fortune").classList.remove("hidden");
+	const todayKey = "fortuneShown_" + new Date().toDateString();
+            localStorage.setItem(todayKey, "yes");
 
-},600);
+},800);
 
 }
 
@@ -1327,60 +1329,48 @@ orderPrice.value = 1299;
 
 
 // ⭐ ORDER SUBMIT
-orderForm.addEventListener("submit",async function(e){
+orderForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-e.preventDefault();
+  const orderId = "SJ" + Date.now();
 
-const name = orderForm.querySelector('[name="name"]').value;
-const phone = orderForm.querySelector('[name="phone"]').value;
-const email = orderForm.querySelector('[name="email"]').value;
-const wish = orderForm.querySelector('[name="wish"]').value;
-const address = orderForm.querySelector('[name="address"]').value;
+  const name = document.querySelector('[name="name"]').value;
+  const phone = document.querySelector('[name="phone"]').value;
+  const email = document.querySelector('[name="email"]').value;
+  const address = document.querySelector('[name="address"]').value; // ⭐ ADDRESS
+  const jar = document.querySelector('[name="jar"]').value;
+  const price = document.querySelector('[name="price"]').value;
+  const wish = document.querySelector('[name="wish"]').value;
 
-const jar = orderProduct.value;
-const price = orderPrice.value;
+  const url =
+  "https://script.google.com/macros/s/AKfycbx7B9_3GAXA8iJwYqPee7CxoufMhfTyxuSyRjyoKJ7YT_mDmln4Mg327iPO74VkBBwp_g/exec" +
+  "?order_id=" + orderId +
+  "&name=" + encodeURIComponent(name) +
+  "&phone=" + encodeURIComponent(phone) +
+  "&email=" + encodeURIComponent(email) +
+  "&address=" + encodeURIComponent(address) +  // ⭐ SEND ADDRESS
+  "&jar=" + encodeURIComponent(jar) +
+  "&price=" + encodeURIComponent(price) +
+  "&wish=" + encodeURIComponent(wish);
 
-if(!jar){
+  try {
 
-alert("Please select a jar first ✨");
+    const res = await fetch(url, { method: "POST" });
+    const data = await res.json();
 
-return;
+    if (data.result === "success") {
 
-}
+      alert("Order placed successfully ✨");
 
+    } else {
+      alert("Order save failed");
+    }
 
-// ⭐ ORDER ID
-const orderId = "SJ" + Date.now();
-
-
-// ⭐ GOOGLE SHEETS URL
-const url =
-"https://script.google.com/macros/s/AKfycbx7B9_3GAXA8iJwYqPee7CxoufMhfTyxuSyRjyoKJ7YT_mDmln4Mg327iPO74VkBBwp_g/exec"
-
-+ `?order_id=${orderId}`
-+ `&name=${encodeURIComponent(name)}`
-+ `&phone=${encodeURIComponent(phone)}`
-+ `&email=${encodeURIComponent(email)}`
-+ `&address=${encodeURIComponent(address)}`
-+ `&order_product=${encodeURIComponent(jar)}`
-+ `&order_price=${encodeURIComponent(price)}`
-+ `&wish=${encodeURIComponent(wish)}`;
-
-
-
-try{
-
-const res = await fetch(url,{method:"POST"});
-
-const data = await res.json();
-
-if(data.result !== "success"){
-
-alert("Order save failed");
-
-return;
-
-}
+  } catch (error) {
+    alert("Network error");
+    console.error(error);
+  }
+});
 
 
 
@@ -1504,4 +1494,5 @@ function closeMenu(){
 
 </body>
 </html>
+
 
