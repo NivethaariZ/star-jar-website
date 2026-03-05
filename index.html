@@ -1369,18 +1369,18 @@ orderForm.addEventListener("submit", async function (e) {
 
   const orderId = "SJ" + Date.now();
 
-  // 🔹 SAVE TO GOOGLE SHEET
   const url =
-    "https://script.google.com/macros/s/AKfycbzcuJPE_tfxAIJPnJrL-rfqzvWu5Z3lZwZ2fYSLMcYm8xpbzNqS6yaSaAll3_1SOd73qQ/exec"
+    "https://script.google.com/macros/s/AKfycbw04B4rAXcZq11Xgt6kBKHUPtm8af4kO4ewpA7cqDEbY4f4AMbIR4PxDpEx5CV9-yRR5A/exec"
     + `?order_id=${orderId}`
     + `&name=${encodeURIComponent(name)}`
     + `&phone=${encodeURIComponent(phone)}`
     + `&email=${encodeURIComponent(email)}`
-    + `&jar=${encodeURIComponent(jar)}`
-    + `&price=${encodeURIComponent(price)}`
+    + `&jar_type=${encodeURIComponent(jar)}`
+    + `&order_price=${encodeURIComponent(price)}`
     + `&wish=${encodeURIComponent(wish)}`;
 
   try {
+
     const res = await fetch(url, { method: "POST" });
     const data = await res.json();
 
@@ -1389,10 +1389,8 @@ orderForm.addEventListener("submit", async function (e) {
       return;
     }
 
-
-
-// 🔹 ADMIN WHATSAPP MESSAGE
-const adminMsg =
+    // 🔹 ADMIN WHATSAPP MESSAGE
+    const adminMsg =
 `✨ NEW STAR & JAR ORDER
 
 Order ID: ${orderId}
@@ -1404,16 +1402,14 @@ Amount: ₹${price}
 Customer Wish:
 ${wish}`;
 
-const adminURL =
-  "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
+    const adminURL =
+      "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
 
 
+    // 🔹 CUSTOMER WHATSAPP MESSAGE
+    const clean = phone.replace(/\D/g, "");
 
-
-// 🔹 CUSTOMER WHATSAPP MESSAGE
-const clean = phone.replace(/\D/g, "");
-
-const customerMsg =
+    const customerMsg =
 `🌟 STAR & JAR – Order Received
 
 Hi ${name},
@@ -1432,30 +1428,29 @@ We’ll begin preparing your Star Jar as soon as confirmation is complete ✨
 
 Thank you for choosing STAR & JAR.`;
 
-
-const customerURL =
-  "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
-
-
-// 🔹 OPEN WHATSAPP (ADMIN → CUSTOMER)
-window.open(adminURL, "_blank");
-
-setTimeout(() => {
-  window.open(customerURL, "_blank");
-}, 1200);
+    const customerURL =
+      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
 
 
-// 🔹 SUCCESS ALERT
-alert("Order placed successfully! WhatsApp opened for payment confirmation.");
+    // 🔹 OPEN WHATSAPP
+    window.open(adminURL, "_blank");
 
-orderForm.reset();
+    setTimeout(() => {
+      window.open(customerURL, "_blank");
+    }, 1200);
 
-	  } catch (err) {
-  alert("Connection error. Please try again.");
-  console.error(err);
-}
+
+    alert("Order placed successfully! WhatsApp opened.");
+
+    orderForm.reset();
+
+  } catch (error) {
+
+    alert("Network error. Please try again.");
+    console.error(error);
+
+  }
 });
-
 
 
 
@@ -1645,5 +1640,6 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
 
 
