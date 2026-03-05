@@ -1352,106 +1352,6 @@ saveWishBtn.addEventListener("click", () => {
 
 
 
-orderForm.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const name = orderForm.querySelector('[name="name"]').value;
-  const phone = orderForm.querySelector('[name="phone"]').value;
-  const jar = orderProduct.value;
-  const price = orderPrice.value;
-  const wish = orderForm.querySelector('[name="wish"]').value;
-  const email = orderForm.querySelector('[name="email"]').value;
-
-  if (!jar) {
-    alert("Please select a jar first ✨");
-    return;
-  }
-
-  const orderId = "SJ" + Date.now();
-
-  const url =
-    "https://script.google.com/macros/s/AKfycbw04B4rAXcZq11Xgt6kBKHUPtm8af4kO4ewpA7cqDEbY4f4AMbIR4PxDpEx5CV9-yRR5A/exec"
-    + `?order_id=${orderId}`
-    + `&name=${encodeURIComponent(name)}`
-    + `&phone=${encodeURIComponent(phone)}`
-    + `&email=${encodeURIComponent(email)}`
-    + `&jar_type=${encodeURIComponent(jar)}`
-    + `&order_price=${encodeURIComponent(price)}`
-    + `&wish=${encodeURIComponent(wish)}`;
-
-  try {
-
-    const res = await fetch(url, { method: "POST" });
-    const data = await res.json();
-
-    if (data.result !== "success") {
-      alert("Order save failed");
-      return;
-    }
-
-    // 🔹 ADMIN WHATSAPP MESSAGE
-    const adminMsg =
-`✨ NEW STAR & JAR ORDER
-
-Order ID: ${orderId}
-Customer: ${name}
-Phone: ${phone}
-Product: ${jar}
-Amount: ₹${price}
-
-Customer Wish:
-${wish}`;
-
-    const adminURL =
-      "https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
-
-
-    // 🔹 CUSTOMER WHATSAPP MESSAGE
-    const clean = phone.replace(/\D/g, "");
-
-    const customerMsg =
-`🌟 STAR & JAR – Order Received
-
-Hi ${name},
-
-Thank you for your order 💛
-
-Order Details:
-• Order ID: ${orderId}
-• Product: ${jar}
-• Amount: ₹${price}
-
-Your order request has been received successfully.
-Please wait for our confirmation message once your order is verified.
-
-We’ll begin preparing your Star Jar as soon as confirmation is complete ✨
-
-Thank you for choosing STAR & JAR.`;
-
-    const customerURL =
-      "https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
-
-
-    // 🔹 OPEN WHATSAPP
-    window.open(adminURL, "_blank");
-
-    setTimeout(() => {
-      window.open(customerURL, "_blank");
-    }, 1200);
-
-
-    alert("Order placed successfully! WhatsApp opened.");
-
-    orderForm.reset();
-
-  } catch (error) {
-
-    alert("Network error. Please try again.");
-    console.error(error);
-
-  }
-});
-
 
 
 
@@ -1635,11 +1535,97 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
+	<script>
+
+const SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+const form = document.getElementById("orderForm");
+const statusText = document.getElementById("form-status");
+
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+statusText.classList.remove("hidden");
+statusText.innerHTML = "Processing order...";
+
+const formData = new FormData(form);
+
+/* AUTO ORDER ID */
+
+const orderId = "SJ" + Date.now();
+
+formData.set("order_id", orderId);
+
+
+/* SEND TO GOOGLE SHEET */
+
+try{
+
+const res = await fetch(SCRIPT_URL,{
+method:"POST",
+body:formData
+});
+
+const data = await res.json();
+
+if(data.result !== "success"){
+statusText.innerHTML="Order failed. Try again.";
+return;
+}
+
+
+/* WHATSAPP MESSAGE */
+
+const name = formData.get("name");
+const phone = formData.get("phone");
+const product = formData.get("jar_type");
+const price = document.getElementById("order-price").value;
+const wish = formData.get("wish");
+
+const message =
+`STAR & JAR ✨
+
+Hello ${name}
+
+Your order is received.
+
+Order ID: ${orderId}
+Product: ${product}
+Price: ₹${price}
+
+Your Wish:
+${wish}
+
+We will confirm your order shortly.`;
+
+const waURL =
+"https://wa.me/91"+phone+"?text="+encodeURIComponent(message);
+
+window.open(waURL,"_blank");
+
+statusText.innerHTML="Order placed successfully ✨";
+form.reset();
+
+}
+
+catch(err){
+
+statusText.innerHTML="Network error";
+console.error(err);
+
+}
+
+});
+
+</script>
+
 
 
 
 </body>
 </html>
+
 
 
 
