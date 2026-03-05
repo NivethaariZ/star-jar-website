@@ -1619,12 +1619,63 @@ console.error(err);
 });
 
 </script>
+	<script>
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwUyDS8xWNXG0yS0GzXuJ0O9kX_oXKRymGs3IAhOLp-MVo6wnAtwK0X_Sanepz_pSWG7g/exec";
+
+document
+.getElementById("orderForm")
+.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const form = e.target;
+
+/* Auto Order ID */
+
+const orderId = "SJ" + Date.now();
+form.order_id.value = orderId;
+
+const formData = new FormData(form);
+
+try{
+
+const res = await fetch(SCRIPT_URL,{
+method:"POST",
+body:formData
+});
+
+const data = await res.json();
+
+if(data.result === "success"){
+
+alert("Order placed successfully ✨");
+
+form.reset();
+
+}else{
+
+alert("Error saving order");
+
+}
+
+}catch(err){
+
+alert("Network error");
+console.error(err);
+
+}
+
+});
+
+</script>
 
 
 
 
 </body>
 </html>
+
 
 
 
