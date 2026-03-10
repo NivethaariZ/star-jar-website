@@ -11,13 +11,15 @@
 <meta property="og:site_name" content="STAR & JAR">
 <meta property="og:title" content="Fortune Star Jars – STAR & JAR">
 <meta property="og:description" content="Handmade wish jars filled with folded stars and love. Order online in India.">
-<meta property="og:image" content="https://fortunestarandjar.netlify.app/images/jar-body.webp">
-<meta property="og:url" content="https://fortunestarandjar.netlify.app/">
+<meta property="og:image" content="https://starandjar.netlify.app/images/jar-body.webp">
+<meta property="og:url" content="https://starandjar.netlify.app/">
 <meta property="og:type" content="website">
 <meta name="google-site-verification" content="Ki25LPpIjaCFdg7PZ31ItyofQTp5ha2DKrPXSX0MozE" />
-<link rel="canonical" href="https://fortunestarandjar.netlify.app/">
+<link rel="canonical" href="https://starandjar.netlify.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/jar-body.webp">
+<link rel="preload" as="image" href="images/jar-lid.webp">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -32,7 +34,7 @@ h1, h2, .serif { font-family: 'Cinzel', serif; }
 html{scroll-behavior: smooth;}
 
 /* Header & Hero */
-header { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; padding: 0 1.5rem; }
+header { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; padding: 0 1.5rem; }
 .hero-text { max-width: 600px; margin-bottom: 2rem; }
 h1 { font-size: 2.4rem; color: #fde68a; margin-bottom: 0.5rem; line-height: 1.2; }
 p { font-size: 1rem; color: #e2e8f0; line-height: 1.5; }
@@ -45,18 +47,17 @@ p { font-size: 1rem; color: #e2e8f0; line-height: 1.5; }
 /* Jar Container */
 #jar-container { width: 220px; height: 260px; position: relative; margin: 2rem auto; cursor: pointer; }
 .jar-body { width: 100%; display: block;transition: opacity 0.4s ease; }
-.jar-lid {
-position: absolute;
-top: 5px;
-left: 50%;
-width: 120px;
-transform: translateX(-50%);
-transform-origin: center bottom;
-transition:
-transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-filter 1s ease;
-will-change: transform;
-z-index: 3;
+.jar-lid{
+position:absolute;
+top:4%;
+left:50%;
+width:55%;          /* responsive width */
+max-width:120px;    /* desktop limit */
+transform:translateX(-50%);
+transform-origin:center bottom;
+transition:transform 1.4s cubic-bezier(0.22,1,0.36,1),filter 1s ease;
+will-change:transform;
+z-index:3;
 }
 @keyframes lidFloat {
 0% { transform: translateX(-50%) translateY(-34px) rotate(-14deg); }
@@ -374,10 +375,6 @@ font-size:.85rem;
 
 }
 
-@media(max-width:768px){
-.jar-lid{
-width:80px;
-}
 }
 
 html,body{
@@ -469,9 +466,35 @@ nav{
 padding-top:env(safe-area-inset-top);
 }
 
+* {
+box-sizing: border-box;
+}
 
+html, body {
+width: 100%;
+overflow-x: hidden;
+}
 
+nav {
+height: 80px;
+}
 
+img {
+max-width: 100%;
+height: auto;
+display: block;
+}
+
+#about-us {
+opacity: 0;
+transform: translateY(40px);
+transition: all 1s ease;
+}
+
+#about-us.visible {
+opacity: 1;
+transform: translateY(0);
+}
 
 
 </style>
@@ -482,7 +505,7 @@ padding-top:env(safe-area-inset-top);
 "@type":"Product",
 "name":"Classic Star Jar",
 "image":[
-"https://fortunestarandjar.netlify.app/images/classic-jar.webp"
+"https://starandjar.netlify.app/images/classic-jar.webp"
 ],
 "description":"Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic meaningful gift.",
 "sku":"SJ-CLASSIC",
@@ -492,7 +515,7 @@ padding-top:env(safe-area-inset-top);
 },
 "offers":{
 "@type":"Offer",
-"url":"https://fortunestarandjar.netlify.app/#shop-collection",
+"url":"https://starandjar.netlify.app/#shop-collection",
 "priceCurrency":"INR",
 "price":"899",
 "availability":"https://schema.org/InStock"
@@ -632,7 +655,7 @@ onclick="event.stopPropagation(); closePopup()">✕</span>
 </div> 
 </div>
 <p class="text-stone-400 max-w-2xl mx-auto mb-16">
-Create Your Jar
+Click the Jar
 </p>
 </header>
 
@@ -664,7 +687,7 @@ onclick="openGallery(['images/mini-jar-1.webp','images/mini-jar-2.webp','images/
 <img
 src="images/wishing-jar.webp"
 alt="Mini Star Jar"
-class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
 >
 
 <div
@@ -732,7 +755,7 @@ onclick="openGallery([
 <img
 src="images/classic-jar.webp"
 alt="Classic Star Jar"
-class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
 >
 <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
 <span class="text-amber-200 uppercase tracking-widest text-sm">
@@ -785,13 +808,13 @@ data-status="coming soon"
 <!-- IMAGE -->
 <div
 class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','images/giftbox.webp'],event)"
+onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','giftbox.webp'],event)"
 >
 
 <img
 src="images/deluxe-jar.webp"
 alt="Deluxe Star Jar"
-class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
 >
 
 <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition">
@@ -1011,18 +1034,18 @@ The quality and care really show.”
 </div>
 </section>
 
-<section id="about-us" class="py-24 bg-[#0c0c1e]">
+<section id="about-us" class="py-20 md:py-24 bg-[#0c0c1e]">
 
-<div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-<!-- Text -->
+<!-- TEXT -->
+<div class="order-2 md:order-1 text-center md:text-left">
 
-<div>
 <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">
 About Star & Jar
 </p>
 
-<h2 class="text-3xl serif text-amber-100 mb-6">
+<h2 class="text-2xl md:text-3xl serif text-amber-100 mb-6">
 Where Wishes Become Keepsakes ✨
 </h2>
 
@@ -1041,24 +1064,24 @@ More than gifts, our jars are little moments of magic — designed to remind you
 even the smallest wishes shine bright.
 </p>
 
-<div class="mt-8 flex gap-6 text-sm text-amber-200 tracking-widest uppercase">
+<div class="mt-8 flex justify-center md:justify-start gap-4 text-xs md:text-sm text-amber-200 tracking-widest uppercase flex-wrap">
 <span>Handmade</span>
 <span>•</span>
 <span>Personalized</span>
 <span>•</span>
 <span>Heartfelt</span>
 </div>
+
 </div>
 
-<!-- Image / Illustration -->
+<!-- IMAGE -->
+<div class="relative order-1 md:order-2 flex justify-center">
 
-<div class="relative">
-
-<div class="absolute inset-0 bg-amber-200/20 blur-3xl rounded-full"></div>
+<div class="absolute w-60 h-60 bg-amber-200/20 blur-3xl rounded-full"></div>
 
 <img
 src="images/about.webp"
-class="relative rounded-3xl shadow-2xl border border-white/10"
+class="relative w-full max-w-sm md:max-w-md rounded-3xl shadow-2xl border border-white/10"
 alt="Star Jar">
 
 </div>
@@ -1131,9 +1154,9 @@ class="hover:text-amber-200">Home</a>
 <p class="text-xs">
 © 2026 STAR & JAR • Made with love in India ✨
 </p>
-     <a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar"
+<a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar"
    target="_blank"
-   class="fixed bottom-6 right-6 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg">
+   class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg">
    💬 Ask on WhatsApp
 </a>
 <section class="py-20 text-center">
@@ -1152,6 +1175,7 @@ Yes, every star is hand-folded.</p>
 
 </div>
 </section>
+
 </footer>
 
 
@@ -1398,7 +1422,7 @@ const price = priceMap[jar] || "";
 const orderId = "SJ" + Date.now();
 
 const url =
-"https://script.google.com/macros/s/AKfycbx7B9_3GAXA8iJwYqPee7CxoufMhfTyxuSyRjyoKJ7YT_mDmln4Mg327iPO74VkBBwp_g/exec";
+"https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec";
 
 const formData = new URLSearchParams({
 order_id: orderId,
@@ -1662,11 +1686,29 @@ link.classList.add("text-amber-200");
 });
 </script>
 
+<script>
+const about = document.querySelector("#about-us");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+about.classList.add("visible");
+}
+});
+});
+
+observer.observe(about);
+</script>
+
 
 
 
 </body>
 </html>
+
+
+
+
 
 
 
