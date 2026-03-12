@@ -505,7 +505,19 @@ transition: all 1s ease;
 opacity: 1;
 transform: translateY(0);
 }
+.fortune-text{
+text-align:center;
+font-size:14px;
+color:#fcd34d;
+letter-spacing:2px;
+margin-bottom:12px;
+animation:glow 2s infinite alternate;
+}
 
+@keyframes glow{
+from{opacity:.6}
+to{opacity:1}
+}
 
 </style>
 
@@ -664,8 +676,8 @@ onclick="event.stopPropagation(); closePopup()">✕</span>
 </div>
 </div> 
 </div>
-<p class="text-stone-400 max-w-2xl mx-auto mb-16">
-Click the Jar
+<p id="fortune-text" class="fortune-text">
+✨ Tap the jar to reveal today's fortune
 </p>
 </header>
 
@@ -1715,6 +1727,7 @@ observer.observe(about);
 
 </body>
 </html>
+
 
 
 
