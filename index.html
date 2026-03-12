@@ -38,7 +38,7 @@ body { font-family:
 'Apple Color Emoji',
 'Noto Color Emoji',
 'Twemoji Mozilla',
-sans-serif; background: #0c0c1e; color: #e2e8f0; padding-top: 80px;  }
+sans-serif; background: #0c0c1e; color: #e2e8f0; padding-top: 80px; overflow-x:hidden; }
 h1, h2, .serif { font-family: 'Cinzel', serif; }
 html{scroll-behavior: smooth;}
 
@@ -54,18 +54,19 @@ p { font-size: 1rem; color: #e2e8f0; line-height: 1.5; }
 @keyframes twinkle { 0%,100%{opacity:1;}50%{opacity:0.3;} }
 
 /* Jar Container */
-#jar-container { width: 220px; height: 260px; position: relative; margin: 2rem auto; cursor: pointer; }
+#jar-container { width: 220px; height: 260px; position: relative; margin: 2rem auto; cursor: pointer; transform:translateZ(0);
+will-change:transform; }
 .jar-body { width: 100%; display: block;transition: opacity 0.4s ease; }
 .jar-lid{
 position:absolute;
-top:4%;
+top:3%;
 left:50%;
-width:55%;          /* responsive width */
-max-width:120px;    /* desktop limit */
+width:58%;          /* responsive width */
+max-width:none;    /* desktop limit */
 transform:translateX(-50%);
 transform-origin:center bottom;
 transition:transform 1.4s cubic-bezier(0.22,1,0.36,1),filter 1s ease;
-will-change:transform;
+will-change:transform; backface-visibility:hidden;
 z-index:3;
 }
 @keyframes lidFloat {
@@ -83,6 +84,8 @@ transform: translateX(-50%) translateY(-40px) rotate(-35deg);
 animation: lidFloat 2.6s ease-in-out infinite;
 filter: drop-shadow(0 10px 16px rgba(255,215,130,.45));
 }
+
+
 
 
 /* Glow inside jar */
@@ -327,14 +330,13 @@ font-size:.95rem;
 /* Jar smaller */
 #jar-container{
 width:150px;
-height:200px;
-margin-bottom:40px;
+height:210px;
 }
 
 .jar-lid{
-width:90px;
+width:58%;
+top:3%;
 }
-
 .inner-star{
 font-size:1.2rem;
 bottom:85px;
@@ -389,7 +391,6 @@ font-size:.85rem;
 html,body{
 height:100%;
 }
-
 /* ===== MOBILE SIDEBAR ===== */
 
 #mobileMenu{
@@ -1714,6 +1715,7 @@ observer.observe(about);
 
 </body>
 </html>
+
 
 
 
