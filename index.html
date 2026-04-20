@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Star Jar – Personalized Wish Jar Gift</title>
+<title>Star & Jar – Handmade Paper Star Jar Gifts | Pan India Delivery</title>
 <meta name="description" content="Buy beautiful personalized Star Jar gifts. Custom wishes, WhatsApp order, fast delivery across India. Perfect for birthdays, love gifts, and surprises.">
-<meta name="keywords" content="fortune star jar, paper star jar, wishing jar, handmade gift India, aesthetic jar gift, personalized gift jar, birthday wish jar, love message jar, custom gift India">
+<meta name="keywords" content="fortune star jar, paper star jar, wishing jar, handmade gift India, aesthetic jar gift, personalized gift jar, birthday wish jar, love message jar, custom gift India, starandjar">
 <meta name="robots" content="index, follow">
 <meta name="author" content="STAR & JAR">
 <meta property="og:site_name" content="STAR & JAR">
@@ -14,8 +14,7 @@
 <meta property="og:image" content="https://fortunestarjars.netlify.app/images/jar-body.webp">
 <meta property="og:url" content="https://fortunestarjars.netlify.app/">
 <meta property="og:type" content="website">
-<meta name="google-site-verification" content="Ki25LPpIjaCFdg7PZ31ItyofQTp5ha2DKrPXSX0MozE" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="Ki25LPpIjaCFdg7PZ31ItyofQTp5ha2DKrPXSX0MozE">
 <meta name="theme-color" content="#0c0c1e">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Star & Jar – A Gift of Wishes">
@@ -27,1739 +26,737 @@
 <link rel="preload" as="image" href="images/jar-body.webp">
 <link rel="preload" as="image" href="images/jar-lid.webp">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
-        
 <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EE4DYPW883"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-EE4DYPW883');
 </script>
-<style>
-body { font-family:
-'Quicksand',
-'Segoe UI Emoji',
-'Apple Color Emoji',
-'Noto Color Emoji',
-'Twemoji Mozilla',
-sans-serif; background: #0c0c1e; color: #e2e8f0; padding-top: 80px; overflow-x:hidden; }
-h1, h2, .serif { font-family: 'Cinzel', serif; }
-html{scroll-behavior: smooth;}
-
-/* Header & Hero */
-header { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; padding: 0 1.5rem; }
-.hero-text { max-width: 600px; margin-bottom: 2rem; }
-h1 { font-size: 2.4rem; color: #fde68a; margin-bottom: 0.5rem; line-height: 1.2; }
-p { font-size: 1rem; color: #e2e8f0; line-height: 1.5; }
-
-
-/* Twinkle Stars */
-.twinkle { position: absolute; animation: twinkle 3s infinite ease-in-out; }
-@keyframes twinkle { 0%,100%{opacity:1;}50%{opacity:0.3;} }
-
-/* Jar Container */
-#jar-container { width: 220px; height: 260px; position: relative; margin: 2rem auto; cursor: pointer; transform:translateZ(0);
-will-change:transform; }
-.jar-body { width: 100%; display: block;transition: opacity 0.4s ease; }
-.jar-lid{
-position:absolute;
-top:3%;
-left:50%;
-width:58%;          /* responsive width */
-max-width:none;    /* desktop limit */
-transform:translateX(-50%);
-transform-origin:center bottom;
-transition:transform 1.4s cubic-bezier(0.22,1,0.36,1),filter 1s ease;
-will-change:transform; backface-visibility:hidden;
-z-index:3;
-}
-@keyframes lidFloat {
-0% { transform: translateX(-50%) translateY(-34px) rotate(-14deg); }
-50% { transform: translateX(-50%) translateY(-38px) rotate(-12deg); }
-100% { transform: translateX(-50%) translateY(-34px) rotate(-14deg); }
-}
-
-
-.inner-star { position: absolute; bottom: 105px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; color: #fde68a; text-shadow: 0 0 8px rgba(255,215,120,0.8), 0 0 16px rgba(255,215,120,0.6), 0 0 24px rgba(255,215,120,0.4); animation: starPulse 3s ease-in-out infinite; z-index: 2; }
-@keyframes starPulse { 0%,100%{opacity:0.6;transform:translateX(-50%) scale(0.95);}50%{opacity:1;transform:translateX(-50%) scale(1.05);} }
-
-#jar-container.open .jar-lid {
-transform: translateX(-50%) translateY(-40px) rotate(-35deg);
-animation: lidFloat 2.6s ease-in-out infinite;
-filter: drop-shadow(0 10px 16px rgba(255,215,130,.45));
-}
-
-
-
-
-/* Glow inside jar */
-.glow { position: absolute; inset: 55px 45px 75px 45px; background: radial-gradient(circle, rgba(251,191,36,0.45), rgba(251,191,36,0.15) 45%, transparent 70%); border-radius: 50%; opacity:1; pointer-events:none; z-index:1; animation: glowPulse 4.5s ease-in-out infinite; }
-#jar-container.open .glow { opacity:1; }
-@keyframes glowPulse { 0%,100%{opacity:0.65; transform: scale(0.96);}50%{opacity:1;transform: scale(1.04);} }
-
-/* Fortune Box */
-#fortune-reveal { display: none; flex-direction: column; align-items: center; max-width: 400px; padding: 1.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(253,230,138,0.2); border-radius: 1rem; backdrop-filter: blur(6px); margin-top: 1rem; }
-
-/* About Us / Place Wish */
-section { padding: 5rem 1.5rem; }
-section h2 { font-size: 2rem; color:#fde68a; margin-bottom:1rem; }
-section p { font-size:1rem; color:#e2e8f0; line-height:1.5; }
-
-/* Place a Wish Input */
-#custom-wish-input { padding:1rem; border-radius:1rem; background:#0c0c1e; border:1px solid rgba(255,255,255,0.2); color:white; width:100%; }
-#submit-wish { padding:1rem 1.5rem; background:#fde68a; color:#0c0c1e; font-weight:bold; border-radius:1rem; cursor:pointer; transition:0.3s; }
-#submit-wish:hover { background:white; }
-
-/* Mobile */
-@media (max-width:768px){ #jar-container{width:150px;height:230px;} h1{font-size:2rem;} p{font-size:0.9rem;} .inner-star{bottom:105px; font-size:1.4rem;} .stars{bottom:70px;font-size:1.4rem;letter-spacing:8px;} }
-@media (max-width:480px){ #jar-container{width:120px;height:200px;} h1{font-size:1.8rem;} p{font-size:0.85rem;} .inner-star{bottom:105px; font-size:1.2rem;} .stars{bottom:55px;font-size:1.2rem;letter-spacing:6px;} }
-
-#reviews div:hover {
-transform: translateY(-4px);
-transition: transform 0.3s ease;
-}
-
-.input {
-width:100%;
-padding:1rem;
-border-radius:1rem;
-background:#0c0c1e;
-border:1px solid rgba(255,255,255,.2);
-color:white;
-}
-#particle-canvas {
-position: fixed;
-inset: 0;
-pointer-events: none;
-z-index: 40;
-}
-/* ================= CARDS ================= */
-/* ===== MODAL BACKDROP ===== */
-.modal {
-position: fixed;
-inset: 0;
-background: rgba(6,6,16,0.85);
-backdrop-filter: blur(6px);
-display: none;
-align-items: center;
-justify-content: center;
-z-index: 100;
-}
-
-.fortune-modal {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,.8);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:50;
-}
-
-.hidden { display:none; }
-
-.fortune-box{
-background:#0c0c1e;
-border:2px solid #fde68a;
-border-radius:20px;
-padding:40px 20px;
-width:420px;
-max-width:92%;
-text-align:center;
-box-shadow:0 0 25px rgba(253,230,138,.35);
-}
-
-@media(max-width:600px){
-.fortune-box{
-width:300px;
-padding:22px;
-}
-}
-
-/* ===== CLASSIC FORTUNE CARDS ===== */
-
-.fortune-cards{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-}
-
-
-/* SIZE CONTROL — change here */
-:root{
---card-w:90px;
---card-h:130px;
-}
-
-.fortune-card{
-width:var(--card-w);
-height:var(--card-h);
-perspective:900px;
-cursor:pointer;
-pointer-events:auto;
-}
-
-.card-inner{
-position:relative;
-width:100%;
-height:100%;
-transform-style:preserve-3d;
-transition:transform .7s cubic-bezier(.4,.2,.2,1);
-}
-
-.fortune-card.flipped .card-inner{
-transform:rotateY(180deg);
-}
-
-/* Faces */
-
-.card-face{
-position:absolute;
-inset:0;
-border-radius:14px;
-backface-visibility:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:10px;
-font-size:13px;
-line-height:1.3;
-}
-
-/* FRONT */
-
-.card-front{
-background:
-radial-gradient(circle at top,#fef3c7,#fcd34d);
-border:2px solid #fde68a;
-box-shadow:
-0 6px 15px rgba(0,0,0,.5),
-inset 0 0 10px rgba(255,255,255,.4);
-font-size:32px;
-transition:opacity .3s ease;
-}
-
-
-/* BACK */
-
-.card-back{
-background:#0c0c1e;
-color:#fde68a;
-transform:rotateY(180deg);
-border:2px solid #fde68a;
-box-shadow:
-0 0 15px rgba(253,230,138,.4);
-}
-
-/* Hover */
-
-.fortune-card:hover{
-transform:translateY(-6px);
-}
-
-
-@keyframes floatUp{
-from{opacity:0;transform:translateY(15px)}
-to{opacity:1;transform:none}
-}
-
-.fortune-popup{
-position:absolute;
-inset:0;
-background:rgba(10,10,25,.95);
-backdrop-filter:blur(6px);
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px;
-border-radius:20px;
-z-index:20;
-}
-
-.fortune-popup p{
-color:#fde68a;
-font-size:22px;
-font-family:Cinzel;
-}
-.fortune-close{
-position:absolute;
-top:18px;
-right:20px;
-color:#fde68a;
-font-size:22px;
-cursor:pointer;
-transition:.3s;
-}
-
-.fortune-close:hover{
-transform:scale(1.2);
-}
-
-
-/* ================= MOBILE RESPONSIVE ================= */
-
-@media(max-width:600px){
-:root{
---card-w:70px;
---card-h:100px;
-}
-
-.card-face{
-font-size:12px;
-}
-
-.fortune-popup p{
-font-size:16px;
-}
-}
-
-
-@media(max-width:768px){
-
-header{
-padding-top:110px;
-}
-
-.hero-text h1{
-font-size:2rem;
-}
-
-.hero-text p{
-font-size:.95rem;
-}
-
-/* Jar smaller */
-#jar-container{
-width:150px;
-height:210px;
-}
-
-.jar-lid{
-width:58%;
-top:3%;
-}
-.inner-star{
-font-size:1.2rem;
-bottom:85px;
-}
-
-}
-
-/* Small phones */
-
-@media(max-width:480px){
-
-.hero-text h1{
-font-size:1.7rem;
-}
-
-section{
-padding:3rem 1rem;
-}
-
-#jar-container{
-width:130px;
-height:180px;
-}
-
-}
-
-
-@media(max-width:600px){
-
-#order-form{
-padding-top:3rem;
-}
-
-#order-form .rounded-3xl{
-padding:20px;
-}
-
-.input{
-padding:.8rem;
-font-size:.9rem;
-}
-
-#place-order-btn{
-padding:14px;
-font-size:.85rem;
-}
-
-}
-
-}
-
-html,body{
-height:100%;
-}
-/* ===== MOBILE SIDEBAR ===== */
-
-#mobileMenu{
-position:fixed;
-top:0;
-left:0;
-
-width:260px;
-height:100vh;              /* FULL SCREEN HEIGHT */
-
-background:linear-gradient(180deg,#0c0c1e,#050510);
-
-z-index:999;
-transform:translateX(-100%);
-transition:.35s cubic-bezier(.4,0,.2,1);
-
-padding-top:90px;
-
-box-shadow:10px 0 40px rgba(0,0,0,.6);
-
-overflow-y:auto;          /* scroll if links exceed height */
-}
-
-
-#mobileMenu.open{
-transform:translateX(0);
-}
-
-
-/* Overlay */
-
-#mobileOverlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
-z-index:50;
-}
-
-
-/* Links */
-
-#mobileMenu a{
-color:#e2e8f0;
-padding:10px 0;
-display:block;
-}
-
-#mobileMenu a:hover{
-color:#fde68a;
-}
-
-/* Desktop hides */
-
-@media(min-width:768px){
-#mobileMenu,#mobileOverlay{display:none!important;}
-}
-
-
-
-.bar{
-height:2px;
-background:#fde68a;
-transition:.3s;
-}
-
-#menuBtn.open .bar:nth-child(1){
-transform:rotate(45deg) translateY(10px);
-}
-
-#menuBtn.open .bar:nth-child(2){
-opacity:0;
-}
-
-#menuBtn.open .bar:nth-child(3){
-transform:rotate(-45deg) translateY(-10px);
-}
-
-body.sidebar-open{
-overflow:hidden;
-}
-
-nav{
-padding-top:env(safe-area-inset-top);
-}
-
-* {
-box-sizing: border-box;
-}
-
-html, body {
-width: 100%;
-overflow-x: hidden;
-}
-
-nav {
-height: 80px;
-}
-
-img {
-max-width: 100%;
-height: auto;
-display: block;
-}
-
-#about-us {
-opacity: 0;
-transform: translateY(40px);
-transition: all 1s ease;
-}
-
-#about-us.visible {
-opacity: 1;
-transform: translateY(0);
-}
-.fortune-text{
-text-align:center;
-font-size:14px;
-color:#fcd34d;
-letter-spacing:2px;
-margin-bottom:12px;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{opacity:.6}
-to{opacity:1}
-}
-
-</style>
-
 <script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"Product",
-"name":"Classic Star Jar",
-"image":[
-"https://fortunestarjars.netlify.app/images/classic-jar.webp"
-],
-"description":"Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish. Aesthetic meaningful gift.",
-"sku":"SJ-CLASSIC",
-"brand":{
-"@type":"Brand",
-"name":"STAR & JAR"
-},
-"offers":{
-"@type":"Offer",
-"url":"https://fortunestarjars.netlify.app/#shop-collection",
-"priceCurrency":"INR",
-"price":"899",
-"priceValidUntil":"2026-12-31",
-"availability":"https://schema.org/InStock",
-"itemCondition":"https://schema.org/NewCondition",
-"seller":{
-"@type":"Organization",
-"name":"STAR & JAR"
-}
-},
-"aggregateRating":{
-"@type":"AggregateRating",
-"ratingValue":"4.9",
-"reviewCount":"126"
-}
-}
+{"@context":"https://schema.org","@type":"Product","name":"Classic Star Jar","image":["https://fortunestarjars.netlify.app/images/classic-jar.webp"],"description":"Handmade Fortune Star Jar filled with hand-folded stars and a custom handwritten wish.","sku":"SJ-CLASSIC","brand":{"@type":"Brand","name":"STAR & JAR"},"offers":{"@type":"Offer","url":"https://fortunestarjars.netlify.app/#shop-collection","priceCurrency":"INR","price":"899","priceValidUntil":"2026-12-31","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition","seller":{"@type":"Organization","name":"STAR & JAR"}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"126"}}
 </script>
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:'Quicksand','Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;background:#0c0c1e;color:#e2e8f0;padding-top:116px;}
+h1,h2,.serif{font-family:'Cinzel',serif;}
+img{max-width:100%;height:auto;display:block;}
 
+/* ANNOUNCEMENT BAR */
+#announcement-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(90deg,#92400e,#d97706,#92400e);background-size:200% auto;animation:shimmer 3s linear infinite;color:#fff;text-align:center;font-size:.78rem;font-weight:600;letter-spacing:1.5px;padding:8px 1rem;text-transform:uppercase;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+/* NAV */
+nav{position:fixed;top:36px;left:0;right:0;z-index:50;height:80px;background:rgba(12,12,30,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);padding-top:env(safe-area-inset-top);}
+
+/* TOAST */
+#toast{position:fixed;bottom:6rem;left:50%;transform:translateX(-50%) translateY(20px);background:#fde68a;color:#0c0c1e;padding:.75rem 1.5rem;border-radius:50px;font-weight:700;font-size:.9rem;z-index:9999;opacity:0;transition:all .4s ease;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(253,230,138,.4);}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* LOADING */
+#loadingOverlay{display:none;position:fixed;inset:0;background:rgba(12,12,30,.9);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+#loadingOverlay.active{display:flex;}
+.spinner{width:48px;height:48px;border:4px solid rgba(253,230,138,.2);border-top-color:#fde68a;border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* TWINKLE */
+.twinkle{position:absolute;animation:twinkle 3s infinite ease-in-out;}
+@keyframes twinkle{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* JAR */
+#jar-container{width:220px;height:260px;position:relative;margin:2rem auto;cursor:pointer;transform:translateZ(0);will-change:transform;}
+.jar-body{width:100%;display:block;transition:opacity .4s ease;}
+.jar-lid{position:absolute;top:3%;left:50%;width:58%;transform:translateX(-50%);transform-origin:center bottom;transition:transform 1.4s cubic-bezier(.22,1,.36,1),filter 1s ease;will-change:transform;backface-visibility:hidden;z-index:3;}
+@keyframes lidFloat{0%{transform:translateX(-50%) translateY(-34px) rotate(-14deg);}50%{transform:translateX(-50%) translateY(-38px) rotate(-12deg);}100%{transform:translateX(-50%) translateY(-34px) rotate(-14deg);}}
+#jar-container.open .jar-lid{transform:translateX(-50%) translateY(-40px) rotate(-35deg);animation:lidFloat 2.6s ease-in-out infinite;filter:drop-shadow(0 10px 16px rgba(255,215,130,.45));}
+.inner-star{position:absolute;bottom:105px;left:50%;transform:translateX(-50%);font-size:1.8rem;color:#fde68a;text-shadow:0 0 8px rgba(255,215,120,.8),0 0 16px rgba(255,215,120,.6),0 0 24px rgba(255,215,120,.4);animation:starPulse 3s ease-in-out infinite;z-index:2;}
+@keyframes starPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(.95);}50%{opacity:1;transform:translateX(-50%) scale(1.05);}}
+.glow{position:absolute;inset:55px 45px 75px 45px;background:radial-gradient(circle,rgba(251,191,36,.45),rgba(251,191,36,.15) 45%,transparent 70%);border-radius:50%;pointer-events:none;z-index:1;animation:glowPulse 4.5s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:.65;transform:scale(.96);}50%{opacity:1;transform:scale(1.04);}}
+
+/* FORTUNE */
+.fortune-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;justify-content:center;align-items:center;z-index:50;}
+.hidden{display:none;}
+.fortune-box{background:#0c0c1e;border:2px solid #fde68a;border-radius:20px;padding:40px 20px;width:420px;max-width:92%;text-align:center;box-shadow:0 0 25px rgba(253,230,138,.35);}
+@media(max-width:600px){.fortune-box{width:300px;padding:22px;}}
+.fortune-cards{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+:root{--card-w:90px;--card-h:130px;}
+.fortune-card{width:var(--card-w);height:var(--card-h);perspective:900px;cursor:pointer;}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,.2,.2,1);}
+.fortune-card.flipped .card-inner{transform:rotateY(180deg);}
+.card-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-size:13px;line-height:1.3;}
+.card-front{background:radial-gradient(circle at top,#fef3c7,#fcd34d);border:2px solid #fde68a;box-shadow:0 6px 15px rgba(0,0,0,.5),inset 0 0 10px rgba(255,255,255,.4);font-size:32px;}
+.card-back{background:#0c0c1e;color:#fde68a;transform:rotateY(180deg);border:2px solid #fde68a;box-shadow:0 0 15px rgba(253,230,138,.4);}
+.fortune-card:hover{transform:translateY(-6px);}
+.fortune-popup{position:absolute;inset:0;background:rgba(10,10,25,.95);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;border-radius:20px;z-index:20;}
+.fortune-popup p{color:#fde68a;font-size:22px;font-family:Cinzel;}
+.fortune-close{position:absolute;top:18px;right:20px;color:#fde68a;font-size:22px;cursor:pointer;transition:.3s;}
+.fortune-close:hover{transform:scale(1.2);}
+@media(max-width:600px){:root{--card-w:70px;--card-h:100px;}.card-face{font-size:12px;}.fortune-popup p{font-size:16px;}}
+
+/* INPUTS */
+.input{width:100%;padding:1rem;border-radius:1rem;background:#0c0c1e;border:1px solid rgba(255,255,255,.2);color:white;font-family:'Quicksand',sans-serif;font-size:1rem;transition:border .3s;}
+.input:focus{outline:none;border-color:#fde68a;}
+.input::placeholder{color:rgba(255,255,255,.35);}
+select.input option{background:#0c0c1e;color:white;}
+
+/* SECTIONS */
+section{padding:5rem 1.5rem;}
+
+/* CANVAS */
+#particle-canvas{position:fixed;inset:0;pointer-events:none;z-index:40;}
+
+/* IMAGE MODAL */
+#imageModal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:none;align-items:center;justify-content:center;}
+
+/* MOBILE SIDEBAR */
+#mobileMenu{position:fixed;top:0;left:0;width:260px;height:100vh;background:linear-gradient(180deg,#0c0c1e,#050510);z-index:999;transform:translateX(-100%);transition:.35s cubic-bezier(.4,0,.2,1);padding-top:90px;box-shadow:10px 0 40px rgba(0,0,0,.6);overflow-y:auto;}
+#mobileMenu.open{transform:translateX(0);}
+#mobileMenu a{color:#e2e8f0;padding:10px 0;display:block;}
+#mobileMenu a:hover{color:#fde68a;}
+@media(min-width:768px){#mobileMenu,#menuOverlay{display:none!important;}}
+.bar{height:2px;background:#fde68a;transition:.3s;}
+#menuBtn.open .bar:nth-child(1){transform:rotate(45deg) translateY(10px);}
+#menuBtn.open .bar:nth-child(2){opacity:0;}
+#menuBtn.open .bar:nth-child(3){transform:rotate(-45deg) translateY(-10px);}
+body.sidebar-open{overflow:hidden;}
+
+/* ABOUT ANIMATION */
+#about-us{opacity:0;transform:translateY(40px);transition:all 1s ease;}
+#about-us.visible{opacity:1;transform:translateY(0);}
+
+/* FORTUNE TEXT */
+.fortune-text{text-align:center;font-size:14px;color:#fcd34d;letter-spacing:2px;margin-bottom:12px;animation:glow 2s infinite alternate;}
+@keyframes glow{from{opacity:.6}to{opacity:1}}
+
+/* SOCIAL LINKS */
+.social-link{display:inline-flex;align-items:center;gap:.5rem;color:#fde68a;text-decoration:none;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(253,230,138,.3);padding:.5rem 1rem;border-radius:50px;transition:all .3s;}
+.social-link:hover{background:rgba(253,230,138,.1);border-color:#fde68a;}
+
+/* STICKY ORDER BTN */
+#sticky-order{position:fixed;bottom:5.5rem;left:1rem;background:linear-gradient(135deg,#fde68a,#fbbf24);color:#0c0c1e;padding:.7rem 1.2rem;border-radius:50px;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;z-index:90;transition:all .3s;animation:pulse-btn 2s ease-in-out infinite;}
+#sticky-order:hover{transform:scale(1.05);}
+@keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(253,230,138,.4);}50%{box-shadow:0 4px 35px rgba(253,230,138,.7);}}
+
+/* WHATSAPP BTN */
+.whatsapp-btn{position:fixed;bottom:1rem;right:1rem;background:#25D366;color:white;padding:.8rem 1.2rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:.85rem;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:90;transition:all .3s;animation:pulse-wa 2s ease-in-out infinite;}
+.whatsapp-btn:hover{transform:scale(1.05);}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 35px rgba(37,211,102,.7);}}
+
+/* REVIEWS HOVER */
+#reviews div:hover{transform:translateY(-4px);transition:transform .3s ease;}
+
+/* COLOR PICKER */
+.color-btn{cursor:pointer;border:2px solid transparent!important;transition:all .3s;}
+.color-btn.selected{border:2px solid #fde68a!important;transform:scale(1.08);box-shadow:0 0 12px rgba(253,230,138,.5);}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){header{padding-top:110px;}#jar-container{width:150px;height:210px;}.jar-lid{width:58%;top:3%;}.inner-star{font-size:1.2rem;bottom:85px;}}
+@media(max-width:480px){#jar-container{width:130px;height:180px;}section{padding:3rem 1rem;}}
+@media(max-width:600px){#order-form .rounded-3xl{padding:20px;}.input{padding:.8rem;font-size:.9rem;}#place-order-btn{padding:14px;font-size:.85rem;}#announcement-bar{font-size:.68rem;letter-spacing:.8px;}}
+</style>
 </head>
 <body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div id="announcement-bar">
+  🎁 Free Gift Wrapping on All Orders &nbsp;•&nbsp; Pan India Delivery &nbsp;•&nbsp; Handmade with Love ✨
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- LOADING -->
+<div id="loadingOverlay">
+  <div class="spinner"></div>
+  <p class="text-amber-200 text-sm tracking-widest mt-2">Placing your order...</p>
+</div>
+
 <canvas id="particle-canvas"></canvas>
 
 <!-- NAVBAR -->
-<nav class="fixed top-0 left-0 w-full z-50 bg-[#0c0c1e]/80 backdrop-blur-md border-b border-white/10">
-<div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-
-<!-- Brand -->
-<a href="#" class="text-2xl serif text-amber-100 tracking-widest">
-STAR & JAR
-</a>
-
-<!-- Desktop Menu -->
-<div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase text-stone-300">
-<a href="#shop-collection" class="hover:text-amber-200 transition">Shop</a>
-<a href="#place-wish" class="hover:text-amber-200 transition">Place a Wish</a>
-<a href="#reviews" class="hover:text-amber-200 transition">Reviews</a>
-<a href="#order-form" class="px-5 py-2 rounded-full border border-amber-200/30 hover:bg-amber-200/10 transition">
-Order ✨
-</a>
-</div>
-
-<!-- Mobile Button -->
-<button id="menuBtn"
-class="md:hidden w-4 h-4 flex flex-col justify-between relative z-[999]">
-<span class="bar"></span>
-<span class="bar"></span>
-<span class="bar"></span>
-</button>
-
-
-<!-- Mobile Sidebar -->
-<div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
-
-<div id="mobileMenu"
-class="fixed top-0 left-0 h-full w-64 bg-[#0c0c1e] z-50
-flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300">
-
-<a href="#" >Home</a>
-<a href="#shop-collection" >Shop</a>
-<a href="#place-wish">Place a Wish</a>
-<a href="#reviews">Reviews</a>
-<a href="#order-form" class="text-amber-200 font-semibold">Order ✨</a>
-
-</div>
-
-
-
+<nav class="fixed left-0 w-full z-50 bg-[#0c0c1e]/80 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="text-2xl serif text-amber-100 tracking-widest">STAR & JAR</a>
+    <div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase text-stone-300">
+      <a href="#shop-collection" class="hover:text-amber-200 transition">Shop</a>
+      <a href="#place-wish" class="hover:text-amber-200 transition">Place a Wish</a>
+      <a href="#reviews" class="hover:text-amber-200 transition">Reviews</a>
+      <a href="#order-form" class="px-5 py-2 rounded-full border border-amber-200/30 hover:bg-amber-200/10 transition">Order ✨</a>
+    </div>
+    <button id="menuBtn" class="md:hidden w-6 h-5 flex flex-col justify-between relative z-[999]">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
 </nav>
 
+<!-- MOBILE SIDEBAR -->
+<div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+<div id="mobileMenu" class="fixed top-0 left-0 h-full w-64 bg-[#0c0c1e] z-50 flex flex-col gap-6 px-6 pt-24 text-sm tracking-widest uppercase text-stone-300">
+  <a href="#">Home</a>
+  <a href="#shop-collection">Shop</a>
+  <a href="#place-wish">Place a Wish</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#order-form" class="text-amber-200 font-semibold">Order ✨</a>
+  <div class="mt-4 border-t border-white/10 pt-4 flex flex-col gap-3">
+    <a href="https://instagram.com/starandjar" target="_blank" class="text-xs text-stone-400 hover:text-amber-200 normal-case">📱 @starandjar</a>
+    <a href="https://youtube.com/@starandjar" target="_blank" class="text-xs text-stone-400 hover:text-amber-200 normal-case">📺 Star and Jar</a>
+  </div>
+</div>
 
-
+<!-- HERO -->
 <header class="relative min-h-screen flex flex-col items-center text-center px-6 overflow-hidden pt-24">
+  <div class="twinkle" style="top:10%;left:25%;">✦</div>
+  <div class="twinkle" style="top:40%;right:30%;">✦</div>
+  <div class="twinkle" style="bottom:20%;left:50%;">✦</div>
 
-<!-- Twinkle stars -->
-<div class="twinkle" style="top:10%; left:25%;">✦</div>
-<div class="twinkle" style="top:40%; right:30%;">✦</div>
-<div class="twinkle" style="bottom:20%; left:50%;">✦</div>
+  <div class="hero-text text-center max-w-2xl mb-6">
+    <p class="text-xs uppercase tracking-widest text-amber-400 mb-3 opacity-80">Handmade in India 🇮🇳</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-amber-200 tracking-widest mb-4">Fortune Star Jars</h1>
+    <p class="text-base sm:text-lg md:text-xl text-stone-300 leading-relaxed font-light mb-2">
+      Each star is hand-folded. Each star holds a wish.<br>What will yours say?
+    </p>
+    <p class="text-xs text-stone-500 mb-6">⭐ 4.9/5 rating • 126+ happy customers • Pan India Delivery</p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="#order-form" class="px-6 py-3 rounded-full bg-amber-200 text-[#0c0c1e] font-bold tracking-widest uppercase hover:bg-white transition text-sm">Order Now ✨</a>
+      <a href="#shop-collection" class="px-6 py-3 rounded-full border border-amber-200/30 text-amber-200 hover:bg-amber-200/10 transition text-sm tracking-widest uppercase">See Jars</a>
+    </div>
+  </div>
 
-<div class="hero-text text-center max-w-2xl">
-<h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-amber-200 tracking-widest mb-4">
-Fortune Star Jars
-</h1>
+  <div id="jar-container" class="relative group cursor-pointer mb-4">
+    <div class="glow"></div>
+    <img src="images/jar-lid.webp" class="jar-lid" id="jarLid" alt="Jar Lid">
+    <div class="inner-star">⭐</div>
+    <img src="images/jar-body.webp" class="jar-body" id="jarBody" alt="Jar Body">
+  </div>
 
-<p class="text-base sm:text-lg md:text-xl text-stone-300 leading-relaxed font-light">
-Each star is hand-folded. Each star holds a wish.<br>
-What will yours say?
-</p>
-</div>
-
-
-
-<div id="jar-container" class="relative group cursor-pointer mb-12">
-
-<div class="glow"></div>
-<img src="images/jar-lid.webp" class="jar-lid" id="jarLid" alt="Jar Lid">
-<div class="inner-star">⭐</div>
-<img src="images/jar-body.webp" class="jar-body" id="jarBody" alt="Jar Body">
-</div>
-
-<!-- MODAL -->
-<div id="fortuneModal" class="fortune-modal hidden">
-
-<div class="fortune-box">
-
-
-
-<h2>Pick a Card ✨</h2><br><br>
-
-
-<div class="fortune-cards">
-
-<div class="fortune-card" onclick="revealCard(this)">
-<div class="card-inner">
-<div class="card-face card-front">⭐</div>
-<div class="card-face card-back"></div>
-</div>
-</div>
-
-<div class="fortune-card" onclick="revealCard(this)">
-<div class="card-inner">
-<div class="card-face card-front">⭐</div>
-<div class="card-face card-back"></div>
-</div>
-</div>
-
-<div class="fortune-card" onclick="revealCard(this)">
-<div class="card-inner">
-<div class="card-face card-front">⭐</div>
-<div class="card-face card-back"></div>
-</div>
-</div>
-
-</div>
-
-<div id="fortune" class="fortune-popup hidden" onclick="closePopup()">
-
-<span class="fortune-close"
-onclick="event.stopPropagation(); closePopup()">✕</span>
-
-<p id="fortuneText"></p>
-
-</div>
-</div> 
-</div>
-<p id="fortune-text" class="fortune-text">
-✨ Tap the jar to reveal today's fortune
-</p>
+  <!-- FORTUNE MODAL -->
+  <div id="fortuneModal" class="fortune-modal hidden">
+    <div class="fortune-box">
+      <h2>Pick a Card ✨</h2><br>
+      <div class="fortune-cards">
+        <div class="fortune-card" onclick="revealCard(this)"><div class="card-inner"><div class="card-face card-front">⭐</div><div class="card-face card-back"></div></div></div>
+        <div class="fortune-card" onclick="revealCard(this)"><div class="card-inner"><div class="card-face card-front">⭐</div><div class="card-face card-back"></div></div></div>
+        <div class="fortune-card" onclick="revealCard(this)"><div class="card-inner"><div class="card-face card-front">⭐</div><div class="card-face card-back"></div></div></div>
+      </div>
+      <div id="fortune" class="fortune-popup hidden" onclick="closePopup()">
+        <span class="fortune-close" onclick="event.stopPropagation();closePopup()">✕</span>
+        <p id="fortuneText"></p>
+      </div>
+    </div>
+  </div>
+  <p id="fortune-text" class="fortune-text">✨ Tap the jar to reveal today's fortune</p>
 </header>
 
-<!-- Shop Collection -->
+<!-- SHOP -->
 <section id="shop-collection" class="py-24 bg-[#090a0f] text-stone-300">
-<div class="max-w-6xl mx-auto px-6 text-center">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl serif text-amber-100 mb-4">Choose Your Star Jar</h2>
+    <p class="text-stone-400 max-w-2xl mx-auto mb-16">Each jar is hand-filled with folded stars and a custom wish scroll. A meaningful gift for yourself or someone you love.</p>
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
 
-<h2 class="text-3xl serif text-amber-100 mb-4">
-Choose Your Star Jar
-</h2>
-<p class="text-stone-400 max-w-2xl mx-auto mb-16">
-Each jar is hand-filled with folded stars and a custom wish scroll.  
-A meaningful gift for yourself or someone you love.
-</p>
+      <!-- Mini -->
+      <div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md hover:border-amber-200/40 transition">
+        <div class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer" onclick="openGallery(['images/mini-jar-1.webp','images/mini-jar-2.webp','images/mini-jar-3.webp'])">
+          <img src="images/wishing-jar.webp" alt="Mini Star Jar" class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"><span class="text-amber-200 uppercase tracking-widest text-sm">View Jar</span></div>
+        </div>
+        <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">Starter</p>
+        <h3 class="text-2xl text-amber-100 mb-2 serif">Mini Star Jar</h3>
+        <p class="text-stone-400 mb-3 text-sm">A small jar filled with stars and one handwritten wish.</p>
+        <div class="text-3xl text-white mb-2">₹499</div>
+        <p class="text-xs text-green-400 mb-5">✓ In Stock • Ships in 2–3 days</p>
+        <ul class="text-sm text-stone-400 space-y-2 mb-8 text-left">
+          <li>✦ 100 Hand-folded paper stars</li>
+          <li>✦ 1 custom wish scroll</li>
+          <li>✦ Gift-ready packaging</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="selectJar('Mini Star Jar','499')" class="block w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-bold tracking-widest uppercase hover:bg-white transition">Select ✨</a>
+      </div>
 
-<!-- Cards -->
-<div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <!-- Classic -->
+      <div class="relative bg-gradient-to-b from-amber-200/10 to-white/5 border-2 border-amber-200 rounded-3xl p-8 scale-[1.03] shadow-2xl">
+        <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-200 text-[#0c0c1e] text-xs font-bold px-4 py-1 rounded-full tracking-widest">MOST LOVED</span>
+        <div class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer" onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','images/classic-jar-3.webp'])">
+          <img src="images/classic-jar.webp" alt="Classic Star Jar" class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"><span class="text-amber-200 uppercase tracking-widest text-sm">View Jar</span></div>
+        </div>
+        <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">Bestseller</p>
+        <h3 class="text-2xl text-amber-100 mb-2 serif">Classic Star Jar</h3>
+        <p class="text-stone-300 mb-3 text-sm">Our signature jar filled with hundreds of glowing stars.</p>
+        <div class="text-3xl text-white mb-2">₹899</div>
+        <p class="text-xs text-green-400 mb-5">✓ In Stock • Ships in 2–3 days</p>
+        <ul class="text-sm text-stone-300 space-y-2 mb-8 text-left">
+          <li>✦ 365 hand-folded stars</li>
+          <li>✦ 1 custom handwritten wish</li>
+          <li>✦ Premium glass jar</li>
+          <li>✦ Perfect for gifting</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="selectJar('Classic Star Jar','899')" class="block w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-bold tracking-widest uppercase hover:bg-white transition">Choose This Jar ✨</a>
+      </div>
 
+      <!-- Deluxe -->
+      <div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md transition" data-status="coming soon">
+        <div class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer" onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','images/deluxe-jar.webp'])">
+          <img src="images/deluxe-jar.webp" alt="Deluxe Star Jar" class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"><span class="text-amber-200 uppercase tracking-widest text-sm">View Jar</span></div>
+        </div>
+        <p class="uppercase tracking-widest text-xs text-amber-200 mb-2">Premium</p>
+        <h3 class="text-2xl text-amber-100 mb-2 serif">Deluxe Star Jar</h3>
+        <p class="text-stone-400 mb-3 text-sm">A larger jar for deeper wishes and lasting memories.</p>
+        <div class="text-3xl text-white mb-2">₹1,299</div>
+        <p class="text-xs text-amber-400 mb-5">⏳ Coming Soon</p>
+        <ul class="text-sm text-stone-400 space-y-2 mb-8 text-left">
+          <li>✦ 365+ hand-folded stars</li>
+          <li>✦ Custom wish + name/date</li>
+          <li>✦ Luxury gift box</li>
+          <li>✦ Limited edition</li>
+        </ul>
+        <button class="product-btn w-full py-3 rounded-xl font-bold tracking-widest uppercase transition" onclick="handleProductClick(this)">Coming Soon</button>
+      </div>
+    </div>
 
-<!-- Card 1 -->
-<div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md hover:border-amber-200/40 transition">
-
-<!-- IMAGE -->
-<div
-class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-onclick="openGallery(['images/mini-jar-1.webp','images/mini-jar-2.webp','images/mini-jar-3.webp'],event)">
-
-
-<img
-src="images/wishing-jar.webp"
-alt="Mini Star Jar"
-class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
->
-
-<div
-class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition">
-
-<div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-<span class="text-amber-200 uppercase tracking-widest text-sm">
-View Jar
-</span>
-</div>
-</div>
-
-</div>
-<!-- 🔼 IMAGE + OVERLAY END -->
-
-<p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
-Starter
-</p>
-
-<h3 class="text-2xl text-amber-100 mb-4 serif">
-Mini Star Jar
-</h3>
-
-<p class="text-stone-400 mb-6">
-A small jar filled with stars and one handwritten wish.
-</p>
-
-<div class="text-3xl text-white mb-6">
-₹499
-</div>
-
-<ul class="text-sm text-stone-400 space-y-2 mb-8">
-<li>✦ 100 Hand-folded paper stars</li>
-<li>✦ 1 custom wish scroll</li>
-<li>✦ Gift-ready packaging</li>
-</ul>
-
-<a
-href="javascript:void(0)"
-onclick="selectJar('Mini Star Jar','499')"
-class="block w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-bold tracking-widest uppercase hover:bg-white transition"
->
-Select
-</a>
-
-</div>
-
-
-<!-- Card 2 (Featured) -->
-<div class="relative bg-gradient-to-b from-amber-200/10 to-white/5 border-2 border-amber-200 rounded-3xl p-8 scale-[1.03] shadow-2xl">
-
-<span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-200 text-[#0c0c1e] text-xs font-bold px-4 py-1 rounded-full tracking-widest">
-MOST LOVED
-</span>
-
-<!-- IMAGE -->
-<div
-class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-onclick="openGallery([
-     'images/classic-jar-1.webp',
-     'images/classic-jar-2.webp',
-     'images/classic-jar-3.webp'
-   ])"
->
-<img
-src="images/classic-jar.webp"
-alt="Classic Star Jar"
-class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
->
-<div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-<span class="text-amber-200 uppercase tracking-widest text-sm">
-View Jar
-</span>
-</div>
-</div>
-
-<p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
-Bestseller
-</p>
-
-<h3 class="text-2xl text-amber-100 mb-4 serif">
-Classic Star Jar
-</h3>
-
-<p class="text-stone-300 mb-6">
-Our signature jar filled with hundreds of glowing stars.
-</p>
-
-<div class="text-3xl text-white mb-6">
-₹899
-</div>
-
-<ul class="text-sm text-stone-300 space-y-2 mb-8">
-<li>✦ 365 hand-folded stars</li>
-<li>✦ 1 custom handwritten wish</li>
-<li>✦ Premium glass jar</li>
-<li>✦ Perfect for gifting</li>
-</ul>
-
-<a
-href="javascript:void(0)"
-onclick="selectJar('Classic Star Jar','899')"
-class="block w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-bold tracking-widest uppercase hover:bg-white transition"
->
-Choose This Jar ✨
-</a>
-
-</div>
-
-
-
-<!-- Card 3 -->
-<div
-class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md transition"
-data-status="coming soon"
->
-
-<!-- IMAGE -->
-<div
-class="relative overflow-hidden rounded-2xl mb-6 group cursor-pointer"
-onclick="openGallery(['images/classic-jar-1.webp','images/classic-jar-2.webp','giftbox.webp'],event)"
->
-
-<img
-src="images/deluxe-jar.webp"
-alt="Deluxe Star Jar"
-class="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
->
-
-<div class="absolute inset-0 bg-[#0c0c1e]/70 opacity-0 group-hover:opacity-100 transition">
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="text-amber-200 uppercase tracking-widest text-sm">
-View Jar
-</span>
-</div>
-</div>
-</div>
-
-<p class="uppercase tracking-widest text-xs text-amber-200 mb-2">
-Premium
-</p>
-
-<h3 class="text-2xl text-amber-100 mb-4 serif">
-Deluxe Star Jar
-</h3>
-
-<p class="text-stone-400 mb-6">
-A larger jar for deeper wishes and lasting memories.
-</p>
-
-<div class="text-3xl text-white mb-6">
-₹1,299
-</div>
-
-<ul class="text-sm text-stone-400 space-y-2 mb-8">
-<li>✦ 365+ hand-folded stars</li>
-<li>✦ Custom wish + name/date</li>
-<li>✦ Luxury gift box</li>
-<li>✦ Limited edition</li>
-</ul>
-
-<button
-class="product-btn w-full py-3 rounded-xl font-bold tracking-widest uppercase transition"
-onclick="handleProductClick(this)"
->
-Select
-</button>
-
-
-
-</div>
-</div>
-<div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-<button onclick="closeGallery()" class="absolute top-6 right-6 text-white text-3xl font-bold">&times;</button>
-<button onclick="prevImage()" class="absolute left-4 text-white text-4xl select-none">‹</button>
-<img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl" alt="Star Jar Preview">
-<button onclick="nextImage()" class="absolute right-4 text-white text-4xl select-none">›</button>
-</div>
-
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center z-50">
+      <button onclick="closeGallery()" class="absolute top-6 right-6 text-white text-3xl font-bold">&times;</button>
+      <button onclick="prevImage()" class="absolute left-4 text-white text-4xl select-none">&#8249;</button>
+      <img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl" alt="Star Jar Preview">
+      <button onclick="nextImage()" class="absolute right-4 text-white text-4xl select-none">&#8250;</button>
+    </div>
+  </div>
 </section>
 
-<!-- Place a Wish Section -->
+<!-- PLACE A WISH -->
 <section id="place-wish" class="py-24 text-center">
-<h2 class="text-3xl serif text-amber-100 mb-3">Place a Wish Inside ✨</h2>
-<p class="text-stone-400 mb-6">Every jar comes with one hand-written scroll. Write your wish below and we'll preserve it in your jar.</p>
-<div class="max-w-xl mx-auto grid gap-4">
-<input type="text" id="custom-wish-input" placeholder="Write your heartfelt wish here..." class="input">
-
-<button
-type="button"
-id="save-wish-btn"
-class="w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-semibold">
-Save Wish ✨
-</button>
-
-<p id="wish-status" class="hidden text-sm text-amber-200 text-center">
-✨ Wish saved successfully
-</p>
-</div>
-
+  <h2 class="text-3xl serif text-amber-100 mb-3">Place a Wish Inside ✨</h2>
+  <p class="text-stone-400 mb-6">Every jar comes with one hand-written scroll. Write your wish below and we'll preserve it in your jar.</p>
+  <div class="max-w-xl mx-auto grid gap-4">
+    <textarea id="custom-wish-input" rows="3" placeholder="Write your heartfelt wish here..." class="input"></textarea>
+    <button type="button" id="save-wish-btn" class="w-full py-3 rounded-xl bg-amber-200 text-[#0c0c1e] font-semibold hover:bg-white transition">Save Wish ✨</button>
+    <p id="wish-status" class="hidden text-sm text-amber-200 text-center">✨ Wish saved! Scroll down to complete your order.</p>
+  </div>
 </section>
 
-
-<!-- Order Experience -->
+<!-- ORDER FORM -->
 <section id="order-form" class="py-24 bg-[#0c0c1e]">
-<div class="max-w-2xl mx-auto bg-white/5 border border-white/10
-             rounded-3xl p-10 backdrop-blur-md">
+  <div class="max-w-2xl mx-auto bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-md">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl serif text-amber-200 mb-3">Create Your Star Jar ✨</h2>
+      <p class="text-stone-400">A few details, and we'll begin crafting your jar by hand.</p>
+    </div>
+    <form id="orderForm" novalidate>
+      <input type="hidden" name="order_id" value="">
+      <input type="hidden" id="order-product" name="order_product">
+      <input type="hidden" id="order-price" name="order_price">
+      <div class="mb-6">
+        <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Details</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <input name="name" placeholder="Your Name *" required class="input">
+          <input name="phone" placeholder="WhatsApp Number *" required pattern="[0-9]{10}" class="input">
+        </div>
+        <input name="email" type="email" placeholder="Email (optional)" class="input mt-4">
+        <textarea name="address" rows="3" placeholder="Full Delivery Address with Pincode *" required class="input mt-4"></textarea>
+      </div>
+      <div class="mb-6">
+        <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Star Jar</p>
+        <select name="jar_type" id="jar-type" class="input" required>
+          <option value="">Select Product *</option>
+          <option value="Mini Star Jar">Mini Star Jar – ₹499</option>
+          <option value="Classic Star Jar">Classic Star Jar – ₹899</option>
+          <option value="Deluxe Star Jar">Deluxe Star Jar – ₹1299</option>
+        </select>
 
-<!-- Header -->
-<div class="text-center mb-10">
-<h2 class="text-3xl serif text-amber-200 mb-3">
-Create Your Star Jar ✨
-</h2>
-<p class="text-stone-400">
-A few details, and we’ll begin crafting your jar by hand.
-</p>
-</div>
+        <!-- STAR COLOR PICKER -->
+        <div class="mt-4">
+          <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Choose Star Colors 🌈</p>
+          <p class="text-xs text-stone-400 mb-3">Select up to 3 colors (or we'll pick a beautiful mix!)</p>
+          <div class="grid grid-cols-4 gap-2 mb-3" id="colorPicker">
+            <button type="button" onclick="toggleColor(this,'Red ❤️')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(239,68,68,0.2);color:#fca5a5;">❤️ Red</button>
+            <button type="button" onclick="toggleColor(this,'Pink 🩷')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(236,72,153,0.2);color:#f9a8d4;">🩷 Pink</button>
+            <button type="button" onclick="toggleColor(this,'Blue 💙')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(59,130,246,0.2);color:#93c5fd;">💙 Blue</button>
+            <button type="button" onclick="toggleColor(this,'Yellow 💛')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(234,179,8,0.2);color:#fde68a;">💛 Yellow</button>
+            <button type="button" onclick="toggleColor(this,'Green 💚')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(34,197,94,0.2);color:#86efac;">💚 Green</button>
+            <button type="button" onclick="toggleColor(this,'Purple 💜')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(168,85,247,0.2);color:#d8b4fe;">💜 Purple</button>
+            <button type="button" onclick="toggleColor(this,'Orange 🧡')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(249,115,22,0.2);color:#fdba74;">🧡 Orange</button>
+            <button type="button" onclick="toggleColor(this,'White 🤍')" class="color-btn py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(255,255,255,0.1);color:#f1f5f9;">🤍 White</button>
+            <button type="button" onclick="toggleColor(this,'Rainbow 🌈')" class="color-btn col-span-2 py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:linear-gradient(90deg,rgba(239,68,68,.2),rgba(234,179,8,.2),rgba(34,197,94,.2));color:#fde68a;">🌈 Rainbow Mix</button>
+            <button type="button" onclick="toggleColor(this,'Surprise 🎁')" class="color-btn col-span-2 py-2 px-1 rounded-xl border border-white/20 text-xs font-semibold transition" style="background:rgba(253,230,138,0.1);color:#fde68a;">🎁 Surprise Me!</button>
+          </div>
+          <p id="color-selected" class="text-xs text-amber-200 text-center min-h-4"></p>
+          <input type="hidden" id="selected-colors" name="star_colors" value="Surprise Me 🎁">
+        </div>
 
-<form
-id="orderForm">
-
-<!-- Hidden Fields -->
-
-<input type="hidden" name="order_id" value="">
-<input type="hidden" id="order-product" name="order_product">
-<input type="hidden" id="order-price" name="order_price">
-
-
-
-<!-- SECTION 1: User Details -->
-<div>
-<p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Details</p>
-<div class="grid gap-4 md:grid-cols-2">
-<input name="name" placeholder="Your Name" required class="input">
-<input name="phone" placeholder="WhatsApp Number *" required pattern="[0-9]{10}" title="Enter 10 digit number" class="input">
-</div>
-<input name="email" type="email" placeholder="Email (optional)" class="input mt-4">
-<!-- ⭐ ADD ADDRESS HERE -->
-<textarea
-name="address"
-rows="3"
-placeholder="Enter your full delivery address"
-required
-class="input mt-4"></textarea>
-</div>
-
-<!-- SECTION 2: Jar Selection & Wish -->
-<div><br>
-<p class="text-xs uppercase tracking-widest text-amber-200 mb-3">Your Star Jar</p>
-<select name="jar_type" id="jar-type" class="input">
-<option value="">Select Product</option>
-<option value="Mini Star Jar">Mini Star Jar – ₹499</option>
-<option value="Classic Star Jar">Classic Star Jar – ₹899</option>
-<option value="Deluxe Star Jar">Deluxe Star Jar – ₹1299</option>
-</select>
-
-
-<textarea
-name="wish"
-rows="4"
-placeholder="Your wish will appear here…"
-required
-class="input mt-4"></textarea>
-</div>
-
-<!-- SUBMIT -->
-<button
-id="place-order-btn"
-type="submit"
-class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-200 to-yellow-100
-              text-[#0c0c1e] font-bold tracking-widest uppercase
-              hover:from-white hover:to-amber-200 transition">
-Place Order ✨
-</button>
-
-<p id="form-status" class="hidden text-center text-sm"></p>
-<p class="text-xs text-stone-500 text-center">You will receive an order confirmation on WhatsApp.</p>
-</form>
-</div>
+        <textarea name="wish" rows="4" placeholder="Your wish (will be hand-written inside the jar) *" required class="input mt-4"></textarea>
+      </div>
+      <button id="place-order-btn" type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-200 to-yellow-100 text-[#0c0c1e] font-bold tracking-widest uppercase hover:from-white hover:to-amber-200 transition">
+        Place Order ✨
+      </button>
+      <p class="text-xs text-stone-500 text-center mt-3">🔒 Secure order • You'll receive confirmation on WhatsApp</p>
+    </form>
+  </div>
 </section>
 
-
-
-
-
-
-
-<!-- Reviews Section -->
+<!-- REVIEWS -->
 <section id="reviews" class="py-24 bg-[#090a0f] text-stone-300">
-<div class="max-w-6xl mx-auto px-6 text-center">
-
-<h2 class="text-3xl serif text-amber-100 mb-4">
-Loved by Star Dreamers
-</h2>
-<p class="text-stone-400 max-w-xl mx-auto mb-16">
-Gentle words from people who placed their wishes among the stars.
-</p>
-
-<div class="grid gap-8 md:grid-cols-3">
-
-<!-- Review 1 -->
-<div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md">
-<div class="text-amber-200 mb-3">★★★★★</div>
-<p class="text-stone-300 mb-4 italic">
-“I gifted this to my sister and she actually teared up.  
-The handwritten wish made it so personal.”
-</p>
-<p class="text-xs uppercase tracking-widest text-stone-400">
-— Aanya, Mumbai
-</p>
-</div>
-
-<!-- Review 2 -->
-<div class="bg-white/5 border border-amber-200/40 rounded-3xl p-6 shadow-xl scale-[1.03]">
-<div class="text-amber-200 mb-3">★★★★★</div>
-<p class="text-stone-200 mb-4 italic">
-“The glow, the stars, the note — everything felt magical.  
-It’s not just a jar, it’s a feeling.”
-</p>
-<p class="text-xs uppercase tracking-widest text-stone-400">
-— Rohan, Bengaluru
-</p>
-</div>
-
-<!-- Review 3 -->
-<div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md">
-<div class="text-amber-200 mb-3">★★★★★</div>
-<p class="text-stone-300 mb-4 italic">
-“I ordered one for myself and one as a gift.  
-The quality and care really show.”
-</p>
-<p class="text-xs uppercase tracking-widest text-stone-400">
-— Meera, Chennai
-</p>
-</div>
-
-</div>
-
-<!-- Reassurance Line -->
-<p class="mt-12 text-xs text-stone-500 tracking-wide">
-⭐ 4.9/5 average rating • 100+ happy customers
-</p>
-
-</div>
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl serif text-amber-100 mb-4">Loved by Star Dreamers</h2>
+    <p class="text-stone-400 max-w-xl mx-auto mb-16">Gentle words from people who placed their wishes among the stars.</p>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md hover:border-amber-200/30 transition">
+        <div class="text-amber-200 mb-3">★★★★★</div>
+        <p class="text-stone-300 mb-4 italic">"I gifted this to my sister and she actually teared up. The handwritten wish made it so personal."</p>
+        <p class="text-xs uppercase tracking-widest text-stone-400">— Aanya, Mumbai</p>
+      </div>
+      <div class="bg-white/5 border border-amber-200/40 rounded-3xl p-6 shadow-xl scale-[1.03]">
+        <div class="text-amber-200 mb-3">★★★★★</div>
+        <p class="text-stone-200 mb-4 italic">"The glow, the stars, the note — everything felt magical. It's not just a jar, it's a feeling."</p>
+        <p class="text-xs uppercase tracking-widest text-stone-400">— Rohan, Bengaluru</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md hover:border-amber-200/30 transition">
+        <div class="text-amber-200 mb-3">★★★★★</div>
+        <p class="text-stone-300 mb-4 italic">"I ordered one for myself and one as a gift. The quality and care really show."</p>
+        <p class="text-xs uppercase tracking-widest text-stone-400">— Meera, Chennai</p>
+      </div>
+    </div>
+    <p class="mt-12 text-xs text-stone-500 tracking-wide">⭐ 4.9/5 average rating • 126+ happy customers</p>
+  </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about-us" class="py-20 md:py-24 bg-[#0c0c1e]">
-
-<div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-<!-- TEXT -->
-<div class="order-2 md:order-1 text-center md:text-left">
-
-<p class="text-xs uppercase tracking-widest text-amber-200 mb-3">
-About Star & Jar
-</p>
-
-<h2 class="text-2xl md:text-3xl serif text-amber-100 mb-6">
-Where Wishes Become Keepsakes ✨
-</h2>
-
-<p class="text-stone-300 leading-relaxed mb-4">
-Star & Jar was created from a simple belief — every wish deserves a beautiful place to live.
-We handcraft magical star jars filled with folded stars, heartfelt messages, and quiet hope.
-</p>
-
-<p class="text-stone-300 leading-relaxed mb-4">
-Each jar is thoughtfully made by hand, carrying your emotions, memories, and intentions —
-whether it’s love, healing, gratitude, or dreams for the future.
-</p>
-
-<p class="text-stone-300 leading-relaxed">
-More than gifts, our jars are little moments of magic — designed to remind you that
-even the smallest wishes shine bright.
-</p>
-
-<div class="mt-8 flex justify-center md:justify-start gap-4 text-xs md:text-sm text-amber-200 tracking-widest uppercase flex-wrap">
-<span>Handmade</span>
-<span>•</span>
-<span>Personalized</span>
-<span>•</span>
-<span>Heartfelt</span>
-</div>
-
-</div>
-
-<!-- IMAGE -->
-<div class="relative order-1 md:order-2 flex justify-center">
-
-<div class="absolute w-60 h-60 bg-amber-200/20 blur-3xl rounded-full"></div>
-
-<img
-src="images/about.webp"
-class="relative w-full max-w-sm md:max-w-md rounded-3xl shadow-2xl border border-white/10"
-alt="Star Jar">
-
-</div>
-
-</div>
-
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="order-2 md:order-1 text-center md:text-left">
+      <p class="text-xs uppercase tracking-widest text-amber-200 mb-3">About Star & Jar</p>
+      <h2 class="text-2xl md:text-3xl serif text-amber-100 mb-6">Where Wishes Become Keepsakes ✨</h2>
+      <p class="text-stone-300 leading-relaxed mb-4">Star & Jar was created from a simple belief — every wish deserves a beautiful place to live. We handcraft magical star jars filled with folded stars, heartfelt messages, and quiet hope.</p>
+      <p class="text-stone-300 leading-relaxed mb-4">Each jar is thoughtfully made by hand, carrying your emotions, memories, and intentions — whether it's love, healing, gratitude, or dreams for the future.</p>
+      <p class="text-stone-300 leading-relaxed mb-6">More than gifts, our jars are little moments of magic — designed to remind you that even the smallest wishes shine bright.</p>
+      <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+        <a href="https://instagram.com/starandjar" target="_blank" class="social-link">📱 @starandjar</a>
+        <a href="https://youtube.com/@starandjar" target="_blank" class="social-link">📺 YouTube</a>
+      </div>
+    </div>
+    <div class="relative order-1 md:order-2 flex justify-center">
+      <div class="absolute w-60 h-60 bg-amber-200/20 blur-3xl rounded-full"></div>
+      <img src="images/about.webp" class="relative w-full max-w-sm md:max-w-md rounded-3xl shadow-2xl border border-white/10" alt="Star Jar">
+    </div>
+  </div>
 </section>
 
+<!-- WHY US -->
 <section id="why-us" class="py-24 bg-[#0c0c1e]">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<div class="text-center mb-14">
-<h2 class="text-3xl serif text-amber-200 mb-3">
-Why Choose Star & Jar ✨
-</h2>
-<p class="text-stone-400">
-Crafted with love. Designed to hold meaning.
-</p>
-</div>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<!-- Card -->
-
-<div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
-<div class="text-3xl mb-4">👐</div>
-<h3 class="text-xl serif text-amber-100 mb-3">Handmade with Care</h3>
-<p class="text-stone-400 text-sm">
-Every jar is folded and assembled by hand — no machines, just heart.
-</p>
-</div>
-
-<div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
-<div class="text-3xl mb-4">💌</div>
-<h3 class="text-xl serif text-amber-100 mb-3">Personal Wishes</h3>
-<p class="text-stone-400 text-sm">
-Add your own message to make each jar truly unique.
-</p>
-</div>
-
-<div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
-<div class="text-3xl mb-4">🎁</div>
-<h3 class="text-xl serif text-amber-100 mb-3">Perfect Gifts</h3>
-<p class="text-stone-400 text-sm">
-Birthdays, anniversaries, self-love — our jars fit every moment.
-</p>
-</div>
-
-</div>
-
-</div>
-
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl serif text-amber-200 mb-3">Why Choose Star & Jar ✨</h2>
+      <p class="text-stone-400">Crafted with love. Designed to hold meaning.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
+        <div class="text-3xl mb-4">👐</div>
+        <h3 class="text-xl serif text-amber-100 mb-3">Handmade with Care</h3>
+        <p class="text-stone-400 text-sm">Every jar is folded and assembled by hand — no machines, just heart.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
+        <div class="text-3xl mb-4">💌</div>
+        <h3 class="text-xl serif text-amber-100 mb-3">Personal Wishes</h3>
+        <p class="text-stone-400 text-sm">Add your own message to make each jar truly unique.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:scale-[1.02] transition">
+        <div class="text-3xl mb-4">🎁</div>
+        <h3 class="text-xl serif text-amber-100 mb-3">Perfect Gifts</h3>
+        <p class="text-stone-400 text-sm">Birthdays, anniversaries, self-love — our jars fit every moment.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- FAQ — FIXED (moved outside footer) -->
+<section id="faq" class="py-20 bg-[#090a0f] text-center">
+  <div class="max-w-2xl mx-auto px-6">
+    <h2 class="text-3xl serif text-amber-200 mb-4">Frequently Asked Questions</h2>
+    <p class="text-stone-400 mb-12">Everything you need to know about your Star Jar ✨</p>
+    <div class="space-y-4 text-left">
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-amber-100 font-semibold mb-2">How long does delivery take?</h3>
+        <p class="text-stone-400 text-sm">3–5 business days across India. We pack with love so your jar arrives safely.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-amber-100 font-semibold mb-2">Can I write my own wish?</h3>
+        <p class="text-stone-400 text-sm">Absolutely! Enter your personal wish in the order form and we'll hand-write it on a scroll inside the jar.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-amber-100 font-semibold mb-2">Is every star hand-folded?</h3>
+        <p class="text-stone-400 text-sm">Yes! Every single paper star is folded by hand with care and love. No machines involved.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-amber-100 font-semibold mb-2">What payment methods do you accept?</h3>
+        <p class="text-stone-400 text-sm">UPI, GPay, PhonePe, Paytm, and Bank Transfer. Payment details shared on WhatsApp after order confirmation.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-amber-100 font-semibold mb-2">Can I customize the star colors?</h3>
+        <p class="text-stone-400 text-sm">Yes! Mention your preferred colors in the wish field and we'll match them as best as we can.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
 <footer class="py-16 bg-[#090a0f] text-center text-stone-500">
-<h3 class="serif text-amber-100 text-xl mb-2">STAR & JAR</h3>
-
-
-<div class="flex justify-center gap-6 text-sm mb-6">
-<a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})"
-class="hover:text-amber-200">Home</a>
-<a href="#about-us" class="hover:text-amber-200">About</a>
-<a href="#shop-collection" class="hover:text-amber-200">Shop</a>
-<a href="#reviews" class="hover:text-amber-200">Reviews</a>
-<a href="#order-form" class="hover:text-amber-200">Order</a>
-</div>
-
-<p class="text-xs">
-© 2026 STAR & JAR • Made with love in India ✨
-</p>
-<a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar"
-   target="_blank"
-   class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg">
-   💬 Ask on WhatsApp
-</a>
-<section class="py-20 text-center">
-<h2 class="text-2xl text-amber-200 mb-6">Frequently Asked Questions</h2>
-
-<div class="max-w-xl mx-auto text-center space-y-4">
-
-<p><b>How long does delivery take?</b><br>
-3–5 days across India.</p>
-
-<p><b>Can I write my own wish?</b><br>
-Yes, you can enter your wish while ordering.</p>
-
-<p><b>Is the jar handmade?</b><br>
-Yes, every star is hand-folded.</p>
-
-</div>
-</section>
-
+  <h3 class="serif text-amber-100 text-xl mb-2">STAR & JAR ⭐</h3>
+  <p class="text-sm text-stone-400 mb-6">Handmade paper star jars made with love in India 🇮🇳</p>
+  <div class="flex justify-center gap-6 text-sm mb-6 flex-wrap">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hover:text-amber-200">Home</a>
+    <a href="#about-us" class="hover:text-amber-200">About</a>
+    <a href="#shop-collection" class="hover:text-amber-200">Shop</a>
+    <a href="#reviews" class="hover:text-amber-200">Reviews</a>
+    <a href="#faq" class="hover:text-amber-200">FAQ</a>
+    <a href="#order-form" class="hover:text-amber-200">Order</a>
+  </div>
+  <div class="flex justify-center gap-4 flex-wrap mb-6">
+    <a href="https://instagram.com/starandjar" target="_blank" class="social-link">📱 Instagram</a>
+    <a href="https://youtube.com/@starandjar" target="_blank" class="social-link">📺 YouTube</a>
+    <a href="https://wa.me/919148768388" target="_blank" class="social-link">💬 WhatsApp</a>
+  </div>
+  <p class="text-xs">© 2026 STAR & JAR • Made with love in India ✨</p>
 </footer>
 
-
+<!-- STICKY BUTTONS -->
+<a href="#order-form" id="sticky-order">✨ Order Now</a>
+<a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
 
 <script>
-const jarBody = document.getElementById("jarBody");
-/* ================= JAR + FORTUNE ================= */
-
-const jar = document.getElementById("jar-container");
-const fortuneModal = document.getElementById("fortuneModal");
-const fortunePopup = document.getElementById("fortune");
-const jarDropdown = document.getElementById("jar-type");
-const orderProductInput = document.getElementById("order-product");
-const orderPriceInput = document.getElementById("order-price");
-
-
-
-// Fortune messages
-const fortunes = [
-"Your wish is already on its way ✨",
-"A beautiful surprise is coming 🌙",
-"Love surrounds you quietly 💛",
-"Your stars are aligning 🌟",
-"Magic follows your courage 🔮"
-];
-
-// 1️⃣ Click jar → open jar + modal
-//jar.addEventListener("click", () => {
-// if (jarOpened) return;
-// jarOpened = true;
-// jar.classList.add("open");
-// fortuneModal.classList.remove("hidden");
-//});
-const todayKey = "fortuneShown_" + new Date().toDateString();
-
-jar.addEventListener("click", () => {
-
-jar.classList.add("open");
-
-fortuneModal.classList.remove("hidden");
-
-// already opened today
-if (localStorage.getItem(todayKey)) {
-
-fortunePopup.classList.remove("hidden");
-document.getElementById("fortuneText").innerText =
-"✨ You've already opened your fortune today. Come back tomorrow!";
-
-return;
+/* COLOR PICKER */
+let selectedColors=[];
+function toggleColor(btn,color){
+  if(color==="Rainbow 🌈"||color==="Surprise 🎁"){
+    document.querySelectorAll(".color-btn").forEach(b=>b.classList.remove("selected"));
+    selectedColors=[color];
+    btn.classList.add("selected");
+  } else {
+    // Deselect rainbow/surprise if individual color picked
+    document.querySelectorAll(".color-btn").forEach(b=>{
+      if(b.innerText.includes("Rainbow")||b.innerText.includes("Surprise"))b.classList.remove("selected");
+    });
+    selectedColors=selectedColors.filter(c=>c!=="Rainbow 🌈"&&c!=="Surprise 🎁");
+    if(btn.classList.contains("selected")){
+      btn.classList.remove("selected");
+      selectedColors=selectedColors.filter(c=>c!==color);
+    } else {
+      if(selectedColors.length>=3){showToast("⚠️ Max 3 colors allowed!");return;}
+      btn.classList.add("selected");
+      selectedColors.push(color);
+    }
+  }
+  const display=selectedColors.length>0?
+    "Selected: "+selectedColors.join(", ")+" ✅":
+    "";
+  document.getElementById("color-selected").innerText=display;
+  document.getElementById("selected-colors").value=selectedColors.length>0?selectedColors.join(", "):"Surprise Me 🎁";
 }
 
-// first time today
-localStorage.setItem(todayKey, "yes");
+/* TOAST */
+function showToast(msg,duration=3000){
+  const t=document.getElementById("toast");
+  t.textContent=msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),duration);
+}
+
+/* JAR + FORTUNE */
+const jar=document.getElementById("jar-container");
+const fortuneModal=document.getElementById("fortuneModal");
+const fortunePopup=document.getElementById("fortune");
+const jarDropdown=document.getElementById("jar-type");
+const orderProductInput=document.getElementById("order-product");
+const orderPriceInput=document.getElementById("order-price");
+const fortunes=["Your wish is already on its way ✨","A beautiful surprise is coming 🌙","Love surrounds you quietly 💛","Your stars are aligning 🌟","Magic follows your courage 🔮"];
+const todayKey="fortuneShown_"+new Date().toDateString();
+
+jar.addEventListener("click",()=>{
+  jar.classList.add("open");
+  fortuneModal.classList.remove("hidden");
+  if(localStorage.getItem(todayKey)){
+    fortunePopup.classList.remove("hidden");
+    document.getElementById("fortuneText").innerText="✨ You've already opened your fortune today. Come back tomorrow!";
+    return;
+  }
+  localStorage.setItem(todayKey,"yes");
 });
 
-
-
-// 2️⃣ Pick a card → reveal popup
-function revealCard(card) {
-document.querySelectorAll(".fortune-card").forEach(c => c.classList.remove("flipped"));
-card.classList.add("flipped");
-
-// Show random fortune
-fortunePopup.querySelector("p").innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
-fortunePopup.classList.remove("hidden");
+function revealCard(card){
+  document.querySelectorAll(".fortune-card").forEach(c=>c.classList.remove("flipped"));
+  card.classList.add("flipped");
+  fortunePopup.querySelector("p").innerText=fortunes[Math.floor(Math.random()*fortunes.length)];
+  fortunePopup.classList.remove("hidden");
 }
 
-// 3️⃣ Close popup → reset jar for next use
-function closePopup() {
-
-fortunePopup.classList.add("hidden");
-fortuneModal.classList.add("hidden");
-
-
-
-document.querySelectorAll(".fortune-card").forEach(c=>{
-c.classList.remove("flipped");
-});
-
+function closePopup(){
+  fortunePopup.classList.add("hidden");
+  fortuneModal.classList.add("hidden");
+  document.querySelectorAll(".fortune-card").forEach(c=>c.classList.remove("flipped"));
 }
 
+/* IMAGE GALLERY */
+let galleryImages=[],currentGalleryIndex=0;
+function openGallery(imgArray){
+  galleryImages=imgArray;currentGalleryIndex=0;showGalleryImage();
+  const modal=document.getElementById("imageModal");
+  modal.classList.remove("hidden");modal.classList.add("flex");
+  document.body.style.overflow="hidden";
+}
+function showGalleryImage(){document.getElementById("modalImg").src=galleryImages[currentGalleryIndex];}
+function nextImage(){currentGalleryIndex=(currentGalleryIndex+1)%galleryImages.length;showGalleryImage();}
+function prevImage(){currentGalleryIndex=(currentGalleryIndex-1+galleryImages.length)%galleryImages.length;showGalleryImage();}
+function closeGallery(){
+  const modal=document.getElementById("imageModal");
+  modal.classList.add("hidden");modal.classList.remove("flex");
+  document.body.style.overflow="";
+}
+document.getElementById("imageModal").addEventListener("click",e=>{if(e.target.id==="imageModal")closeGallery();});
 
-
-/* ================= IMAGE GALLERY ================= */
-
-
-let galleryImages = [];
-let currentGalleryIndex = 0;
-
-function openGallery(imgArray) {
-galleryImages = imgArray;
-currentGalleryIndex = 0;
-showGalleryImage();
-const modal = document.getElementById("imageModal");
-modal.classList.remove("hidden");
-modal.classList.add("flex");
-document.body.style.overflow = "hidden";
+/* PRODUCT SELECT */
+function selectJar(jarName,price){
+  document.getElementById("order-product").value=jarName;
+  document.getElementById("order-price").value=price;
+  document.getElementById("jar-type").value=jarName;
+  showToast("✨ "+jarName+" selected!");
+  document.getElementById("order-form").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function showGalleryImage() {
-document.getElementById("modalImg").src = galleryImages[currentGalleryIndex];
-}
-
-function nextImage() {
-currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
-showGalleryImage();
-}
-
-function prevImage() {
-currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-showGalleryImage();
-}
-
-function closeGallery() {
-const modal = document.getElementById("imageModal");
-modal.classList.add("hidden");
-modal.classList.remove("flex");
-document.body.style.overflow = "";
-}
-
-// Optional: click outside the image to close
-document.getElementById("imageModal").addEventListener("click", e => {
-if (e.target.id === "imageModal") closeGallery();
-});
-
-
-/* ================= PRODUCT SELECT ================= */
-
-
-// Function to select jar (click on card button)
-function selectJar(jarName, price) {
-
-document.getElementById("order-product").value = jarName;
-document.getElementById("order-price").value = price;
-document.getElementById("jar-type").value = jarName;
-
-document.getElementById("order-form").scrollIntoView({
-behavior: "smooth",
-block: "start"
-});
-}
-
-// Sync dropdown change to hidden input automatically
-if (jarDropdown) {
-jarDropdown.addEventListener("change", () => {
-orderProductInput.value = jarDropdown.value;
-
-// Optional: set price automatically based on selection
-let priceMap = {
-"Mini Star Jar": "499",
-"Classic Star Jar": "899",
-"Deluxe Star Jar": "1299"
-};
-
-orderPriceInput.value = priceMap[jarDropdown.value] || "";
-});
-}
-
-
-
-
-
-// Elements
-const wishInput = document.getElementById("custom-wish-input");
-const saveWishBtn = document.getElementById("save-wish-btn");
-const orderForm = document.getElementById("orderForm");
-const orderWishTextarea = orderForm.querySelector('textarea[name="wish"]');
-const jarSelect = orderForm.querySelector('select[name="jar_type"]');
-const orderProduct = document.getElementById("order-product");
-const orderPrice = document.getElementById("order-price");
-const orderId = orderForm.querySelector('input[name="order_id"]');
-const placeOrderBtn = document.getElementById("place-order-btn");
-const wishStatus = document.getElementById("wish-status");
-
-
-// 🔁 Live sync while typing
-
-
-wishInput.addEventListener("input", () => {
-const value = wishInput.value.trim();
-
-orderWishTextarea.value = value;
-
-
-localStorage.setItem("starJarWish", value);
-});
-
-
-
-
-
-
-saveWishBtn.addEventListener("click", () => {
-
-const wish = wishInput.value.trim();
-
-if (!wish) {
-wishStatus.innerText = "⚠️ Please write a wish first";
-wishStatus.classList.remove("hidden");
-wishStatus.classList.add("text-red-400");
-return;
-}
-
-saveWishBtn.innerText = "Wish Saved ✓";
-
-wishStatus.innerText = "✨ Wish saved successfully";
-wishStatus.classList.remove("hidden", "text-red-400");
-wishStatus.classList.add("text-amber-200");
-
-// ✅ SCROLL TO FORM (CONTACT SECTION)
-document.querySelector("section#order-form").scrollIntoView({
-behavior: "smooth",
-block: "start"
-});
-
-setTimeout(() => wishStatus.classList.add("hidden"), 2000);
-
-});
-
-
-
-orderForm.addEventListener("submit", async function (e) {
-e.preventDefault();
-
-const name = orderForm.querySelector('[name="name"]').value;
-const phone = orderForm.querySelector('[name="phone"]').value;
-const email = orderForm.querySelector('[name="email"]').value;
-const address = orderForm.querySelector('[name="address"]').value;
-const jar = orderForm.querySelector('[name="jar_type"]').value;
-const wish = orderForm.querySelector('[name="wish"]').value;
-
-if (!jar) {
-alert("Please select a jar first ✨");
-return;
-}
-
-const priceMap = {
-"Mini Star Jar": "499",
-"Classic Star Jar": "899",
-"Deluxe Star Jar": "1299"
-};
-
-const price = priceMap[jar] || "";
-const orderId = "SJ" + Date.now();
-
-const url =
-"https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec";
-
-const formData = new URLSearchParams({
-order_id: orderId,
-name,
-phone,
-email,
-address,   // ← THIS is required
-jar,
-price,
-wish
-});
-
-
-try {
-const res = await fetch(url, {
-method: "POST",
-body: formData
-});
-
-const data = await res.json();
-
-if (data.result !== "success") {
-alert("Order save failed");
-return;
-}
-
-// 📩 ADMIN WHATSAPP
-const adminMsg =
-`NEW STAR & JAR ORDER
-
-Order ID: ${orderId}
-Customer: ${name}
-Phone: ${phone}
-Address: ${address}
-Product: ${jar}
-Amount: ₹${price}
-
-Wish:
-${wish}`;
-
-const adminURL =
-"https://wa.me/919148768388?text=" + encodeURIComponent(adminMsg);
-
-// 📩 CUSTOMER WHATSAPP
-const clean = phone.replace(/\D/g, "");
-
-const customerMsg =
-`STAR & JAR – Order Received
-
-Hi ${name},
-
-Thank you for your order.
-
-Order ID: ${orderId}
-Product: ${jar}
-Amount: ₹${price}
-
-Please wait while we confirm your order.
-You will receive a confirmation message shortly.`;
-
-const customerURL =
-"https://wa.me/91" + clean + "?text=" + encodeURIComponent(customerMsg);
-
-// 🚀 Open WhatsApp
-window.open(adminURL, "_blank");
-
-setTimeout(() => {
-window.open(customerURL, "_blank");
-}, 1200);
-
-alert("Order placed successfully!");
-
-orderForm.reset();
-
-} catch (err) {
-alert("Connection error. Please try again.");
-console.error(err);
-}
-});
-
-
-
-
-
-
-const canvas = document.getElementById("particle-canvas");
-
-if(canvas){
-const ctx = canvas.getContext("2d");
-
-function resizeCanvas(){
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-}
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-}
-
-
-function explodeStars(x, y) {
-const stars = [];
-const COUNT = 28;
-
-for (let i = 0; i < COUNT; i++) {
-const angle = (Math.PI * 2 * i) / COUNT;
-stars.push({
-x,
-y,
-vx: Math.cos(angle) * (2 + Math.random() * 2),
-vy: Math.sin(angle) * (2 + Math.random() * 2),
-life: 60 + Math.random() * 20
-});
-}
-
-function animate() {
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-stars.forEach(s => {
-s.x += s.vx;
-s.y += s.vy;
-s.life--;
-
-ctx.globalAlpha = Math.max(s.life / 80, 0);
-ctx.fillStyle = "#fde68a";
-ctx.font = "16px serif";
-ctx.fillText("✦", s.x, s.y);
-});
-
-if (stars.some(s => s.life > 0)) {
-requestAnimationFrame(animate);
-} else {
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-}
-
-animate();
-}
-
-
-
-
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const overlay = document.getElementById("menuOverlay");
-
-// OPEN / CLOSE BUTTON
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("open");
-  menuBtn.classList.toggle("open");
-  overlay.classList.toggle("hidden");
-  document.body.classList.toggle("sidebar-open");
-});
-
-// CLOSE WHEN CLICKING OVERLAY
-overlay.addEventListener("click", () => {
-  mobileMenu.classList.remove("open");
-  menuBtn.classList.remove("open");
-  overlay.classList.add("hidden");
-  document.body.classList.remove("sidebar-open");
-});
-
-// CLOSE WHEN CLICKING MENU LINKS
-document.querySelectorAll("#mobileMenu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    menuBtn.classList.remove("open");
-    overlay.classList.add("hidden");
-    document.body.classList.remove("sidebar-open");
+if(jarDropdown){
+  jarDropdown.addEventListener("change",()=>{
+    orderProductInput.value=jarDropdown.value;
+    const priceMap={"Mini Star Jar":"499","Classic Star Jar":"899","Deluxe Star Jar":"1299"};
+    orderPriceInput.value=priceMap[jarDropdown.value]||"";
   });
-});
-
-
-
-
-
-document.querySelectorAll("[data-status]").forEach(card => {
-const status = card.dataset.status;
-const btn = card.querySelector(".product-btn");
-
-if (!btn) return;
-
-if (status === "soldout") {
-btn.innerText = "Sold Out";
-btn.disabled = true;
-btn.classList.add("bg-gray-500", "cursor-not-allowed", "opacity-60");
 }
 
-if (status === "coming soon") {
-btn.innerText = "Coming Soon";
-btn.disabled = true;
-btn.classList.add("bg-amber-200/40", "cursor-not-allowed");
-}
+/* WISH SYNC */
+const wishInput=document.getElementById("custom-wish-input");
+const saveWishBtn=document.getElementById("save-wish-btn");
+const orderForm=document.getElementById("orderForm");
+const orderWishTextarea=orderForm.querySelector('textarea[name="wish"]');
+const wishStatus=document.getElementById("wish-status");
+
+wishInput.addEventListener("input",()=>{
+  orderWishTextarea.value=wishInput.value.trim();
+  localStorage.setItem("starJarWish",wishInput.value.trim());
 });
 
-function handleProductClick(btn) {
-const card = btn.closest("[data-status]");
-if (card.dataset.status !== "available") return;
-
-// Only runs for available products
-selectJar("Deluxe Star Jar", "1299");
-}
-
-
-
-
-window.addEventListener("load", () => {
-
-const form = document.querySelector("form[name='star-jar-orders']");
-if (form) form.reset();
-
-document.querySelectorAll("input, textarea, select").forEach(el => {
-el.value = "";
+saveWishBtn.addEventListener("click",()=>{
+  const wish=wishInput.value.trim();
+  if(!wish){showToast("⚠️ Please write a wish first");return;}
+  saveWishBtn.innerText="Wish Saved ✓";
+  wishStatus.classList.remove("hidden");
+  document.querySelector("section#order-form").scrollIntoView({behavior:"smooth",block:"start"});
+  setTimeout(()=>wishStatus.classList.add("hidden"),3000);
 });
 
-localStorage.removeItem("starJarWish");
+/* ORDER FORM — Fixed with toast instead of alert */
+orderForm.addEventListener("submit",async function(e){
+  e.preventDefault();
+  const name=orderForm.querySelector('[name="name"]').value.trim();
+  const phone=orderForm.querySelector('[name="phone"]').value.trim();
+  const email=orderForm.querySelector('[name="email"]').value.trim();
+  const address=orderForm.querySelector('[name="address"]').value.trim();
+  const jarType=orderForm.querySelector('[name="jar_type"]').value;
+  const wish=orderForm.querySelector('[name="wish"]').value.trim();
+  const starColors=document.getElementById("selected-colors").value||"Surprise Me 🎁";
 
+  if(!name){showToast("⚠️ Please enter your name");return;}
+  if(!phone||phone.length!==10){showToast("⚠️ Enter valid 10-digit WhatsApp number");return;}
+  if(!address){showToast("⚠️ Please enter delivery address");return;}
+  if(!jarType){showToast("⚠️ Please select a jar first ✨");return;}
+  if(!wish){showToast("⚠️ Please write your wish");return;}
 
-document.getElementById("order-product").value = "";
-document.getElementById("order-price").value = "";
+  const priceMap={"Mini Star Jar":"499","Classic Star Jar":"899","Deluxe Star Jar":"1299"};
+  const price=priceMap[jarType]||"";
+  const orderId="SJ"+Date.now();
 
-let jarOpened = false;
-jar.classList.remove("open");
+  document.getElementById("loadingOverlay").classList.add("active");
 
-fortuneModal.classList.add("hidden");
-fortunePopup.classList.add("hidden");
+  const url="https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec";
+  const formData=new URLSearchParams({order_id:orderId,name,phone,email,address,jar:jarType,price,wish});
 
+  try{
+    const res=await fetch(url,{method:"POST",body:formData});
+    const data=await res.json();
+    document.getElementById("loadingOverlay").classList.remove("active");
+
+    if(data.result!=="success"){showToast("❌ Order save failed. Please WhatsApp us.");return;}
+
+    const adminMsg=`NEW STAR & JAR ORDER\n\nOrder ID: ${orderId}\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\nProduct: ${jarType}\nAmount: ₹${price}\n\nWish:\n${wish}`;
+    window.open("https://wa.me/919148768388?text="+encodeURIComponent(adminMsg),"_blank");
+
+    const clean=phone.replace(/\D/g,"");
+    const customerMsg=`STAR & JAR – Order Received ✨\n\nHi ${name},\n\nThank you for your order!\n\nOrder ID: ${orderId}\nProduct: ${jarType}\nAmount: ₹${price}\n\nWe'll confirm and share payment details on WhatsApp shortly.\n\nWith love,\nStar & Jar 🫙⭐`;
+    setTimeout(()=>window.open("https://wa.me/91"+clean+"?text="+encodeURIComponent(customerMsg),"_blank"),1200);
+
+    showToast("🎉 Order placed! Check WhatsApp!");
+    orderForm.reset();
+    localStorage.removeItem("starJarWish");
+
+  }catch(err){
+    document.getElementById("loadingOverlay").classList.remove("active");
+    showToast("❌ Connection error. Please try again.");
+    console.error(err);
+  }
+});
+
+/* CANVAS */
+const canvas=document.getElementById("particle-canvas");
+if(canvas){
+  const ctx=canvas.getContext("2d");
+  function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resizeCanvas();
+  window.addEventListener("resize",resizeCanvas);
+}
+
+/* MOBILE MENU */
+const menuBtn=document.getElementById("menuBtn");
+const mobileMenu=document.getElementById("mobileMenu");
+const overlay=document.getElementById("menuOverlay");
+menuBtn.addEventListener("click",()=>{mobileMenu.classList.toggle("open");menuBtn.classList.toggle("open");overlay.classList.toggle("hidden");document.body.classList.toggle("sidebar-open");});
+overlay.addEventListener("click",()=>{mobileMenu.classList.remove("open");menuBtn.classList.remove("open");overlay.classList.add("hidden");document.body.classList.remove("sidebar-open");});
+document.querySelectorAll("#mobileMenu a").forEach(link=>{link.addEventListener("click",()=>{mobileMenu.classList.remove("open");menuBtn.classList.remove("open");overlay.classList.add("hidden");document.body.classList.remove("sidebar-open");});});
+
+/* PRODUCT BUTTONS */
+document.querySelectorAll("[data-status]").forEach(card=>{
+  const status=card.dataset.status;
+  const btn=card.querySelector(".product-btn");
+  if(!btn)return;
+  if(status==="soldout"){btn.innerText="Sold Out";btn.disabled=true;btn.classList.add("bg-gray-500","cursor-not-allowed","opacity-60");}
+  if(status==="coming soon"){btn.innerText="Coming Soon";btn.disabled=true;btn.classList.add("bg-amber-200/40","cursor-not-allowed","text-[#0c0c1e]");}
+});
+function handleProductClick(btn){const card=btn.closest("[data-status]");if(card.dataset.status!=="available")return;selectJar("Deluxe Star Jar","1299");}
+
+/* NAV HIGHLIGHT */
+const sections=document.querySelectorAll("section[id],header[id]");
+const navLinks=document.querySelectorAll("nav a");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-150)current=s.getAttribute("id");});
+  navLinks.forEach(l=>{l.classList.remove("text-amber-200");if(l.getAttribute("href")==="#"+current)l.classList.add("text-amber-200");});
+});
+
+/* ABOUT ANIMATION */
+const about=document.querySelector("#about-us");
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)about.classList.add("visible");});}).observe(about);
+
+/* ON LOAD RESET */
+window.addEventListener("load",()=>{
+  document.querySelectorAll("input,textarea,select").forEach(el=>{if(el.type!=="hidden")el.value="";});
+  localStorage.removeItem("starJarWish");
+  document.getElementById("order-product").value="";
+  document.getElementById("order-price").value="";
+  jar.classList.remove("open");
+  fortuneModal.classList.add("hidden");
+  fortunePopup.classList.add("hidden");
 });
 </script>
 
-
-<script>
-let busy = false;
-
-function lockUI(ms=600){
-busy = true;
-setTimeout(()=>busy=false, ms);
-}
-</script>
-<script>
-const sections = document.querySelectorAll("section[id], header[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-let current = "";
-
-sections.forEach(section => {
-const sectionTop = section.offsetTop - 150;
-if (window.scrollY >= sectionTop) {
-current = section.getAttribute("id");
-}
-});
-
-navLinks.forEach(link => {
-link.classList.remove("text-amber-200");
-
-if (link.getAttribute("href") === "#" + current) {
-link.classList.add("text-amber-200");
-}
-});
-});
-</script>
-
-<script>
-const about = document.querySelector("#about-us");
-
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-about.classList.add("visible");
-}
-});
-});
-
-observer.observe(about);
-</script>
-
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3269750754768833"
-     crossorigin="anonymous"></script>
-
-
-
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3269750754768833" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
