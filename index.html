@@ -202,7 +202,7 @@ body.sidebar-open{overflow:hidden;}
   <a href="#order-form" class="text-amber-200 font-semibold">Order ✨</a>
   <div class="mt-4 border-t border-white/10 pt-4 flex flex-col gap-3">
     <a href="https://instagram.com/starandjar" target="_blank" class="text-xs text-stone-400 hover:text-amber-200 normal-case">📱 @starandjar</a>
-    <a href="https://youtube.com/@starandjar" target="_blank" class="text-xs text-stone-400 hover:text-amber-200 normal-case">📺 Star and Jar</a>
+    <a href="https://youtube.com/@Star_and_Jar" target="_blank" class="text-xs text-stone-400 hover:text-amber-200 normal-case">📺 Star and Jar</a>
   </div>
 </div>
 
@@ -517,14 +517,14 @@ body.sidebar-open{overflow:hidden;}
   <div class="flex justify-center gap-4 flex-wrap mb-6">
     <a href="https://instagram.com/starandjar" target="_blank" class="social-link">📱 Instagram</a>
     <a href="https://youtube.com/@starandjar" target="_blank" class="social-link">📺 YouTube</a>
-    <a href="https://wa.me/919148768388" target="_blank" class="social-link">💬 WhatsApp</a>
+    <a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar" target="_blank" class="social-link">💬 WhatsApp</a>
   </div>
   <p class="text-xs">© 2026 STAR & JAR • Made with love in India ✨</p>
 </footer>
 
 <!-- STICKY BUTTONS -->
 <a href="#order-form" id="sticky-order">✨ Order Now</a>
-<a href="https://wa.me/919148768388?text=Hi%20I%20have%20a%20question%20about%20Star%20Jar" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+
 
 <script>
 /* COLOR PICKER */
@@ -655,8 +655,10 @@ saveWishBtn.addEventListener("click",()=>{
 });
 
 /* ORDER FORM — Fixed with toast instead of alert */
+/* ORDER FORM — FIXED WHATSAPP FIRST */
 orderForm.addEventListener("submit",async function(e){
   e.preventDefault();
+
   const name=orderForm.querySelector('[name="name"]').value.trim();
   const phone=orderForm.querySelector('[name="phone"]').value.trim();
   const email=orderForm.querySelector('[name="email"]').value.trim();
@@ -671,38 +673,96 @@ orderForm.addEventListener("submit",async function(e){
   if(!jarType){showToast("⚠️ Please select a jar first ✨");return;}
   if(!wish){showToast("⚠️ Please write your wish");return;}
 
-  const priceMap={"Mini Star Jar":"499","Classic Star Jar":"899","Deluxe Star Jar":"1299"};
+  const priceMap={
+    "Mini Star Jar":"499",
+    "Classic Star Jar":"899",
+    "Deluxe Star Jar":"1299"
+  };
+
   const price=priceMap[jarType]||"";
   const orderId="SJ"+Date.now();
 
   document.getElementById("loadingOverlay").classList.add("active");
 
   const url="https://script.google.com/macros/s/AKfycbwTe1ws7tTivFvjIjS-2w0mSfqwq_YzjWLk2OPphl4fTIIxaRD0Wh4Zg3_RSWf0N0HmWQ/exec";
-  const formData=new URLSearchParams({order_id:orderId,name,phone,email,address,jar:jarType,price,wish});
 
+  const formData=new URLSearchParams({
+    order_id:orderId,
+    name,
+    phone,
+    email,
+    address,
+    jar:jarType,
+    price,
+    colors:starColors,
+    wish
+  });
+
+  /* OPEN ADMIN WHATSAPP FIRST */
+  const adminMsg=`🌟 NEW STAR & JAR ORDER 🌟
+
+Order ID: ${orderId}
+
+Customer: ${name}
+Phone: ${phone}
+Email: ${email || "Not given"}
+
+Address:
+${address}
+
+Product: ${jarType}
+Amount: ₹${price}
+Colors: ${starColors}
+
+Wish:
+${wish}`;
+
+  window.open(
+    "https://wa.me/919148768388?text="+encodeURIComponent(adminMsg),
+    "_blank"
+  );
+
+  /* SAVE TO GOOGLE SHEET */
   try{
-    const res=await fetch(url,{method:"POST",body:formData});
-    const data=await res.json();
-    document.getElementById("loadingOverlay").classList.remove("active");
-
-    if(data.result!=="success"){showToast("❌ Order save failed. Please WhatsApp us.");return;}
-
-    const adminMsg=`NEW STAR & JAR ORDER\n\nOrder ID: ${orderId}\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\nProduct: ${jarType}\nAmount: ₹${price}\n\nWish:\n${wish}`;
-    window.open("https://wa.me/919148768388?text="+encodeURIComponent(adminMsg),"_blank");
-
-    const clean=phone.replace(/\D/g,"");
-    const customerMsg=`STAR & JAR – Order Received ✨\n\nHi ${name},\n\nThank you for your order!\n\nOrder ID: ${orderId}\nProduct: ${jarType}\nAmount: ₹${price}\n\nWe'll confirm and share payment details on WhatsApp shortly.\n\nWith love,\nStar & Jar 🫙⭐`;
-    setTimeout(()=>window.open("https://wa.me/91"+clean+"?text="+encodeURIComponent(customerMsg),"_blank"),1200);
-
-    showToast("🎉 Order placed! Check WhatsApp!");
-    orderForm.reset();
-    localStorage.removeItem("starJarWish");
-
+    await fetch(url,{
+      method:"POST",
+      body:formData
+    });
   }catch(err){
-    document.getElementById("loadingOverlay").classList.remove("active");
-    showToast("❌ Connection error. Please try again.");
-    console.error(err);
+    console.log("Sheet save failed",err);
   }
+
+  /* CUSTOMER MESSAGE */
+  const clean=phone.replace(/\D/g,"");
+
+  const customerMsg=`✨ STAR & JAR ORDER RECEIVED ✨
+
+Hi ${name},
+
+Thank you for your order 💛
+
+Order ID: ${orderId}
+Product: ${jarType}
+Amount: ₹${price}
+
+We'll confirm shortly on WhatsApp.
+
+With love,
+Star & Jar ⭐`;
+
+  setTimeout(()=>{
+    window.open(
+      "https://wa.me/91"+clean+"?text="+encodeURIComponent(customerMsg),
+      "_blank"
+    );
+  },1500);
+
+  document.getElementById("loadingOverlay").classList.remove("active");
+
+  showToast("🎉 Order placed! Opening WhatsApp...");
+
+  orderForm.reset();
+  localStorage.removeItem("starJarWish");
 });
 
 /* CANVAS */
